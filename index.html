@@ -248,31 +248,28 @@
             margin: 0 auto;
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 36px;
+            gap: 50px;
         }
         .product-card {
-            background: var(--bg-soft);
-            border: 1px solid var(--line);
-            border-radius: 8px;
-            overflow: hidden;
+            background: transparent;
             display: flex;
             flex-direction: column;
-            box-shadow: 0 8px 24px rgba(0,0,0,0.04);
-            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            position: relative;
+            transition: transform 0.4s ease;
         }
-        .product-card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 32px 64px rgba(0,0,0,0.10);
-        }
+        .product-card:hover { transform: translateY(-4px); }
+        .product-card:hover .product-card-img { border-color: rgba(10,10,10,0.20); }
         .product-card-img {
-            background: #000;
+            background: #ffffff;
             aspect-ratio: 1 / 1;
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 32px;
+            padding: 36px;
             overflow: hidden;
             position: relative;
+            border: 1px solid var(--line);
+            transition: border-color 0.4s ease;
         }
         .product-card-img img {
             max-width: 100%;
@@ -280,20 +277,20 @@
             width: auto;
             height: auto;
             object-fit: contain;
-            filter: drop-shadow(0 16px 28px rgba(0,0,0,0.40));
+            filter: grayscale(1) contrast(1.02);
+            transition: filter 0.4s ease;
         }
+        .product-card:hover .product-card-img img { filter: grayscale(0.4) contrast(1.0); }
         .product-card-meta {
-            padding: 30px 30px 34px;
-            border-top: 1px solid var(--line);
-            background: var(--bg-soft);
+            padding: 28px 0 0;
         }
         .product-card-eyebrow {
             font-size: 9px;
-            letter-spacing: 0.34em;
+            letter-spacing: 0.36em;
             text-transform: uppercase;
             color: var(--muted);
             font-weight: 700;
-            margin-bottom: 12px;
+            margin-bottom: 10px;
         }
         .product-card-name {
             font-size: clamp(20px, 2vw, 26px);
@@ -301,13 +298,14 @@
             letter-spacing: -0.012em;
             color: var(--ink);
             margin-bottom: 12px;
-            line-height: 1.1;
+            line-height: 1.05;
         }
         .product-card-desc {
             font-size: 13px;
             line-height: 1.7;
             color: var(--muted);
             letter-spacing: 0.015em;
+            max-width: 320px;
         }
         .product-footnote {
             max-width: 760px;
@@ -378,9 +376,15 @@
 
         /* ---------- MBZ QUOTE ---------- */
         #mbz {
+            position: relative;
             background: var(--strip);
+            background-image: linear-gradient(rgba(0,0,0,0.62), rgba(0,0,0,0.78)), url('assets/bg-mbz-quote.jpg');
+            background-size: cover;
+            background-position: center 22%;
+            background-repeat: no-repeat;
             color: var(--on-strip);
-            padding: 130px 24px 130px;
+            padding: 160px 24px 160px;
+            overflow: hidden;
         }
         .mbz-inner {
             max-width: 920px;
@@ -495,7 +499,7 @@
         /* ---------- CONTRIBUTION PARTNER (ERF) ---------- */
         #erf {
             background: var(--bg);
-            padding: 120px 24px 110px;
+            padding: 120px clamp(24px, 4vw, 60px) 110px;
             border-top: 1px solid var(--line);
         }
         .erf-header {
@@ -520,18 +524,17 @@
         }
         .erf-hero {
             position: relative;
-            max-width: 1240px;
-            margin: 0 auto 70px;
-            min-height: clamp(420px, 56vw, 620px);
+            margin: 0 0 70px;
+            min-height: clamp(440px, 60vw, 680px);
             background-image: url('assets/erf/solidarity-banner.jpg');
             background-size: cover;
             background-position: center;
-            border-radius: 10px;
             overflow: hidden;
-            box-shadow: 0 32px 64px rgba(0,0,0,0.12);
             display: flex;
             align-items: center;
-            padding: clamp(48px, 6vw, 96px);
+            padding: clamp(60px, 8vw, 120px) clamp(24px, 8vw, 120px);
+            margin-left: calc(-1 * clamp(24px, 4vw, 60px));
+            margin-right: calc(-1 * clamp(24px, 4vw, 60px));
         }
         .erf-hero-sheraa {
             position: absolute;
@@ -701,6 +704,47 @@
         </div>
     </section>
 
+    <!-- CONTRIBUTION PARTNER -->
+    <section id="erf">
+        <div class="erf-header">
+            <div class="eyebrow">CONTRIBUTION PARTNER</div>
+            <h2 class="erf-lead">Wisewell&rsquo;s Handhal program is launching with direct giving into the Entrepreneurs Resilience Fund by Sheraa.</h2>
+        </div>
+
+        <div class="erf-hero">
+            <a href="https://sheraa.ae" target="_blank" rel="noopener" class="erf-hero-sheraa" aria-label="Sheraa">
+                <img src="assets/erf/sheraa-logo.png" alt="Sheraa">
+            </a>
+            <div class="erf-hero-content">
+                <img src="assets/erf/erf-logo.png" alt="Entrepreneurs Resilience Fund" class="erf-hero-logo">
+                <h1 class="erf-hero-title">Entrepreneurs Resilience Fund</h1>
+                <p class="erf-hero-sub">Providing targeted financial, operational, and ecosystem support to businesses operating in sectors critical to national resilience.</p>
+                <a href="https://sheraa.ae/erf" target="_blank" rel="noopener" class="erf-hero-cta">Learn More <span aria-hidden="true">&rsaquo;</span></a>
+            </div>
+        </div>
+
+        <div class="erf-fund-card">
+            <div class="erf-fund-header">
+                <h3 class="erf-fund-title">A fund valued at AED 5M</h3>
+                <p class="erf-fund-intro">The Entrepreneurs Resilience Fund provides a combination of financial and non-financial support designed to ensure business continuity and resilience.</p>
+            </div>
+            <div class="erf-pillars">
+                <div class="erf-pillar">
+                    <div class="erf-pillar-name">Equity-free Grants</div>
+                    <p>Non-dilutive, non-repayable grant funding. In-kind support, including partner-led services and resources.</p>
+                </div>
+                <div class="erf-pillar">
+                    <div class="erf-pillar-name">Operational Support</div>
+                    <p>Tailored advisory and programming. Access to Sheraa&rsquo;s ecosystem of partners and opportunities.</p>
+                </div>
+                <div class="erf-pillar">
+                    <div class="erf-pillar-name">Marketing Opportunities</div>
+                    <p>Marketing exposure across Sheraa and partner platforms.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- BOTTLES -->
     <section id="bottles">
         <div class="bottles-inner">
@@ -753,47 +797,6 @@
         </div>
         <div class="product-footnote">
             <p>AED 50 from every Wisewell subscription sold will be contributed to our support partners. During this program, customers will receive UAE Flag Handhal bottles.</p>
-        </div>
-    </section>
-
-    <!-- CONTRIBUTION PARTNER -->
-    <section id="erf">
-        <div class="erf-header">
-            <div class="eyebrow">CONTRIBUTION PARTNER</div>
-            <h2 class="erf-lead">Wisewell&rsquo;s Handhal program is launching with direct giving into the Entrepreneurs Resilience Fund by Sheraa.</h2>
-        </div>
-
-        <div class="erf-hero">
-            <a href="https://sheraa.ae" target="_blank" rel="noopener" class="erf-hero-sheraa" aria-label="Sheraa">
-                <img src="assets/erf/sheraa-logo.png" alt="Sheraa">
-            </a>
-            <div class="erf-hero-content">
-                <img src="assets/erf/erf-logo.png" alt="Entrepreneurs Resilience Fund" class="erf-hero-logo">
-                <h1 class="erf-hero-title">Entrepreneurs Resilience Fund</h1>
-                <p class="erf-hero-sub">Providing targeted financial, operational, and ecosystem support to businesses operating in sectors critical to national resilience.</p>
-                <a href="https://sheraa.ae/erf" target="_blank" rel="noopener" class="erf-hero-cta">Learn More <span aria-hidden="true">&rsaquo;</span></a>
-            </div>
-        </div>
-
-        <div class="erf-fund-card">
-            <div class="erf-fund-header">
-                <h3 class="erf-fund-title">A fund valued at AED 5M</h3>
-                <p class="erf-fund-intro">The Entrepreneurs Resilience Fund provides a combination of financial and non-financial support designed to ensure business continuity and resilience.</p>
-            </div>
-            <div class="erf-pillars">
-                <div class="erf-pillar">
-                    <div class="erf-pillar-name">Equity-free Grants</div>
-                    <p>Non-dilutive, non-repayable grant funding. In-kind support, including partner-led services and resources.</p>
-                </div>
-                <div class="erf-pillar">
-                    <div class="erf-pillar-name">Operational Support</div>
-                    <p>Tailored advisory and programming. Access to Sheraa&rsquo;s ecosystem of partners and opportunities.</p>
-                </div>
-                <div class="erf-pillar">
-                    <div class="erf-pillar-name">Marketing Opportunities</div>
-                    <p>Marketing exposure across Sheraa and partner platforms.</p>
-                </div>
-            </div>
         </div>
     </section>
 
