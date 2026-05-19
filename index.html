@@ -6,9 +6,6 @@
     <meta name="description" content="Handhal — A Wisewell Initiative. Supporting UAE businesses and households impacted by recent events through partner organizations.">
     <meta property="og:title" content="Handhal | الحنظل · A Wisewell Initiative">
     <meta property="og:description" content="A Wisewell Initiative supporting UAE businesses and households impacted by recent events, in partnership with foundations and initiatives across the country.">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@900&display=swap" rel="stylesheet">
     <title>Handhal | الحنظل · A Wisewell Initiative</title>
     <link rel="icon" type="image/jpeg" href="assets/wisewell/wisewell-favicon.jpg">
     <style>
@@ -111,22 +108,11 @@
             justify-content: center;
             text-align: center;
         }
-        .ww-strip-mark {
-            width: clamp(82px, 9.5vw, 130px);
+        .ww-strip-logo {
+            width: clamp(180px, 22vw, 300px);
             height: auto;
-            margin-bottom: 14px;
-            opacity: 0.98;
-        }
-        .ww-strip-wordmark {
-            font-family: 'Inter', 'Helvetica Neue', Arial, system-ui, sans-serif;
-            font-weight: 900;
-            font-size: clamp(38px, 5.2vw, 62px);
-            letter-spacing: -0.025em;
-            color: var(--on-strip);
-            line-height: 1;
-            margin: 6px 0 0;
-            text-rendering: geometricPrecision;
-            -webkit-font-smoothing: antialiased;
+            display: block;
+            margin: 0 auto;
         }
         .ww-strip-label {
             font-size: 11px;
@@ -301,20 +287,10 @@
             padding: 80px 24px 64px;
             text-align: center;
         }
-        .footer-mark {
-            width: 76px;
-            margin: 0 auto 14px;
-            opacity: 0.9;
-        }
-        .footer-wordmark {
-            font-family: 'Inter', 'Helvetica Neue', Arial, system-ui, sans-serif;
-            font-weight: 900;
-            font-size: 30px;
-            letter-spacing: -0.025em;
-            line-height: 1;
-            margin: 0 0 22px;
-            color: var(--on-strip);
-            -webkit-font-smoothing: antialiased;
+        .footer-logo {
+            width: 180px;
+            height: auto;
+            margin: 0 auto 22px;
         }
         .footer-tag {
             font-size: clamp(16px, 1.9vw, 22px);
@@ -356,7 +332,7 @@
         @media (max-width: 560px) {
             .ww-strip { padding: 48px 18px 44px; }
             .ww-strip-mark { width: 58px; margin-bottom: 16px; }
-            .ww-strip-wordmark { width: 140px; }
+            .ww-strip-logo { width: 170px; }
             .ww-strip-label { font-size: 10px; letter-spacing: 0.34em; margin-top: 20px; }
             .mission-body { font-size: 19px; }
         }
@@ -376,8 +352,7 @@
 
     <!-- WISEWELL INITIATIVE STRIP -->
     <section class="ww-strip" aria-label="A Wisewell Initiative">
-        <img src="assets/wisewell/wisewell-mark-white.png" alt="Wisewell" class="ww-strip-mark">
-        <h2 class="ww-strip-wordmark">wisewell</h2>
+        <img src="assets/wisewell/wisewell-logo-white.svg" alt="Wisewell" class="ww-strip-logo">
         <div class="ww-strip-label">A Wisewell Initiative</div>
     </section>
 
@@ -426,8 +401,7 @@
 
     <!-- FOOTER -->
     <section id="footer">
-        <img src="assets/wisewell/wisewell-mark-white.png" alt="Wisewell" class="footer-mark">
-        <div class="footer-wordmark">wisewell</div>
+        <img src="assets/wisewell/wisewell-logo-white.svg" alt="Wisewell" class="footer-logo">
         <div class="footer-tag">CAPITAL. PARTNERS. COMMUNITY.</div>
         <div class="footer-meta">
             <a href="mailto:info@handhal.ae">info@handhal.ae</a> &nbsp;&middot;&nbsp; handhal.ae
