@@ -3,2342 +3,424 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Handhal - الحنظل | Supporting UAE SMEs through strategic investment and rapid deployment.">
-    <meta name="og:title" content="Handhal | الحنظل">
-    <title>Handhal | الحنظل</title>
+    <meta name="description" content="Handhal — A Wisewell Initiative. Supporting UAE businesses and households impacted by recent events through partner organizations.">
+    <meta property="og:title" content="Handhal | الحنظل · A Wisewell Initiative">
+    <meta property="og:description" content="A Wisewell Initiative supporting UAE businesses and households impacted by recent events, in partnership with foundations and initiatives across the country.">
+    <title>Handhal | الحنظل · A Wisewell Initiative</title>
+    <link rel="icon" type="image/jpeg" href="assets/wisewell/wisewell-favicon.jpg">
     <style>
         @font-face {
             font-family: 'Source Code Variable';
-            src: url('assets/source-code-variable.eot');
-            src: url('assets/source-code-variable.eot?#iefix') format('embedded-opentype'),
-                 url('assets/source-code-variable.woff2') format('woff2'),
-                 url('assets/source-code-variable.woff') format('woff'),
-                 url('assets/source-code-variable.ttf') format('truetype'),
-                 url('assets/source-code-variable.svg#Source Code Variable') format('svg');
+            src: url('assets/sourcecodevariable.ttf') format('truetype');
             font-weight: 100 900;
             font-style: normal;
             font-display: swap;
         }
-
+        :root {
+            --bg: #f6f4f0;
+            --bg-soft: #ffffff;
+            --ink: #0a0a0a;
+            --muted: rgba(10,10,10,0.55);
+            --line: rgba(10,10,10,0.08);
+            --strip: #000;
+            --on-strip: #ffffff;
+            --on-strip-muted: rgba(255,255,255,0.55);
+        }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; }
-
         body {
-            font-family: 'Source Code Variable', 'Source Code Pro', monospace;
-            color: #000;
-            background: #000;
+            font-family: 'Source Code Variable', 'Source Code Pro', 'Inter', system-ui, monospace;
+            color: var(--ink);
+            background: var(--bg);
             line-height: 1.6;
-            letter-spacing: 0.03em;
-            overflow-x: hidden;
+            letter-spacing: 0.02em;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
-
         img { max-width: 100%; height: auto; display: block; }
 
-        /* ── NAV ── */
-        nav {
-            position: fixed; top: 0; left: 0; right: 0;
-            padding: 10px 30px;
-            display: flex; justify-content: space-between; align-items: center;
-            z-index: 1000;
-            background: rgba(0, 0, 0, 0.85);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            opacity: 1;
-            transition: opacity 0.5s ease, padding 0.3s ease;
-        }
-        nav.nav-hidden {
-            opacity: 0;
-            pointer-events: none;
-        }
-        nav:hover, nav.nav-visible {
-            opacity: 1;
-            pointer-events: auto;
-        }
-        .nav-logo { width: 22px; height: auto; filter: invert(1); }
-        .nav-links { display: flex; gap: 30px; list-style: none; }
-        .nav-links a {
-            color: #fff; text-decoration: none;
-            font-size: 9px; font-weight: 600;
-            letter-spacing: 0.18em; text-transform: uppercase;
-            transition: opacity 0.3s;
-        }
-        .nav-links a:hover { opacity: 0.5; }
-
-        /* Hamburger button */
-        .nav-hamburger {
-            display: none;
-            flex-direction: column;
-            gap: 5px;
-            cursor: pointer;
-            padding: 8px;
-            z-index: 1002;
-            background: none;
-            border: none;
-        }
-        .nav-hamburger span {
-            display: block;
-            width: 24px; height: 2px;
-            background: #fff;
-            transition: transform 0.3s, opacity 0.3s;
-        }
-        .nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-        .nav-hamburger.open span:nth-child(2) { opacity: 0; }
-        .nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-
-        @media (max-width: 768px) {
-            nav { padding: 16px 20px; }
-            .nav-hamburger { display: flex; }
-            .nav-links {
-                position: fixed;
-                top: 0; left: 0; right: 0; bottom: 0;
-                background: rgba(0, 0, 0, 0.97);
-                flex-direction: column;
-                align-items: center;
-                justify-content: center;
-                gap: 35px;
-                opacity: 0;
-                pointer-events: none;
-                transition: opacity 0.4s ease;
-                z-index: 1001;
-            }
-            .nav-links.open {
-                opacity: 1;
-                pointer-events: auto;
-            }
-            .nav-links a {
-                font-size: 16px;
-                letter-spacing: 0.25em;
-            }
-        }
-
-                .hero-anchor-badge {
-            position: absolute;
-            top: 28px;
-            right: 34px;
-            font-size: clamp(8px, 1vw, 11px);
-            font-weight: 400;
-            letter-spacing: 0.22em;
-            text-transform: uppercase;
-            color: rgba(255,255,255,0.65);
-            z-index: 10;
-            animation: fadeIn 1.4s ease 0.8s both;
-            text-align: right;
-            line-height: 1.5;
-        }
-        .hero-anchor-badge .hab-label {
-            display: block;
-            font-size: 0.78em;
-            color: rgba(255,255,255,0.4);
-            letter-spacing: 0.28em;
-            margin-bottom: 2px;
-        }
-        .hero-anchor-badge .hab-name {
-            display: block;
-            color: rgba(255,255,255,0.92);
-            font-weight: 600;
-            letter-spacing: 0.18em;
-        }
-        @media (max-width: 768px) {
-            .hero-anchor-badge { top: 16px; right: 18px; font-size: 7px !important; letter-spacing: 0.14em; }
-            .hero-anchor-badge .hab-label { letter-spacing: 0.18em; }
-        }
-
-        /* Program partner highlight cell */
-        .eco-logo-cell.program-featured {
-            border: 1px solid rgba(0,0,0,0.35);
-            background: rgba(0,0,0,0.04);
-        }
-        .eco-logo-cell.program-featured .eco-logo-type {
-            font-weight: 700;
-            letter-spacing: 0.12em;
-        }
-        .eco-program-badge {
-            display: block;
-            font-size: 7px;
-            letter-spacing: 0.18em;
-            text-transform: uppercase;
-            color: rgba(0,0,0,0.55);
-            margin-top: 4px;
-            font-weight: 500;
-        }
-
-        .hero-program-title {
-            position: absolute;
-            top: 28px;
-            left: 34px;
-            font-size: clamp(9px, 1.1vw, 12px);
-            font-weight: 400;
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
-            color: rgba(255,255,255,0.55);
-            z-index: 10;
-            animation: fadeIn 1.2s ease 0.5s both;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        /* ── HERO ── */
+        /* ---------- HERO: HANDHAL ---------- */
         #hero {
-            height: 100vh;
-            background: #000;
-            display: flex; flex-direction: column;
-            align-items: center; justify-content: center;
-            position: relative; overflow: hidden;
-        }
-
-        .hero-watermark {
-            position: absolute;
-            width: 140%;
-            max-width: none;
-            opacity: 0.04;
-            top: 50%; left: 50%;
-            transform: translate(-50%, -50%);
-            pointer-events: none;
-        }
-
-        .hero-logo {
-            width: 40vw;
-            max-width: 300px;
-            position: relative; z-index: 2;
-            animation: heroFade 2.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        }
-
-        .hero-text {
-            position: relative; z-index: 2;
-            text-align: center; color: #fff;
-            margin-top: 35px;
-        }
-
-        .hero-tagline {
-            font-size: clamp(18px, 2.8vw, 32px);
-            font-weight: 900;
-            letter-spacing: 0.18em;
-            text-transform: uppercase;
-            line-height: 1.05;
-            white-space: nowrap;
-            animation: slideUp 1.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.8s both;
-        }
-
-        .hero-sub-wrap {
+            min-height: 86vh;
             display: flex;
             flex-direction: column;
             align-items: center;
-            width: 100%;
-            animation: slideUp 1.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) 1.4s both;
+            justify-content: center;
+            padding: 100px 24px 80px;
+            text-align: center;
+            background: var(--bg);
+            position: relative;
+            overflow: hidden;
         }
-
-        .hero-sub {
-            font-size: clamp(14px, 2vw, 20px);
-            font-weight: 400;
-            letter-spacing: 0.35em;
+        .hero-arabic {
+            opacity: 0;
+            animation: fadeUp 1s ease 0.2s forwards;
+        }
+        .hero-arabic img {
+            width: clamp(220px, 32vw, 380px);
+            margin: 0 auto;
+            mix-blend-mode: multiply;
+        }
+        .hero-eyebrow {
+            font-size: 11px;
+            letter-spacing: 0.42em;
             text-transform: uppercase;
-            opacity: 0.7;
-            margin-top: 22px;
-            display: grid;
-            grid-template-columns: 1fr auto 1fr auto 1fr;
-            gap: 0;
-            width: auto;
-            text-align: center;
+            color: var(--muted);
+            margin-top: 28px;
+            opacity: 0;
+            animation: fadeUp 1s ease 0.6s forwards;
+            font-weight: 500;
+        }
+        .hero-tagline {
+            font-size: clamp(32px, 5vw, 64px);
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            line-height: 1.04;
+            margin-top: 36px;
+            max-width: 900px;
+            opacity: 0;
+            animation: fadeUp 1s ease 0.95s forwards;
+        }
+        .hero-sub {
+            font-size: clamp(13px, 1.3vw, 17px);
+            letter-spacing: 0.04em;
+            color: var(--muted);
+            margin-top: 26px;
+            max-width: 640px;
+            line-height: 1.75;
+            opacity: 0;
+            animation: fadeUp 1s ease 1.25s forwards;
+        }
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(14px); }
+            to   { opacity: 1; transform: translateY(0); }
         }
 
-        .hero-sub .hsub-dot {
-            padding: 0 1.2em;
-            opacity: 0.5;
-        }
-
-        .hero-tw-grid {
-            margin-top: 14px;
-            display: grid;
-            grid-template-columns: 1fr auto 1fr auto 1fr;
-            gap: 0;
-            width: auto;
-            animation: slideUp 1.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) 1.8s both;
-        }
-
-        .hero-tw-spacer {
-            width: 2.4em;
-        }
-
-        .hero-tw-col {
-            text-align: center;
+        /* ---------- WISEWELL INITIATIVE STRIP ---------- */
+        .ww-strip {
+            background: var(--strip);
+            color: var(--on-strip);
+            padding: 64px 24px 60px;
             display: flex;
             flex-direction: column;
-            gap: 2px;
-            padding: 0 4px;
-        }
-
-        .hero-tw-col div {
-            font-size: clamp(8px, 0.9vw, 10px);
-            font-weight: 400;
-            letter-spacing: 0.16em;
-            text-transform: uppercase;
-            opacity: 0;
-            line-height: 1.5;
-            color: rgba(255,255,255,0.45);
-        }
-
-        .hero-tw-col div.tw-visible {
-            opacity: 1;
-            transition: opacity 0.12s ease;
-        }
-
-        .hero-scroll {
-            position: absolute; bottom: 40px; left: 50%;
-            transform: translateX(-50%);
-            width: 1px; height: 60px;
-            background: linear-gradient(to bottom, rgba(255,255,255,0.4), transparent);
-            animation: pulse 2.5s ease-in-out infinite;
-            animation-delay: 3s;
-            opacity: 0;
-            z-index: 2;
-        }
-
-        @keyframes heroFade { from { opacity: 0; transform: scale(0.92); } to { opacity: 1; transform: scale(1); } }
-        @keyframes slideUp { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: translateY(0); } }
-        @keyframes pulse { 0% { opacity: 0; } 20% { opacity: 0.6; } 50% { opacity: 0.9; } 80% { opacity: 0.6; } 100% { opacity: 0; } }
-
-        /* ── MEANING / MBZ QUOTE ── */
-        #meaning {
-            min-height: 100vh;
-            background: #000; color: #fff;
-            position: relative; overflow: hidden;
-            display: flex; align-items: center;
-        }
-
-        .meaning-inner {
-            max-width: 1300px; margin: 0 auto;
-            width: 100%; padding: 120px 60px;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 80px; align-items: center;
-            position: relative; z-index: 2;
-        }
-
-        .meaning-narrative h2 {
-            font-size: 12px;
-            font-weight: 700;
-            letter-spacing: 0.3em;
-            text-transform: uppercase;
-            opacity: 0.55;
-            margin-bottom: 30px;
-        }
-
-        .meaning-arabic {
-            font-size: clamp(28px, 3.5vw, 44px);
-            font-weight: 300;
-            letter-spacing: 0.05em;
-            line-height: 1.4;
-            margin-bottom: 35px;
-            opacity: 0.9;
-        }
-
-        .meaning-english {
-            font-size: clamp(22px, 2.8vw, 36px);
-            font-weight: 900;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            line-height: 1.2;
-            margin-bottom: 40px;
-        }
-
-        .meaning-body {
-            font-size: 15px;
-            line-height: 2.1;
-            opacity: 0.75;
-            letter-spacing: 0.02em;
-        }
-
-        .meaning-body p {
-            margin-bottom: 18px;
-        }
-
-        .meaning-pillars {
-            display: flex; gap: 30px;
-            margin-top: 35px;
-            padding-top: 30px;
-            border-top: 1px solid rgba(255,255,255,0.12);
-        }
-
-        .meaning-pillar {
-            font-size: 11px;
-            font-weight: 700;
-            letter-spacing: 0.15em;
-            text-transform: uppercase;
-            opacity: 0.5;
-            line-height: 1.6;
-        }
-
-        .meaning-quote-side {
-            position: relative;
-        }
-
-        .meaning-mbz-photo {
-            width: 100%;
-            aspect-ratio: 3/4;
-            background: url('assets/bg-mbz-quote.jpg') center top / cover no-repeat;
-            filter: grayscale(100%) contrast(1.2);
-            opacity: 0.7;
-            margin-bottom: 40px;
-        }
-
-        .meaning-mbz-quote {
-            position: relative;
-            padding-left: 25px;
-            border-left: 2px solid rgba(255,255,255,0.2);
-        }
-
-        .meaning-mbz-text {
-            font-size: clamp(16px, 1.8vw, 22px);
-            font-weight: 700;
-            line-height: 1.7;
-            letter-spacing: 0.02em;
-            margin-bottom: 18px;
-        }
-
-        .meaning-mbz-attr {
-            font-size: 12px;
-            font-weight: 700;
-            letter-spacing: 0.15em;
-            text-transform: uppercase;
-            opacity: 0.9;
-        }
-
-        .meaning-mbz-attr span {
-            display: block;
-            font-weight: 400;
-            opacity: 0.6;
-            margin-top: 4px;
-            font-size: 11px;
-        }
-
-        @media (max-width: 900px) {
-            .meaning-inner {
-                grid-template-columns: 1fr;
-                gap: 50px; padding: 80px 25px;
-            }
-            .meaning-pillars { flex-direction: column; gap: 12px; }
-            .meaning-mbz-photo { aspect-ratio: 4/3; }
-        }
-
-        /* ── CRISIS ── */
-        #crisis {
-            min-height: 100vh;
-            background: #f5f0eb;
-            position: relative; overflow: hidden;
-            display: flex; align-items: center;
-            padding: 120px 0;
-        }
-
-        .crisis-map {
-            position: absolute;
-            top: -10%; left: -10%;
-            width: 70%; height: 120%;
-            background: url('assets/bg-map.jpg') center center / cover no-repeat;
-            opacity: 0.12;
-            pointer-events: none;
-        }
-
-        .crisis-fruit {
-            position: absolute;
-            right: -8%; top: 5%;
-            width: 55%;
-            opacity: 0.06;
-            pointer-events: none;
-        }
-
-        .crisis-inner {
-            position: relative; z-index: 1;
-            width: 100%; max-width: 1200px;
-            margin: 0 auto; padding: 0 60px;
-            display: grid;
-            grid-template-columns: 1.2fr 1fr;
-            gap: 100px; align-items: center;
-        }
-
-        .crisis-text h2 {
-            font-size: clamp(36px, 4.5vw, 52px);
-            font-weight: 900;
-            letter-spacing: 0.15em;
-            text-transform: uppercase;
-            margin-bottom: 35px;
-            line-height: 1.05;
-        }
-
-        .crisis-text p {
-            font-size: 16px; line-height: 2;
-            letter-spacing: 0.02em; color: #111;
-            margin-bottom: 15px;
-        }
-
-        .crisis-stats {
-            margin-top: 35px;
-            display: grid; grid-template-columns: repeat(3, 1fr);
-            gap: 0;
-        }
-
-        .stat {
-            padding: 25px 0;
-            border-top: 1px solid rgba(0,0,0,0.15);
-            display: flex;
-            align-items: flex-start;
-            gap: 16px;
-        }
-
-        .stat-icon {
-            flex-shrink: 0;
-            width: 44px;
-            height: 44px;
-            margin-top: 2px;
-        }
-
-        .stat-icon svg {
-            width: 100%;
-            height: 100%;
-        }
-
-        .stat-content {
-            flex: 1;
-        }
-
-        .stat-num {
-            font-size: 42px; font-weight: 900;
-            letter-spacing: 0.02em; line-height: 1;
-            margin-bottom: 8px;
-        }
-
-        .stat-label {
-            font-size: 12px; font-weight: 600;
-            letter-spacing: 0.12em;
-            text-transform: uppercase;
-            opacity: 0.7;
-        }
-
-        .crisis-headline {
-            font-size: 13px;
-            font-weight: 700;
-            letter-spacing: 0.18em;
-            text-transform: uppercase;
-            margin-bottom: 30px;
-            opacity: 0.5;
-        }
-
-        .crisis-visual {
-            position: relative;
-            display: flex; align-items: center; justify-content: center;
-        }
-
-        .crisis-badge {
-            width: 90%;
-            max-width: 420px;
-            position: relative; z-index: 1;
-        }
-
-        @media (max-width: 900px) {
-            .crisis-inner { grid-template-columns: 1fr; gap: 50px; padding: 0 25px; }
-            .crisis-stats { grid-template-columns: 1fr; }
-            .crisis-map { width: 100%; opacity: 0.08; }
-            .stat { gap: 14px; }
-            .stat-icon { width: 36px; height: 36px; }
-            .stat-num { font-size: 34px; }
-        }
-
-        /* ── BRAND STRIP ── */
-        .brand-strip {
-            height: 180px;
-            background: url('assets/stickers-collage.png') center center / cover no-repeat;
-            position: relative;
-        }
-        .brand-strip::after {
-            content: ''; position: absolute; inset: 0;
-            background: linear-gradient(to right, rgba(0,0,0,0.6), rgba(0,0,0,0.3), rgba(0,0,0,0.6));
-        }
-
-        /* ── MODEL ── */
-        #model {
-            background: #000; color: #fff;
-            padding: 140px 60px;
-            min-height: 100vh;
-            position: relative; overflow: hidden;
-        }
-
-        .model-watermark {
-            position: absolute;
-            left: -15%; top: -20%;
-            width: 70%;
-            opacity: 0.035;
-            pointer-events: none;
-        }
-
-        .model-inner {
-            max-width: 1300px; margin: 0 auto;
-            position: relative; z-index: 1;
-        }
-
-        .model-header {
-            font-size: clamp(40px, 5.5vw, 64px);
-            font-weight: 900;
-            letter-spacing: 0.18em;
-            text-transform: uppercase;
-            margin-bottom: 100px;
-            line-height: 1.05;
-        }
-
-        .model-cards {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2px;
-        }
-
-        .model-card {
-            padding: 50px 40px;
-            background: rgba(255,255,255,0.03);
-            border: 1px solid rgba(255,255,255,0.06);
-            transition: background 0.6s ease, transform 0.6s ease;
-            position: relative;
-        }
-
-        .model-card:hover {
-            background: rgba(255,255,255,0.08);
-            transform: translateY(-4px);
-        }
-
-        .model-card-num {
-            font-size: 12px; font-weight: 600;
-            letter-spacing: 0.3em;
-            opacity: 0.55;
-            margin-bottom: 30px;
-        }
-
-        .model-card-badge {
-            width: 140px; height: auto;
-            margin-bottom: 35px;
-            opacity: 0.85;
-            filter: invert(1);
-            transition: opacity 0.4s, transform 0.4s;
-        }
-        .model-card:hover .model-card-badge { opacity: 1; transform: scale(1.05); }
-
-        .model-card-title {
-            font-size: 24px; font-weight: 900;
-            letter-spacing: 0.15em;
-            text-transform: uppercase;
-            margin-bottom: 20px;
-            line-height: 1.15;
-        }
-
-        .model-card-text {
-            font-size: 14px; line-height: 2;
-            letter-spacing: 0.02em;
-            opacity: 0.7;
-        }
-
-        @media (max-width: 900px) {
-            #model { padding: 80px 25px; }
-            .model-cards { grid-template-columns: 1fr; }
-            .model-header { margin-bottom: 60px; }
-        }
-
-        /* ── PROCESS ── */
-        #process {
-            background: #fff; color: #000;
-            padding: 140px 60px;
-            position: relative; overflow: hidden;
-        }
-        .process-inner {
-            max-width: 1200px; margin: 0 auto;
-        }
-        .process-header {
-            font-size: clamp(36px, 5vw, 56px);
-            font-weight: 900;
-            letter-spacing: 0.15em;
-            text-transform: uppercase;
-            line-height: 1.05;
-            margin-bottom: 25px;
-        }
-        .process-intro {
-            font-size: 16px; line-height: 2;
-            color: #333;
-            max-width: 750px;
-            margin-bottom: 70px;
-        }
-
-        /* Key terms bar */
-        .process-terms {
-            display: grid; grid-template-columns: repeat(5, 1fr);
-            gap: 0; margin-bottom: 80px;
-            border-top: 2px solid #000; border-bottom: 1px solid #ddd;
-        }
-        .process-term {
-            padding: 30px 10px;
+            align-items: center;
+            justify-content: center;
             text-align: center;
-            border-right: 1px solid #eee;
         }
-        .process-term:last-child { border-right: none; }
-        .process-term strong {
-            display: block;
-            font-size: 36px; font-weight: 900;
-            letter-spacing: -0.02em;
-            margin-bottom: 8px;
+        .ww-strip-mark {
+            width: clamp(60px, 7vw, 96px);
+            height: auto;
+            margin-bottom: 22px;
+            opacity: 0.98;
         }
-        .process-term span {
-            font-size: 11px; font-weight: 600;
-            letter-spacing: 0.15em; text-transform: uppercase;
-            opacity: 0.5;
+        .ww-strip-wordmark {
+            width: clamp(150px, 19vw, 250px);
+            margin: 0 auto;
         }
-
-        /* Timeline */
-        .process-timeline {
-            position: relative;
-            padding-left: 70px;
-        }
-        .process-timeline::before {
-            content: '';
-            position: absolute; left: 22px; top: 0; bottom: 0;
-            width: 1px; background: #ddd;
-        }
-
-        .process-stage {
-            position: relative;
-            cursor: pointer;
-        }
-        .process-stage-header {
-            display: flex; align-items: center;
-            gap: 20px; padding: 26px 0;
-            border-bottom: 1px solid #eee;
-            transition: all 0.4s ease;
-        }
-        .process-stage-header:hover { padding-left: 10px; }
-        .process-stage-num {
-            position: absolute; left: -70px;
-            width: 44px; height: 44px;
-            background: #000; color: #fff;
-            display: flex; align-items: center; justify-content: center;
-            font-size: 12px; font-weight: 700;
-            letter-spacing: 0.05em;
-            z-index: 1;
-            transition: transform 0.4s ease, background 0.4s ease;
-        }
-        .process-stage.open .process-stage-num {
-            transform: scale(1.15);
-        }
-        .process-stage-title {
-            font-size: 20px; font-weight: 900;
-            letter-spacing: 0.12em; text-transform: uppercase;
-            flex: 1;
-        }
-        .process-stage-meta {
-            font-size: 12px; font-weight: 600;
-            letter-spacing: 0.12em; text-transform: uppercase;
-            opacity: 0.55;
-        }
-        .process-stage-chevron {
-            font-size: 16px; opacity: 0.45;
-            transition: transform 0.4s ease, opacity 0.4s ease;
-        }
-        .process-stage.open .process-stage-chevron {
-            transform: rotate(90deg); opacity: 0.7;
-        }
-
-        .process-stage-body {
-            max-height: 0; overflow: hidden;
-            transition: max-height 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        .process-stage.open .process-stage-body {
-            max-height: 1200px;
-        }
-        .process-stage-content {
-            padding: 30px 0 50px;
-            animation: fadeContent 0.5s ease-out;
-        }
-        @keyframes fadeContent { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-
-        .process-detail-grid {
-            display: grid; grid-template-columns: 1fr 1fr;
-            gap: 40px;
-        }
-        .process-detail h4 {
-            font-size: 11px; font-weight: 700;
-            letter-spacing: 0.25em; text-transform: uppercase;
-            opacity: 0.6;
-            margin-bottom: 14px;
-        }
-        .process-detail p, .process-detail li {
-            font-size: 14px; line-height: 2;
-            color: #333;
-        }
-        .process-detail ul {
-            list-style: none; padding: 0;
-        }
-        .process-detail ul li {
-            padding: 3px 0 3px 20px;
-            position: relative;
-        }
-        .process-detail ul li::before {
-            content: '\2192'; position: absolute; left: 0;
-            opacity: 0.5; font-size: 13px;
-        }
-
-        .process-detail-full {
-            grid-column: 1 / -1;
-            padding: 28px 32px;
-            background: #f5f5f5;
-            border-left: 3px solid #000;
-        }
-        .process-detail-full h4 {
-            font-size: 11px; font-weight: 700;
-            letter-spacing: 0.25em; text-transform: uppercase;
-            opacity: 0.6; margin-bottom: 12px;
-        }
-        .process-detail-full p {
-            font-size: 14px; line-height: 2;
-            color: #333;
-        }
-
-        .process-paths {
-            display: flex; gap: 10px;
-            margin-top: 14px; flex-wrap: wrap;
-        }
-        .process-path {
-            font-size: 11px; font-weight: 700;
-            letter-spacing: 0.06em; text-transform: uppercase;
-            padding: 8px 16px;
-            transition: transform 0.3s;
-        }
-        .process-path:hover { transform: translateY(-2px); }
-        .process-path-go { background: #000; color: #fff; }
-        .process-path-wait { background: #e8e8e8; color: #444; }
-        .process-path-no { background: #d5d5d5; color: #777; }
-
-        /* Repayment table */
-        .process-table {
-            width: 100%; border-collapse: collapse;
-            margin-top: 20px;
-        }
-        .process-table th {
-            background: #000; color: #fff;
-            padding: 14px 18px; text-align: left;
-            font-size: 11px; font-weight: 700;
-            letter-spacing: 0.15em; text-transform: uppercase;
-        }
-        .process-table td {
-            padding: 14px 18px;
-            border-bottom: 1px solid #eee;
-            font-size: 14px; letter-spacing: 0.02em;
-            color: #222;
-        }
-        .process-table tr:hover td { background: #f9f9f9; }
-
-        /* Tech stack bar */
-        .process-tech {
-            display: grid; grid-template-columns: repeat(4, 1fr);
-            gap: 2px; margin-top: 80px;
-        }
-        .process-tech-card {
-            padding: 35px 30px;
-            background: #f5f5f5;
-            border-bottom: 3px solid #000;
-            transition: transform 0.4s ease, background 0.4s ease;
-        }
-        .process-tech-card:hover { transform: translateY(-4px); background: #eee; }
-        .process-tech-card h5 {
-            font-size: 16px; font-weight: 900;
-            letter-spacing: 0.1em; text-transform: uppercase;
-            margin-bottom: 12px;
-        }
-        .process-tech-card p {
-            font-size: 13px; line-height: 1.9;
-            color: #444;
-        }
-        .process-tech-card .tech-stages {
-            font-size: 11px; font-weight: 700;
-            letter-spacing: 0.15em; text-transform: uppercase;
-            opacity: 0.5; margin-top: 14px;
-        }
-
-        @media (max-width: 900px) {
-            #process { padding: 80px 25px; }
-            .process-header { font-size: 30px; }
-            .process-terms { grid-template-columns: repeat(3, 1fr); }
-            .process-term:nth-child(3) { border-right: none; }
-            .process-term:nth-child(n+4) { border-top: 1px solid #eee; }
-            .process-detail-grid { grid-template-columns: 1fr; }
-            .process-tech { grid-template-columns: 1fr 1fr; }
-            .process-term strong { font-size: 24px; }
-            .process-timeline { padding-left: 60px; }
-        }
-        @media (max-width: 600px) {
-            .process-terms { grid-template-columns: 1fr 1fr; }
-            .process-term:nth-child(2n) { border-right: none; }
-            .process-tech { grid-template-columns: 1fr; }
-        }
-
-        /* ── PILOT ── */
-        #pilot {
-            background: #fff;
-            min-height: 80vh;
-            display: flex; align-items: center;
-            position: relative; overflow: hidden;
-            padding: 100px 60px;
-        }
-
-        .pilot-fruit-bg {
-            position: absolute;
-            right: -10%; top: -15%;
-            height: 130%;
-            width: auto;
-            opacity: 0.07;
-            pointer-events: none;
-        }
-
-        .pilot-inner {
-            max-width: 1200px; margin: 0 auto;
-            position: relative; z-index: 1;
-            width: 100%;
-        }
-
-        .pilot-label {
-            font-size: 12px; font-weight: 600;
-            letter-spacing: 0.3em;
+        .ww-strip-label {
+            font-size: 11px;
+            letter-spacing: 0.46em;
             text-transform: uppercase;
-            opacity: 0.5;
-            margin-bottom: 30px;
+            color: var(--on-strip-muted);
+            margin-top: 26px;
+            font-weight: 500;
         }
 
-        .pilot-title {
-            font-size: clamp(32px, 4.5vw, 52px);
-            font-weight: 900;
-            letter-spacing: 0.12em;
+        /* ---------- MISSION ---------- */
+        #mission {
+            padding: 130px 24px 130px;
+            display: flex;
+            justify-content: center;
+            background: var(--bg);
+        }
+        .mission-inner {
+            max-width: 780px;
+            text-align: center;
+        }
+        .mission-eyebrow {
+            font-size: 10px;
+            letter-spacing: 0.46em;
             text-transform: uppercase;
-            line-height: 1.2;
+            color: var(--muted);
+            margin-bottom: 32px;
+            font-weight: 500;
+        }
+        .mission-body {
+            font-size: clamp(20px, 2.1vw, 28px);
+            line-height: 1.55;
+            letter-spacing: -0.005em;
+            color: var(--ink);
+            font-weight: 400;
+        }
+        .mission-signature {
+            margin-top: 56px;
+            font-size: 11px;
+            letter-spacing: 0.38em;
+            text-transform: uppercase;
+            color: var(--muted);
+            font-weight: 600;
+        }
+
+        /* ---------- BOTTLES ---------- */
+        #bottles {
+            padding: 100px 24px 110px;
+            background: var(--bg-soft);
+            border-top: 1px solid var(--line);
+            border-bottom: 1px solid var(--line);
+        }
+        .bottles-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .bottles-eyebrow {
+            font-size: 10px;
+            letter-spacing: 0.44em;
+            text-transform: uppercase;
+            color: var(--muted);
             margin-bottom: 20px;
-            max-width: 650px;
+            font-weight: 500;
         }
-
-        .pilot-emphasis {
-            font-size: 15px; font-weight: 500;
-            letter-spacing: 0.2em;
+        .bottles-title {
+            font-size: clamp(24px, 2.8vw, 38px);
+            font-weight: 600;
+            letter-spacing: -0.005em;
+            margin-bottom: 16px;
+        }
+        .bottles-sub {
+            font-size: 13px;
+            color: var(--muted);
+            letter-spacing: 0.06em;
+            line-height: 1.75;
+            max-width: 620px;
+            margin: 0 auto 56px;
+        }
+        .bottles-img {
+            max-width: 960px;
+            width: 100%;
+            margin: 0 auto;
+            border-radius: 4px;
+        }
+        .bottles-note {
+            margin-top: 32px;
+            font-size: 10px;
+            letter-spacing: 0.26em;
             text-transform: uppercase;
-            opacity: 0.6;
-            margin-top: 15px;
+            color: var(--muted);
+            font-weight: 500;
+            max-width: 560px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
-        @media (max-width: 768px) {
-            #pilot { padding: 70px 25px; }
+        /* ---------- PRODUCT SHOWCASE ---------- */
+        #product {
+            padding: 130px 24px 130px;
+            background: var(--bg);
         }
-
-        /* ── AERIAL BREAK ── */
-        #aerial {
-            height: 60vh;
-            background: url('assets/bg-aerial.jpg') center center / cover no-repeat;
-            background-attachment: scroll; /* fixed breaks on iOS */
-            display: flex; align-items: center; justify-content: center;
-            position: relative;
-        }
-        @supports (-webkit-touch-callout: none) {
-            /* iOS already gets scroll, no parallax */
-        }
-        @media (min-width: 769px) {
-            #aerial { background-attachment: fixed; }
-        }
-        #aerial::after {
-            content: ''; position: absolute; inset: 0;
-            background: rgba(0,0,0,0.5);
-        }
-        .aerial-text {
-            position: relative; z-index: 1;
-            text-align: center; color: #fff;
-        }
-        .aerial-text h2 {
-            font-size: clamp(24px, 3.5vw, 44px);
-            font-weight: 900;
-            letter-spacing: 0.25em;
-            text-transform: uppercase;
-        }
-        .aerial-text p {
-            font-size: clamp(18px, 2.5vw, 32px);
-            letter-spacing: 0.1em;
-            margin-top: 15px;
-            opacity: 0.8;
-        }
-
-        /* ── ECOSYSTEM ── */
-        #ecosystem {
-            background: #fff;
-            padding: 120px 60px;
-            position: relative;
-        }
-
-        .ecosystem-inner {
+        .product-inner {
             max-width: 1200px;
             margin: 0 auto;
-        }
-
-        .ecosystem-intro {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 80px;
-            margin-bottom: 80px;
-        }
-
-        .ecosystem-group {
-            position: relative;
-        }
-
-        .ecosystem-group-header {
-            display: flex;
+            gap: 90px;
             align-items: center;
-            justify-content: space-between;
-            margin-bottom: 40px;
-            padding-bottom: 20px;
-            border-bottom: 2px solid #000;
         }
-
-        .ecosystem-group-label {
-            font-size: 11px;
-            font-weight: 800;
-            letter-spacing: 0.22em;
-            text-transform: uppercase;
-        }
-
-        .ecosystem-x-logo {
-            width: 50px;
-            opacity: 0.7;
-        }
-
-        .ecosystem-group-desc {
-            font-size: 13px;
-            line-height: 1.9;
-            letter-spacing: 0.02em;
-            opacity: 0.65;
-            margin-bottom: 35px;
-        }
-
-        .ecosystem-logos {
-            display: grid;
-            grid-template-columns: repeat(5, 1fr);
-            gap: 0;
-        }
-
-        .eco-logo-cell {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 1px solid rgba(0,0,0,0.08);
-            padding: 18px 12px;
-            transition: background 0.3s;
-            position: relative;
-        }
-
-        .eco-logo-cell:hover {
-            background: rgba(0,0,0,0.03);
-        }
-
-        .eco-logo-type {
+        .product-text .eyebrow {
             font-size: 10px;
-            font-weight: 600;
-            letter-spacing: 0.18em;
+            letter-spacing: 0.46em;
             text-transform: uppercase;
-            opacity: 0.55;
-            text-align: center;
-        }
-
-        .ecosystem-collab-x {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-top: 60px;
-            font-size: 72px;
-            font-weight: 200;
-            color: #000;
-            opacity: 0.25;
-            line-height: 1;
-        }
-
-        .ecosystem-hero-logo {
-            display: flex;
-            justify-content: center;
-            margin-top: 30px;
-            padding-top: 0;
-        }
-
-        .ecosystem-hero-logo img {
-            width: 220px;
-            opacity: 0.85;
-            filter: none;
-        }
-
-        .ecosystem-bottom-strip {
-            margin-top: 60px;
-            padding-top: 40px;
-            border-top: 1px solid rgba(0,0,0,0.1);
-            text-align: center;
-        }
-
-        .ecosystem-bottom-strip p {
-            font-size: 13px;
-            letter-spacing: 0.04em;
-            line-height: 2;
-            opacity: 0.6;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .ecosystem-bottom-cta {
-            font-size: 12px;
-            font-weight: 800;
-            letter-spacing: 0.22em;
-            text-transform: uppercase;
-            margin-top: 25px;
-            opacity: 0.9;
-        }
-
-        @media (max-width: 900px) {
-            #ecosystem { padding: 80px 25px; }
-            .ecosystem-intro { grid-template-columns: 1fr; gap: 60px; }
-            .ecosystem-logos { grid-template-columns: repeat(5, 1fr); }
-            .eco-logo-mark { font-size: 16px; }
-            .eco-logo-mark.condensed { font-size: 13px; }
-            .eco-logo-type { font-size: 6px; }
-        }
-
-        @media (max-width: 480px) {
-            .ecosystem-logos { grid-template-columns: repeat(5, 1fr); }
-            .eco-logo-mark { font-size: 13px; }
-            .eco-logo-mark.condensed { font-size: 11px; }
-        }
-
-        /* ── PARTNERS ── */
-        #partners {
-            background: #000; color: #fff;
-            min-height: 100vh;
-            display: flex; align-items: center;
-            position: relative; overflow: hidden;
-            padding: 120px 60px;
-        }
-
-        .partners-photo {
-            position: absolute;
-            right: 0; top: 0; bottom: 0;
-            width: 50%;
-            background: url('assets/bg-lifestyle.jpg') center center / cover no-repeat;
-            opacity: 0.2;
-            pointer-events: none;
-        }
-        .partners-photo::before {
-            content: ''; position: absolute; inset: 0;
-            background: linear-gradient(to right, #000 0%, transparent 60%);
-        }
-
-        .partners-inner {
-            max-width: 1200px; margin: 0 auto;
-            position: relative; z-index: 1;
-            display: grid;
-            grid-template-columns: 1.3fr 1fr;
-            gap: 80px; align-items: center;
-            width: 100%;
-        }
-
-        .partners-content h2 {
-            font-size: clamp(32px, 4.5vw, 52px);
-            font-weight: 900;
-            letter-spacing: 0.15em;
-            text-transform: uppercase;
-            margin-bottom: 40px;
-            line-height: 1.1;
-        }
-
-        .partners-content p {
-            font-size: 15px; line-height: 2;
-            letter-spacing: 0.02em;
-            opacity: 0.8;
-            margin-bottom: 18px;
-        }
-
-        .partners-content .partners-cta {
-            font-size: 13px; font-weight: 700;
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
-            opacity: 1;
-            margin-top: 30px;
-            padding-top: 25px;
-            border-top: 1px solid rgba(255,255,255,0.2);
-        }
-
-        .partners-logo {
-            width: 100%; max-width: 320px;
-            opacity: 0.8;
-        }
-
-        @media (max-width: 900px) {
-            #partners { padding: 80px 25px; }
-            .partners-inner { grid-template-columns: 1fr; gap: 40px; }
-            .partners-photo { width: 100%; opacity: 0.1; }
-        }
-
-        /* ── FOOTER ── */
-        #footer {
-            background: #fff;
-            padding: 100px 60px;
-            display: flex; flex-direction: column;
-            align-items: center; text-align: center;
-            position: relative;
-        }
-
-        .footer-badge { width: 100px; margin-bottom: 50px; }
-
-        .footer-tagline {
-            font-size: clamp(20px, 2.8vw, 32px);
-            font-weight: 900;
-            letter-spacing: 0.18em;
-            text-transform: uppercase;
-            line-height: 1.4;
-            margin-bottom: 50px;
-        }
-
-        .footer-email {
-            font-size: 20px; font-weight: 600;
-            letter-spacing: 0.05em;
-            margin-bottom: 8px;
-        }
-        .footer-email a { color: #000; text-decoration: none; transition: opacity 0.3s; }
-        .footer-email a:hover { opacity: 0.5; }
-
-        .footer-url {
-            font-size: 13px;
-            letter-spacing: 0.15em;
-            opacity: 0.5;
-            margin-bottom: 40px;
-        }
-
-        .footer-credits {
-            font-size: 12px; opacity: 0.55;
-            letter-spacing: 0.05em; line-height: 2;
-        }
-
-        @media (max-width: 768px) {
-            #footer { padding: 60px 25px; }
-        }
-
-        /* ── SCROLL REVEALS ── */
-        .reveal {
-            opacity: 0;
-            transform: translateY(60px);
-            transition: opacity 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-                        transform 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        }
-        .reveal.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        .reveal-delay-1 { transition-delay: 0.2s; }
-        .reveal-delay-2 { transition-delay: 0.4s; }
-        .reveal-delay-3 { transition-delay: 0.6s; }
-        .reveal-delay-4 { transition-delay: 0.8s; }
-
-        /* Staggered card reveals */
-        .reveal-scale {
-            opacity: 0;
-            transform: scale(0.95) translateY(30px);
-            transition: opacity 1s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-                        transform 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        }
-        .reveal-scale.visible {
-            opacity: 1;
-            transform: scale(1) translateY(0);
-        }
-
-        /* Slide from left */
-        .reveal-left {
-            opacity: 0;
-            transform: translateX(-60px);
-            transition: opacity 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-                        transform 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        }
-        .reveal-left.visible {
-            opacity: 1;
-            transform: translateX(0);
-        }
-
-        /* Slide from right */
-        .reveal-right {
-            opacity: 0;
-            transform: translateX(60px);
-            transition: opacity 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-                        transform 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        }
-        .reveal-right.visible {
-            opacity: 1;
-            transform: translateX(0);
-        }
-
-        /* Counter animation */
-        .count-up {
-            transition: opacity 0.6s ease;
-        }
-
-        /* Smooth parallax for images */
-        .parallax-slow {
-            transition: transform 0.1s linear;
-            will-change: transform;
-        }
-
-        /* ── COMPREHENSIVE MOBILE (iPhone ≤ 480px) ── */
-        @media (max-width: 480px) {
-            /* Hero */
-            #hero { min-height: 100vh; min-height: 100dvh; }
-            .hero-program-title { top: 16px; left: 18px; font-size: 7px !important; letter-spacing: 0.14em; }
-            .hero-logo { width: 50vw; max-width: 200px; }
-            .hero-tagline { font-size: 18px !important; letter-spacing: 0.08em; }
-            .hero-sub { font-size: 12px !important; letter-spacing: 0.18em; margin-top: 16px; }
-            .hero-sub .hsub-dot { padding: 0 0.6em; }
-            .hero-tw-grid { margin-top: 10px; }
-            .hero-tw-spacer { width: 1.2em; }
-            .hero-tw-col div { font-size: 6.5px !important; letter-spacing: 0.08em; }
-            .hero-watermark { width: 200%; }
-
-            /* Meaning */
-            .meaning-inner { padding: 60px 20px !important; gap: 40px !important; }
-            .meaning-arabic { font-size: 24px !important; }
-            .meaning-english { font-size: 22px !important; }
-            .meaning-body { font-size: 14px; line-height: 1.9; }
-            .meaning-pillars { gap: 8px !important; }
-            .meaning-pillar { font-size: 10px; }
-            .meaning-mbz-text { font-size: 15px !important; line-height: 1.6; }
-
-            /* Crisis */
-            #crisis { padding: 80px 0; }
-            .crisis-inner { padding: 0 20px !important; gap: 35px !important; }
-            .crisis-text h2 { font-size: 28px !important; letter-spacing: 0.1em; }
-            .crisis-text p { font-size: 14px; line-height: 1.85; }
-            .stat-num { font-size: 30px; }
-            .stat-label { font-size: 11px; letter-spacing: 0.08em; }
-            .crisis-badge { max-width: 260px; }
-
-            /* Model */
-            #model { padding: 60px 20px !important; }
-            .model-header { font-size: 28px !important; letter-spacing: 0.1em; margin-bottom: 40px !important; }
-            .model-card { padding: 35px 25px; }
-            .model-card-badge { width: 100px; }
-            .model-card-title { font-size: 20px; }
-            .model-card-text { font-size: 13px; }
-
-            /* Process */
-            #process { padding: 60px 20px !important; }
-            .process-header { font-size: 26px !important; letter-spacing: 0.08em; }
-            .process-intro { font-size: 14px; margin-bottom: 40px; }
-            .process-terms { margin-bottom: 50px; }
-            .process-term strong { font-size: 20px !important; }
-            .process-term span { font-size: 10px; }
-            .process-term { padding: 18px 8px; }
-            .process-timeline { padding-left: 50px; }
-            .process-stage-num {
-                left: -50px;
-                width: 36px; height: 36px;
-                font-size: 11px;
-            }
-            .process-stage-title { font-size: 15px; letter-spacing: 0.08em; }
-            .process-stage-meta { font-size: 10px; display: none; }
-            .process-stage-header { padding: 20px 0; gap: 12px; }
-            .process-detail h4, .process-detail-full h4 { font-size: 10px; }
-            .process-detail p, .process-detail li { font-size: 13px; line-height: 1.85; }
-            .process-detail-full { padding: 20px; }
-            .process-detail-full p { font-size: 13px; }
-            .process-path { font-size: 10px; padding: 6px 12px; }
-            .process-table th { font-size: 10px; padding: 10px 12px; }
-            .process-table td { font-size: 13px; padding: 10px 12px; }
-            .process-tech { margin-top: 50px; }
-            .process-tech-card { padding: 25px 20px; }
-            .process-tech-card h5 { font-size: 14px; }
-            .process-tech-card p { font-size: 12px; }
-
-            /* Pilot */
-            #pilot { padding: 50px 20px !important; }
-            .pilot-title { font-size: 24px !important; letter-spacing: 0.08em; }
-            .pilot-emphasis { font-size: 13px; letter-spacing: 0.12em; }
-
-            /* Aerial */
-            #aerial { height: 40vh; }
-            .aerial-text h2 { font-size: 20px !important; letter-spacing: 0.15em; }
-            .aerial-text p { font-size: 16px !important; }
-
-            /* Partners */
-            #partners { padding: 60px 20px !important; }
-            .partners-content h2 { font-size: 26px !important; letter-spacing: 0.1em; }
-            .partners-content p { font-size: 14px; }
-            .partners-logo { max-width: 200px; }
-
-            /* Footer */
-            #footer { padding: 50px 20px !important; }
-            .footer-tagline { font-size: 18px !important; letter-spacing: 0.1em; }
-            .footer-email { font-size: 16px; }
-            .footer-badge { width: 70px; margin-bottom: 30px; }
-        }
-
-        /* Use dvh for full-height sections on iOS (notch + address bar) */
-        @supports (height: 100dvh) {
-            #hero { min-height: 100dvh; }
-        }
-
-        /* Prevent text from being too small on any mobile */
-        @media (max-width: 380px) {
-            .hero-tagline { font-size: 24px !important; }
-            .model-header { font-size: 24px !important; }
-            .process-header { font-size: 22px !important; }
-            .crisis-text h2 { font-size: 24px !important; }
-            .process-terms { grid-template-columns: 1fr !important; }
-        }
-
-        /* Safe area insets for notched iPhones */
-        @supports (padding: env(safe-area-inset-bottom)) {
-            nav { padding-left: max(20px, env(safe-area-inset-left)); padding-right: max(20px, env(safe-area-inset-right)); }
-            #footer { padding-bottom: max(50px, env(safe-area-inset-bottom)); }
-        }
-
-        /* Disable parallax/heavy transforms on mobile for performance */
-        @media (max-width: 768px) {
-            .parallax-slow { transform: none !important; }
-            .hero-watermark { animation: none; }
-        }
-    
-        /* ── ANCHOR SPOTLIGHT ── */
-        #anchor-spotlight {
-            background: #fff;
-            color: #000;
-            padding: 110px 6vw 100px;
-            border-top: 1px solid rgba(0,0,0,0.08);
-            border-bottom: 1px solid rgba(0,0,0,0.08);
-        }
-        .anchor-inner {
-            max-width: 1240px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 1.05fr 1fr;
-            gap: 80px;
-            align-items: center;
-        }
-        .anchor-label {
-            font-size: 10px;
-            letter-spacing: 0.32em;
-            text-transform: uppercase;
-            color: rgba(0,0,0,0.5);
-            margin-bottom: 18px;
+            color: var(--muted);
+            margin-bottom: 24px;
             font-weight: 500;
         }
-        .anchor-title {
-            font-size: clamp(48px, 7vw, 96px);
+        .product-text h2 {
+            font-size: clamp(34px, 4.6vw, 60px);
             font-weight: 700;
             letter-spacing: -0.02em;
-            line-height: 0.95;
-            margin-bottom: 22px;
+            line-height: 1.02;
+            margin-bottom: 28px;
         }
-        .anchor-sub {
-            font-size: clamp(15px, 1.4vw, 19px);
-            line-height: 1.5;
-            color: rgba(0,0,0,0.78);
-            margin-bottom: 22px;
-            max-width: 520px;
-            font-weight: 500;
-        }
-        .anchor-body {
-            font-size: 13px;
-            line-height: 1.85;
-            color: rgba(0,0,0,0.62);
+        .product-text p {
+            font-size: clamp(14px, 1.2vw, 16px);
+            line-height: 1.8;
+            color: var(--muted);
+            margin-bottom: 20px;
             max-width: 540px;
-            margin-bottom: 34px;
             letter-spacing: 0.02em;
         }
-        .anchor-stats {
+        .product-list {
             list-style: none;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 28px 44px;
+            margin-top: 32px;
             padding: 0;
-            margin: 0;
         }
-        .anchor-stats li {
-            display: flex;
-            flex-direction: column;
-            gap: 4px;
-        }
-        .anchor-stats strong {
-            font-size: 13px;
-            font-weight: 700;
-            letter-spacing: 0.14em;
-            text-transform: uppercase;
-            color: #000;
-        }
-        .anchor-stats span {
-            font-size: 9px;
+        .product-list li {
+            font-size: 12px;
             letter-spacing: 0.22em;
             text-transform: uppercase;
-            color: rgba(0,0,0,0.45);
-            font-weight: 500;
+            color: var(--ink);
+            font-weight: 600;
+            padding: 14px 0;
+            border-top: 1px solid var(--line);
         }
-        .anchor-visual {
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-        }
-        .anchor-product {
+        .product-list li:last-child { border-bottom: 1px solid var(--line); }
+        .product-visual { position: relative; }
+        .product-visual img {
             width: 100%;
-            max-width: 460px;
-            height: auto;
-            display: block;
-            filter: drop-shadow(0 30px 60px rgba(0,0,0,0.12));
-        }
-        .anchor-product-caption {
-            margin-top: 22px;
-            font-size: 10px;
-            letter-spacing: 0.22em;
-            text-transform: uppercase;
-            color: rgba(0,0,0,0.5);
-            text-align: center;
-            font-weight: 500;
-        }
-        .anchor-collab {
-            max-width: 1100px;
-            margin: 90px auto 0;
-            text-align: center;
-            padding-top: 56px;
-            border-top: 1px solid rgba(0,0,0,0.08);
-        }
-        .anchor-collab-label {
-            font-size: 10px;
-            letter-spacing: 0.32em;
-            text-transform: uppercase;
-            color: rgba(0,0,0,0.45);
-            margin-bottom: 28px;
-            font-weight: 500;
-        }
-        .anchor-collab-img {
-            max-width: 760px;
-            width: 100%;
+            max-width: 560px;
             margin: 0 auto;
             display: block;
             border-radius: 4px;
+            filter: drop-shadow(0 32px 64px rgba(0,0,0,0.10));
         }
-        .anchor-collab-note {
-            font-size: 11px;
-            letter-spacing: 0.08em;
-            line-height: 1.85;
-            color: rgba(0,0,0,0.55);
-            max-width: 560px;
-            margin: 24px auto 0;
+        .product-caption {
+            margin-top: 24px;
+            font-size: 10px;
+            letter-spacing: 0.26em;
             text-transform: uppercase;
+            color: var(--muted);
+            text-align: center;
             font-weight: 500;
         }
-        @media (max-width: 900px) {
-            #anchor-spotlight { padding: 80px 22px 70px; }
-            .anchor-inner { grid-template-columns: 1fr; gap: 50px; }
-            .anchor-product { max-width: 320px; }
-            .anchor-collab { margin-top: 60px; padding-top: 40px; }
-            .anchor-collab-img { max-width: 100%; }
+
+        /* ---------- FOOTER STRIP ---------- */
+        #footer {
+            background: var(--strip);
+            color: var(--on-strip);
+            padding: 80px 24px 64px;
+            text-align: center;
+        }
+        .footer-mark {
+            width: 64px;
+            margin: 0 auto 22px;
+            opacity: 0.9;
+        }
+        .footer-wordmark {
+            width: 130px;
+            margin: 0 auto 18px;
+            opacity: 0.85;
+        }
+        .footer-tag {
+            font-size: clamp(16px, 1.9vw, 22px);
+            font-weight: 600;
+            letter-spacing: 0.06em;
+            margin-bottom: 22px;
+        }
+        .footer-meta {
+            font-size: 11px;
+            letter-spacing: 0.32em;
+            text-transform: uppercase;
+            color: var(--on-strip-muted);
+            margin-top: 10px;
+        }
+        .footer-meta a {
+            color: var(--on-strip);
+            text-decoration: none;
+            border-bottom: 1px solid rgba(255,255,255,0.22);
+            transition: border-color 0.3s;
+        }
+        .footer-meta a:hover { border-bottom-color: rgba(255,255,255,0.95); }
+        .footer-credits {
+            font-size: 10px;
+            letter-spacing: 0.22em;
+            color: var(--on-strip-muted);
+            text-transform: uppercase;
+            margin-top: 42px;
+            line-height: 2.1;
         }
 
-        </style>
-<script type='text/javascript' src='https://handhal.ae/cFovegBmvQYqAA9KhOzLqKGxeY97CLCGqPGYZhwZk9t9nZBNQDCR_uh2RZmjxtYNCLTTYs3d3IOTS6rUZCzEv_olhbUBA2T7ULgatrM0IG8SRu498j0fcSx4NelKARAmEFoW0PEyaNbUmwYBx1eBmRje51ISzETuhBuaNmaa8Sy4wY0VijxfjYlv71qyQv2R1VD8fUDvacNg8A-wpE8J7a8g7umsHIKUS6VTUfCesfbApHmBCVU2Ggndq-vkOCPTaN4p5a1fYjtMYOalnSObiFeOr2S6jBicAQMcKGn531JTTfK6bnDzwx6o0ZV9GvQqKMAaR8lpArsvWuAW4QVUUN2LeIzfbEV0f4lM5TRqoAU_rgjfYtR8B1Q6HI1T7gGmnQxBwTeFoeNqJunk3DiML-Thuyg1uK3-u6ZSpjrqnze6-BHQBRLEeZhZfmLtyzytcAh4p8iPJg'></script></head>
+        /* ---------- RESPONSIVE ---------- */
+        @media (max-width: 900px) {
+            #hero { min-height: 76vh; padding: 80px 18px 60px; }
+            .product-inner { grid-template-columns: 1fr; gap: 60px; text-align: center; }
+            .product-text p, .product-list { margin-left: auto; margin-right: auto; }
+            .product-visual img { max-width: 380px; }
+            #mission, #product { padding: 90px 22px; }
+        }
+        @media (max-width: 560px) {
+            .ww-strip { padding: 48px 18px 44px; }
+            .ww-strip-mark { width: 58px; margin-bottom: 16px; }
+            .ww-strip-wordmark { width: 140px; }
+            .ww-strip-label { font-size: 10px; letter-spacing: 0.34em; margin-top: 20px; }
+            .mission-body { font-size: 19px; }
+        }
+    </style>
+</head>
 <body>
 
-    <nav>
-        <img src="assets/oval-badge-white.png" alt="Handhal" class="nav-logo">
-        <button class="nav-hamburger" onclick="this.classList.toggle('open'); document.querySelector('.nav-links').classList.toggle('open');" aria-label="Menu">
-            <span></span><span></span><span></span>
-        </button>
-        <ul class="nav-links">
-            <li><a href="#crisis" onclick="closeMobileNav()">THE CHALLENGE</a></li>
-            <li><a href="#model" onclick="closeMobileNav()">THE PROGRAM</a></li>
-            <li><a href="#process" onclick="closeMobileNav()">PROCESS</a></li>
-            <li><a href="#partners" onclick="closeMobileNav()">PARTNERS</a></li>
-            <li><a href="#footer" onclick="closeMobileNav()">CONTACT</a></li>
-        </ul>
-    </nav>
-
-    <!-- HERO -->
+    <!-- HERO: HANDHAL -->
     <section id="hero">
-        <div class="hero-program-title">Handhal Resilience Program for SME in UAE</div>
-        <div class="hero-anchor-badge" aria-label="Platform Anchor: Wisewell">
-            <span class="hab-label">Platform Anchor</span>
-            <span class="hab-name">Wisewell</span>
+        <div class="hero-arabic">
+            <img src="assets/hero-logo-dark-white.png" alt="Handhal · الحنظل">
         </div>
-        <img src="assets/calligraphy-white.png" alt="" class="hero-watermark" aria-hidden="true">
-        <img src="assets/hero-logo-white.png" alt="Handhal الحنظل" class="hero-logo">
-        <div class="hero-text">
-            <h1 class="hero-tagline">WE GIVE BACK TO THE UAE.</h1>
-            <div class="hero-sub-wrap">
-                <div class="hero-sub">
-                    <span>CAPITAL</span><span class="hsub-dot">&middot;</span><span>PARTNERS</span><span class="hsub-dot">&middot;</span><span>COMMUNITY</span>
-                </div>
-                <div class="hero-tw-grid">
-                    <div class="hero-tw-col" data-delay="2200">
-                        <div>100–500K AED Loans</div>
-                        <div>0% Interest</div>
-                        <div>6 Month Grace Period</div>
-                    </div>
-                    <div class="hero-tw-spacer"></div>
-                    <div class="hero-tw-col" data-delay="3800">
-                        <div>Application to Capital</div>
-                        <div>Deployment in 17 Days</div>
-                    </div>
-                    <div class="hero-tw-spacer"></div>
-                    <div class="hero-tw-col" data-delay="5400">
-                        <div>Delivered Through</div>
-                        <div>Trusted UAE Partner</div>
-                        <div>Organizations</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="hero-scroll"></div>
+        <div class="hero-eyebrow">HANDHAL &middot; الحنظل</div>
+        <h1 class="hero-tagline">WE GIVE BACK TO THE UAE.</h1>
+        <p class="hero-sub">Channeling resources to UAE businesses and households impacted by recent events &mdash; in partnership with trusted foundations and initiatives across the country.</p>
     </section>
 
-    <!-- MEANING + MBZ QUOTE -->
-    <section id="meaning">
-        <div class="meaning-inner">
-            <div class="meaning-narrative">
-                <h2 class="reveal">The Meaning</h2>
-                <div class="meaning-arabic reveal reveal-delay-1">تعلّم من الحنظل</div>
-                <div class="meaning-english reveal reveal-delay-2">LEARN FROM<br>THE HANDHAL.</div>
-                <div class="meaning-body reveal reveal-delay-3">
-                    <p>The Handhal is a desert fruit known for its thick skin and bitter flesh. It survives where almost nothing else can — rooted deep, enduring heat, drought, and neglect. Among Emirati elders, the saying "learn from the Handhal" is still spoken as a reminder of what toughness and resilience look like.</p>
-                    <p>The UAE embodies that spirit. Despite the pressures of regional conflict, the nation's backbone — its small and medium enterprises — can endure if given the right support at the right time. Handhal exists to provide exactly that: rapid capital, a platform to showcase products and services, and the deep roots of a partner network committed to seeing these businesses through.</p>
-                </div>
-                <div class="meaning-pillars reveal reveal-delay-4">
-                    <div class="meaning-pillar">Capital<br>&amp; Speed</div>
-                    <div class="meaning-pillar">Platform<br>&amp; Visibility</div>
-                    <div class="meaning-pillar">Deep Roots<br>&amp; Partnership</div>
-                </div>
-            </div>
-            <div class="meaning-quote-side">
-                <div class="meaning-mbz-photo reveal-right"></div>
-                <div class="meaning-mbz-quote reveal-right reveal-delay-2">
-                    <div class="meaning-mbz-text">Do not be misled by the UAE's appearance. The UAE has thick skin and bitter flesh — we are no easy prey.</div>
-                    <div class="meaning-mbz-attr">
-                        Sheikh Mohamed bin Zayed
-                        <span>UAE President</span>
-                    </div>
-                </div>
-            </div>
+    <!-- WISEWELL INITIATIVE STRIP -->
+    <section class="ww-strip" aria-label="A Wisewell Initiative">
+        <img src="assets/wisewell/wisewell-mark-white.png" alt="" class="ww-strip-mark" aria-hidden="true">
+        <img src="assets/wisewell/wisewell-logo-white.svg" alt="Wisewell" class="ww-strip-wordmark">
+        <div class="ww-strip-label">A Wisewell Initiative</div>
+    </section>
+
+    <!-- MISSION -->
+    <section id="mission">
+        <div class="mission-inner">
+            <div class="mission-eyebrow">OUR COMMITMENT</div>
+            <p class="mission-body">
+                Wisewell is contributing a portion of all sales and profits to initiatives that support UAE businesses and households impacted by recent events. Through partnership with established foundations and initiatives, we are proud and motivated to do our part &mdash; as a UAE company, for the UAE.
+            </p>
+            <div class="mission-signature">ROOTED. RESILIENT. STRONGER. TOGETHER.</div>
         </div>
     </section>
 
-    <!-- CRISIS -->
-    <section id="crisis">
-        <div class="crisis-map"></div>
-        <img src="assets/fruit-detail-black.png" alt="" class="crisis-fruit" aria-hidden="true">
-        <div class="crisis-inner">
-            <div class="crisis-text">
-                <h2 class="reveal-left">THE CHALLENGE</h2>
-                <p class="reveal reveal-delay-1">UAE SMEs face unprecedented pressure from regional conflict. Tourism revenues slashed. F&B revenues collapsed. Consumer spending down sharply. Businesses measuring survival in months, not years.</p>
-                <p class="reveal reveal-delay-2">SMEs represent 95% of all UAE companies and generate 64% of non-oil GDP — yet receive only 9% of bank lending. With thinner liquidity buffers, they are the most exposed to sudden drops in footfall, bookings and shipment delays. The gap between macro policy and micro survival is where Handhal operates.</p>
-                <div class="crisis-headline reveal reveal-delay-3">SMEs Are the Heartbeat of the UAE Economy</div>
-                <div class="crisis-stats reveal reveal-delay-3">
-                    <div class="stat">
-                        <div class="stat-icon">
-                            <!-- Storefront / companies icon -->
-                            <svg viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <circle cx="22" cy="22" r="20" stroke="currentColor" stroke-width="1.5"/>
-                                <!-- Storefront awning -->
-                                <path d="M12 18h20v2c0 1.5-1.3 2.5-2.5 2.5S27 21.5 27 20c0 1.5-1.3 2.5-2.5 2.5S22 21.5 22 20c0 1.5-1.3 2.5-2.5 2.5S17 21.5 17 20c0 1.5-1.3 2.5-2.5 2.5S12 21.5 12 20z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/>
-                                <!-- Roof line -->
-                                <path d="M13 18l2-5h14l2 5" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/>
-                                <!-- Building body -->
-                                <path d="M13 22v10h18V22" stroke="currentColor" stroke-width="1.3"/>
-                                <!-- Door -->
-                                <rect x="19" y="26" width="6" height="6" stroke="currentColor" stroke-width="1.3"/>
-                                <!-- Window -->
-                                <rect x="15" y="24" width="3" height="3" stroke="currentColor" stroke-width="1.1" opacity="0.7"/>
-                            </svg>
-                        </div>
-                        <div class="stat-content">
-                            <div class="stat-num">95%</div>
-                            <div class="stat-label">Of UAE Operating Companies</div>
-                        </div>
-                    </div>
-                    <div class="stat">
-                        <div class="stat-icon">
-                            <!-- Oil barrel crossed out / non-oil GDP icon -->
-                            <svg viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <circle cx="22" cy="22" r="20" stroke="currentColor" stroke-width="1.5"/>
-                                <!-- Upward trending bars -->
-                                <rect x="12" y="26" width="4" height="6" fill="currentColor" opacity="0.3"/>
-                                <rect x="18" y="22" width="4" height="10" fill="currentColor" opacity="0.5"/>
-                                <rect x="24" y="17" width="4" height="15" fill="currentColor" opacity="0.7"/>
-                                <rect x="30" y="12" width="4" height="20" fill="currentColor" opacity="0.9"/>
-                                <!-- GDP arrow going up -->
-                                <path d="M13 28l6-6 5 3 8-10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                                <path d="M28 15l4 0 0 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                                <!-- Base line -->
-                                <path d="M11 33h23" stroke="currentColor" stroke-width="1.3" opacity="0.4"/>
-                            </svg>
-                        </div>
-                        <div class="stat-content">
-                            <div class="stat-num">64%</div>
-                            <div class="stat-label">Of Non-Oil GDP</div>
-                        </div>
-                    </div>
-                    <div class="stat">
-                        <div class="stat-icon">
-                            <!-- Bank with Dirham sign -->
-                            <svg viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <circle cx="22" cy="22" r="20" stroke="currentColor" stroke-width="1.5"/>
-                                <!-- Bank pediment (triangle roof) -->
-                                <path d="M10 18l12-7 12 7z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/>
-                                <!-- Bank top beam -->
-                                <rect x="10" y="17" width="24" height="2" fill="currentColor" opacity="0.2"/>
-                                <!-- Columns -->
-                                <path d="M14 19v10M19 19v10M25 19v10M30 19v10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-                                <!-- Bank base -->
-                                <rect x="10" y="29" width="24" height="2.5" rx="0.5" fill="currentColor" opacity="0.3"/>
-                                <!-- Dirham sign (د.إ stylised as D with two wavy lines) -->
-                                <path d="M20 21.5c0-1.2 0.8-2 2-2s2 0.8 2 2v4c0 1.2-0.8 2-2 2s-2-0.8-2-2z" stroke="currentColor" stroke-width="1.2"/>
-                                <path d="M19 23.5h6" stroke="currentColor" stroke-width="0.8" opacity="0.6"/>
-                                <path d="M19 25.2h6" stroke="currentColor" stroke-width="0.8" opacity="0.6"/>
-                            </svg>
-                        </div>
-                        <div class="stat-content">
-                            <div class="stat-num">9%</div>
-                            <div class="stat-label">Of Bank Lending Only</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="crisis-visual reveal-right reveal-delay-2">
-                <img src="assets/no-easy-prey-black.png" alt="No Easy Prey" class="crisis-badge">
-            </div>
+    <!-- BOTTLES -->
+    <section id="bottles">
+        <div class="bottles-inner">
+            <div class="bottles-eyebrow">CO-BRANDED COLLAB &middot; PROPOSED</div>
+            <h2 class="bottles-title">Wisewell &times; Handhal Refillable Bottles</h2>
+            <p class="bottles-sub">Sold across ADNOC Distribution retail in the UAE. Every profit dollar from the collaboration flows directly into the Handhal program.</p>
+            <img src="assets/bottles-collab.png" alt="Wisewell x Handhal co-branded refillable bottle concepts" class="bottles-img">
+            <div class="bottles-note">Design shown represents conceptual art only. Final scale and position of art may change slightly in final production.</div>
         </div>
     </section>
 
-    <!-- MODEL -->
-    <section id="model">
-        <img src="assets/globe-badge-white-lg.png" alt="" class="model-watermark" aria-hidden="true">
-        <div class="model-inner">
-            <h2 class="model-header reveal">HANDHAL<br>RESILIENCE<br>PROGRAM</h2>
-            <div class="model-cards">
-                <div class="model-card reveal-scale reveal-delay-1">
-                    <div class="model-card-num">001</div>
-                    <img src="assets/logo-fruit-black.png" alt="" class="model-card-badge">
-                    <h3 class="model-card-title">PARTNER<br>FIRST</h3>
-                    <p class="model-card-text">Support flows through trusted UAE partner organizations who know their communities. Businesses and individuals are reached through the networks that already serve them.</p>
-                </div>
-                <div class="model-card reveal-scale reveal-delay-2">
-                    <div class="model-card-num">002</div>
-                    <img src="assets/globe-badge-black.png" alt="" class="model-card-badge">
-                    <h3 class="model-card-title">ACT FAST</h3>
-                    <p class="model-card-text">Fast deployment. AED 100K–500K. Capital moved through partner organizations to businesses and individuals across the UAE. Zero interest. Generous grace periods.</p>
-                </div>
-                <div class="model-card reveal-scale reveal-delay-3">
-                    <div class="model-card-num">003</div>
-                    <img src="assets/triangle-simple-black.png" alt="" class="model-card-badge">
-                    <h3 class="model-card-title">GIVE BACK</h3>
-                    <p class="model-card-text">Physical and digital showcase for recipients' products and services. Strategic introductions. Distribution and visibility that lift UAE businesses and individuals.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- PROCESS -->
-    <section id="process">
-        <div class="process-inner">
-            <h2 class="process-header reveal">HOW WE<br>DEPLOY.</h2>
-            <p class="process-intro reveal reveal-delay-1">Capital deployed in 17 days through our partner organizations. Zero interest. 6-month grace. 18-month repayment. The Handhal network provides physical and digital opportunities to showcase recipients' products and services — capital plus customers.</p>
-
-            <div class="process-terms reveal reveal-delay-2">
-                <div class="process-term">
-                    <strong>100–500K</strong>
-                    <span>Loan Size (AED)</span>
-                </div>
-                <div class="process-term">
-                    <strong>0%</strong>
-                    <span>Interest</span>
-                </div>
-                <div class="process-term">
-                    <strong>6 MO</strong>
-                    <span>Grace Period</span>
-                </div>
-                <div class="process-term">
-                    <strong>18 MO</strong>
-                    <span>Repayment</span>
-                </div>
-                <div class="process-term">
-                    <strong>5–10%</strong>
-                    <span>Equity (Optional)</span>
-                </div>
-            </div>
-
-            <div class="process-timeline">
-                <div class="process-stage reveal" onclick="toggleProcess(this)">
-                    <div class="process-stage-header">
-                        <div class="process-stage-num">01</div>
-                        <div class="process-stage-title">Apply</div>
-                        <div class="process-stage-meta">Day 1–3</div>
-                        <div class="process-stage-chevron">&#9654;</div>
-                    </div>
-                    <div class="process-stage-body"><div class="process-stage-content">
-                        <div class="process-detail-grid">
-                            <div class="process-detail">
-                                <h4>Eligibility</h4>
-                                <ul>
-                                    <li>UAE-registered SME with valid trade license</li>
-                                    <li>Demonstrated conflict impact</li>
-                                    <li>Proven demand — revenue or order book</li>
-                                    <li>Cash discipline visible in banking history</li>
-                                    <li>Meaningful UAE community contribution</li>
-                                </ul>
-                            </div>
-                            <div class="process-detail">
-                                <h4>Documents Required</h4>
-                                <ul>
-                                    <li>Trade license & MOA</li>
-                                    <li>6-month bank statements</li>
-                                    <li>Latest financials / VAT returns</li>
-                                    <li>Owner Emirates ID / passport</li>
-                                    <li>Recovery narrative (1–3 pages)</li>
-                                </ul>
-                            </div>
-                            <div class="process-detail-full">
-                                <h4>SME Chooses Loan Structure</h4>
-                                <p><strong>Option A — Pure Loan:</strong> Full repayment over 18 months, no equity surrendered.<br>
-                                <strong>Option B — Loan + Equity:</strong> Reduced repayment in exchange for 5–10% held via Zest Equity SPV.</p>
-                            </div>
-                        </div>
-                    </div></div>
-                </div>
-
-                <div class="process-stage reveal" onclick="toggleProcess(this)">
-                    <div class="process-stage-header">
-                        <div class="process-stage-num">02</div>
-                        <div class="process-stage-title">Screen</div>
-                        <div class="process-stage-meta">Day 3–7 &middot; Tabby &middot; Qadi</div>
-                        <div class="process-stage-chevron">&#9654;</div>
-                    </div>
-                    <div class="process-stage-body"><div class="process-stage-content">
-                        <div class="process-detail-grid">
-                            <div class="process-detail">
-                                <h4>Tabby* — Credit Scoring</h4>
-                                <ul>
-                                    <li>BNPL transaction & repayment history</li>
-                                    <li>Payment discipline assessment</li>
-                                    <li>Consumer spending as revenue proxy</li>
-                                    <li>Cross-reference with bank data</li>
-                                </ul>
-                            </div>
-                            <div class="process-detail">
-                                <h4>Qadi — Legal Compliance</h4>
-                                <ul>
-                                    <li>Sanctions & PEP screening</li>
-                                    <li>Trade license verification</li>
-                                    <li>Beneficial ownership check</li>
-                                    <li>AML/CFT compliance assessment</li>
-                                </ul>
-                            </div>
-                            <div class="process-detail-full">
-                                <h4>Composite Score — AI-Weighted 0–100</h4>
-                                <div class="process-paths">
-                                    <span class="process-path process-path-go">&ge; 70 &rarr; Fast-Track</span>
-                                    <span class="process-path process-path-wait">50–69 &rarr; Manual Review</span>
-                                    <span class="process-path process-path-no">&lt; 50 &rarr; Decline</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div></div>
-                </div>
-
-                <div class="process-stage reveal" onclick="toggleProcess(this)">
-                    <div class="process-stage-header">
-                        <div class="process-stage-num">03</div>
-                        <div class="process-stage-title">Decide</div>
-                        <div class="process-stage-meta">Day 7–10 &middot; Committee</div>
-                        <div class="process-stage-chevron">&#9654;</div>
-                    </div>
-                    <div class="process-stage-body"><div class="process-stage-content">
-                        <div class="process-detail-grid">
-                            <div class="process-detail">
-                                <h4>Committee</h4>
-                                <ul>
-                                    <li>Handhal Founding Partner (chair)</li>
-                                    <li>Rotating industry partner representative</li>
-                                    <li>Financial advisor / credit specialist</li>
-                                    <li>Quorum: 2 of 3 for approval</li>
-                                </ul>
-                            </div>
-                            <div class="process-detail">
-                                <h4>Outcomes</h4>
-                                <div class="process-paths" style="flex-direction:column;">
-                                    <span class="process-path process-path-go">Approved &rarr; Proceed to legal</span>
-                                    <span class="process-path process-path-wait">Conditional &rarr; Modifications required</span>
-                                    <span class="process-path process-path-no">Declined &rarr; Reapply in 3 months</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div></div>
-                </div>
-
-                <div class="process-stage reveal" onclick="toggleProcess(this)">
-                    <div class="process-stage-header">
-                        <div class="process-stage-num">04</div>
-                        <div class="process-stage-title">Structure</div>
-                        <div class="process-stage-meta">Day 10–14 &middot; Qadi &middot; Zest Equity</div>
-                        <div class="process-stage-chevron">&#9654;</div>
-                    </div>
-                    <div class="process-stage-body"><div class="process-stage-content">
-                        <div class="process-detail-grid">
-                            <div class="process-detail">
-                                <h4>Qadi — Agreement Generation</h4>
-                                <ul>
-                                    <li>Qard Hasan agreement (0%, Sharia-compliant)</li>
-                                    <li>Custom repayment schedule</li>
-                                    <li>Personal guarantee provisions</li>
-                                    <li>Default & restructuring terms</li>
-                                </ul>
-                            </div>
-                            <div class="process-detail">
-                                <h4>Zest Equity* — SPV (If Equity Path)</h4>
-                                <ul>
-                                    <li>Ring-fenced SPV for equity stake</li>
-                                    <li>Subscription agreement (5–10%)</li>
-                                    <li>Shareholders agreement with protections</li>
-                                    <li>Exit provisions & buyback option</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div></div>
-                </div>
-
-                <div class="process-stage reveal" onclick="toggleProcess(this)">
-                    <div class="process-stage-header">
-                        <div class="process-stage-num">05</div>
-                        <div class="process-stage-title">Fund</div>
-                        <div class="process-stage-meta">Day 14–17 &middot; AED 100–500K</div>
-                        <div class="process-stage-chevron">&#9654;</div>
-                    </div>
-                    <div class="process-stage-body"><div class="process-stage-content">
-                        <div class="process-detail-grid">
-                            <div class="process-detail">
-                                <h4>Disbursement</h4>
-                                <ul>
-                                    <li>Wire transfer to verified business account</li>
-                                    <li>Receipt confirmation within 48 hours</li>
-                                    <li>Grace period clock starts</li>
-                                    <li>Tabby repayment schedule auto-configured</li>
-                                </ul>
-                            </div>
-                            <div class="process-detail">
-                                <h4>Handhal Network Activation</h4>
-                                <ul>
-                                    <li>Assigned relationship manager</li>
-                                    <li>Physical showcase placements activated</li>
-                                    <li>Digital marketplace listing goes live</li>
-                                    <li>Strategic partner introductions begin</li>
-                                </ul>
-                            </div>
-                            <div class="process-detail-full">
-                                <h4>Product & Service Showcase</h4>
-                                <p>The Handhal network provides recipients with physical and digital opportunities to showcase their products and services. Retail placements at partner locations, featured listings on Handhal.ae, co-branded campaigns, and priority placement at trade events — designed to generate real revenue traction, not just capital.</p>
-                            </div>
-                        </div>
-                    </div></div>
-                </div>
-
-                <div class="process-stage reveal" onclick="toggleProcess(this)">
-                    <div class="process-stage-header">
-                        <div class="process-stage-num">06</div>
-                        <div class="process-stage-title">Grace</div>
-                        <div class="process-stage-meta">Month 1–6 &middot; Zero Payments</div>
-                        <div class="process-stage-chevron">&#9654;</div>
-                    </div>
-                    <div class="process-stage-body"><div class="process-stage-content">
-                        <div class="process-detail-grid">
-                            <div class="process-detail">
-                                <h4>Monitoring</h4>
-                                <ul>
-                                    <li>Monthly check-in with relationship manager</li>
-                                    <li>Quarterly bank statement submission</li>
-                                    <li>Revenue tracking (self-reported)</li>
-                                    <li>Tabby data early warning signals</li>
-                                </ul>
-                            </div>
-                            <div class="process-detail">
-                                <h4>Showcase & Support</h4>
-                                <ul>
-                                    <li>Physical: partner retail, pop-ups, trade events</li>
-                                    <li>Digital: marketplace, e-commerce, social features</li>
-                                    <li>Introductions to procurement teams</li>
-                                    <li>Co-branded marketing campaigns</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div></div>
-                </div>
-
-                <div class="process-stage reveal" onclick="toggleProcess(this)">
-                    <div class="process-stage-header">
-                        <div class="process-stage-num">07</div>
-                        <div class="process-stage-title">Repay</div>
-                        <div class="process-stage-meta">Month 7–24 &middot; Tabby Collection</div>
-                        <div class="process-stage-chevron">&#9654;</div>
-                    </div>
-                    <div class="process-stage-body"><div class="process-stage-content">
-                        <table class="process-table">
-                            <thead>
-                                <tr><th>Loan Amount</th><th>Monthly</th><th>Grace (M1–6)</th><th>Repay (M7–24)</th></tr>
-                            </thead>
-                            <tbody>
-                                <tr><td>AED 100,000</td><td>AED 5,556</td><td>AED 0</td><td>18 &times; AED 5,556</td></tr>
-                                <tr><td>AED 250,000</td><td>AED 13,889</td><td>AED 0</td><td>18 &times; AED 13,889</td></tr>
-                                <tr><td>AED 500,000</td><td>AED 27,778</td><td>AED 0</td><td>18 &times; AED 27,778</td></tr>
-                            </tbody>
-                        </table>
-                        <div class="process-detail-full" style="margin-top:20px;">
-                            <h4>Default Protocol</h4>
-                            <div class="process-paths">
-                                <span class="process-path process-path-go">30 DPD &rarr; Outreach</span>
-                                <span class="process-path process-path-wait">60 DPD &rarr; Restructure</span>
-                                <span class="process-path process-path-no">90 DPD &rarr; Recovery</span>
-                            </div>
-                        </div>
-                    </div></div>
-                </div>
-
-                <div class="process-stage reveal" onclick="toggleProcess(this)">
-                    <div class="process-stage-header">
-                        <div class="process-stage-num">08</div>
-                        <div class="process-stage-title">Exit</div>
-                        <div class="process-stage-meta">Month 24+ &middot; Capital Recycled</div>
-                        <div class="process-stage-chevron">&#9654;</div>
-                    </div>
-                    <div class="process-stage-body"><div class="process-stage-content">
-                        <div class="process-detail-grid">
-                            <div class="process-detail">
-                                <h4>Loan Completion</h4>
-                                <ul>
-                                    <li>Final payment confirmed via Tabby</li>
-                                    <li>Discharge letter auto-generated by Qadi</li>
-                                    <li>Personal guarantee released</li>
-                                    <li>Capital returned to Handhal pool</li>
-                                </ul>
-                            </div>
-                            <div class="process-detail">
-                                <h4>Equity (If Applicable)</h4>
-                                <ul>
-                                    <li>SPV retains 5–10% stake post-repayment</li>
-                                    <li>Annual reporting continues</li>
-                                    <li>Exit: buyback, secondary sale, or hold</li>
-                                    <li>Returns compound the capital pool</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div></div>
-                </div>
-            </div>
-
-            <div class="process-tech reveal">
-                <div class="process-tech-card">
-                    <h5>Tabby*</h5>
-                    <p>Credit scoring at intake. Automated repayment collection. End-to-end financial data layer.</p>
-                    <div class="tech-stages">Stages 02, 05, 07, 08</div>
-                </div>
-                <div class="process-tech-card">
-                    <h5>Beehive*</h5>
-                    <p>Peer-to-peer lending platform. Alternative funding channel for qualifying SMEs.</p>
-                    <div class="tech-stages">Stages 03, 04</div>
-                </div>
-                <div class="process-tech-card">
-                    <h5>Qadi</h5>
-                    <p>Legal AI. Compliance screening, agreement generation, discharge documentation.</p>
-                    <div class="tech-stages">Stages 02, 04, 08</div>
-                </div>
-                <div class="process-tech-card">
-                    <h5>Zest Equity*</h5>
-                    <p>SPV creation and equity management. Ring-fenced investment vehicle.</p>
-                    <div class="tech-stages">Stages 04, 08</div>
-                </div>
-                <div class="process-tech-card">
-                    <h5>Handhal.ae</h5>
-                    <p>Application portal. SME dashboard. Portfolio monitoring. Product showcase.</p>
-                    <div class="tech-stages">Stages 01–08</div>
-                </div>
-            </div>
-            <p style="font-size: 11px; opacity: 0.4; margin-top: 30px; letter-spacing: 0.08em;">* In discussion — not yet confirmed as partners.</p>
-        </div>
-    </section>
-
-    <!-- PILOT -->
-    <section id="pilot">
-        <img src="assets/fruit-detail-black.png" alt="" class="pilot-fruit-bg" aria-hidden="true">
-        <div class="pilot-inner">
-            <div class="pilot-label reveal">THE PILOT</div>
-            <div class="pilot-title reveal reveal-delay-1">UNITED ARAB EMIRATES.<br>DELIVERED THROUGH PARTNERS.</div>
-            <div class="pilot-emphasis reveal reveal-delay-2">THROUGH PARTNERS. ACROSS THE UAE.</div>
-        </div>
-    </section>
-
-    <!-- ECOSYSTEM -->
-    <section id="ecosystem">
-        <div class="ecosystem-inner">
-            <div class="ecosystem-intro">
-                <!-- PROGRAM PARTNERS -->
-                <div class="ecosystem-group reveal">
-                    <div class="ecosystem-group-header">
-                        <div class="ecosystem-group-label">Program Partners</div>
-                        <img src="assets/logo-fruit-black.png" alt="Handhal" class="ecosystem-x-logo" style="filter: none; width: 36px;">
-                    </div>
-                    <p class="ecosystem-group-desc">Handhal does not select recipients directly. Capital and opportunity flow to UAE businesses and individuals through trusted partner organizations who know their communities best.</p>
-                    <div class="ecosystem-logos">
-                        <div class="eco-logo-cell program-featured">
-                            <div class="eco-logo-type">Sheraa &mdash; Istimrar Fund Initiative</div>
-                            <span class="eco-program-badge">First Partner Organization</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- COLLAB PARTNERS -->
-                <div class="ecosystem-group reveal">
-                    <div class="ecosystem-group-header">
-                        <div class="ecosystem-group-label">Sample Collab Partners</div>
-                        <img src="assets/logo-fruit-black.png" alt="Handhal" class="ecosystem-x-logo" style="filter: none; width: 36px;">
-                    </div>
-                    <p class="ecosystem-group-desc">Leading UAE consumer brands create co-branded products, services and limited editions. Net profits from every collaboration flow directly into the Handhal capital pool — aligning brand purpose with national resilience.</p>
-                    <div class="ecosystem-logos">
-                        <div class="eco-logo-cell"><div class="eco-logo-type">Wisewell</div></div>
-                        <div class="eco-logo-cell"><div class="eco-logo-type">The Giving Movement</div></div>
-                        <div class="eco-logo-cell"><div class="eco-logo-type">Squatwolf</div></div>
-                        <div class="eco-logo-cell"><div class="eco-logo-type">Humantra</div></div>
-                        <div class="eco-logo-cell"><div class="eco-logo-type">SALT</div></div>
-                        <div class="eco-logo-cell"><div class="eco-logo-type">Saddle</div></div>
-                        <div class="eco-logo-cell"><div class="eco-logo-type">tashas</div></div>
-                        <div class="eco-logo-cell"><div class="eco-logo-type">Pickl</div></div>
-                        <div class="eco-logo-cell"><div class="eco-logo-type">Pure Harvest</div></div>
-                        <div class="eco-logo-cell"><div class="eco-logo-type">Huda Beauty</div></div>
-                        <div class="eco-logo-cell"><div class="eco-logo-type">Kayali</div></div>
-                        <div class="eco-logo-cell"><div class="eco-logo-type">Koita</div></div>
-                        <div class="eco-logo-cell"><div class="eco-logo-type">Kibsons</div></div>
-                        <div class="eco-logo-cell"><div class="eco-logo-type">Fix Dubai Chocolate</div></div>
-                        <div class="eco-logo-cell"><div class="eco-logo-type">Orfali Brothers</div></div>
-                    </div>
-                </div>
-
-                <!-- PLATFORM PARTNERS -->
-                <div class="ecosystem-group reveal reveal-delay-2">
-                    <div class="ecosystem-group-header">
-                        <div class="ecosystem-group-label">Sample Platforms</div>
-                        <img src="assets/logo-fruit-black.png" alt="Handhal" class="ecosystem-x-logo" style="filter: none; width: 36px;">
-                    </div>
-                    <p class="ecosystem-group-desc">Major distribution networks provide physical and digital showcase opportunities for Handhal recipients — increasing footfall, visibility and sales. These platforms can also feature co-branded collaborations at scale.</p>
-                    <div class="ecosystem-logos">
-                        <div class="eco-logo-cell"><div class="eco-logo-type">ADNOC Distribution</div></div>
-                        <div class="eco-logo-cell"><div class="eco-logo-type">Emaar</div></div>
-                        <div class="eco-logo-cell"><div class="eco-logo-type">noon</div></div>
-                        <div class="eco-logo-cell"><div class="eco-logo-type">Al Futtaim Group</div></div>
-                        <div class="eco-logo-cell"><div class="eco-logo-type">Majid Al Futtaim</div></div>
-                        <div class="eco-logo-cell"><div class="eco-logo-type">Aldar</div></div>
-                        <div class="eco-logo-cell"><div class="eco-logo-type">Miral</div></div>
-                        <div class="eco-logo-cell"><div class="eco-logo-type">Deliveroo</div></div>
-                        <div class="eco-logo-cell"><div class="eco-logo-type">Careem</div></div>
-                        <div class="eco-logo-cell"><div class="eco-logo-type">Dubai Holding</div></div>
-                        <div class="eco-logo-cell"><div class="eco-logo-type">Emirates Development Bank</div></div>
-                        <div class="eco-logo-cell"><div class="eco-logo-type">Sheraa</div></div>
-                        <div class="eco-logo-cell"><div class="eco-logo-type">Hub71</div></div>
-                        <div class="eco-logo-cell"><div class="eco-logo-type">DIFC</div></div>
-                        <div class="eco-logo-cell"><div class="eco-logo-type">Standard Chartered Bank</div></div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="ecosystem-collab-x reveal">×</div>
-
-            <div class="ecosystem-hero-logo reveal">
-                <img src="assets/hero-logo-black.png" alt="Handhal – Rooted. Resilient. Stronger.">
-            </div>
-
-            <div class="ecosystem-bottom-strip reveal">
-                <p>Every collaboration, every showcase, every placement recycles capital and exposure back into the program. Brands demonstrate commitment to UAE resilience. Recipients gain the visibility they need to recover and grow.</p>
-                <div class="ecosystem-bottom-cta">Resilience is a shared investment.</div>
-
-                <div class="ecosystem-bottles reveal" style="margin-top:56px; text-align:center;">
-                    <img src="assets/bottles-collab.png" alt="Wisewell x Handhal co-branded bottles" style="max-width:560px; width:85%; opacity:0.55; filter:grayscale(15%) brightness(0.98) saturate(0.8) contrast(0.95); margin:0 auto; display:block; border:none; border-radius:0; outline:none; box-shadow:none; transition: opacity 0.6s ease, filter 0.6s ease;" onmouseenter="this.style.opacity='0.85';this.style.filter='grayscale(5%) brightness(1) saturate(0.95) contrast(1)';" onmouseleave="this.style.opacity='0.55';this.style.filter='grayscale(15%) brightness(0.98) saturate(0.8) contrast(0.95)';"/>
-                    <p style="font-size:10px; letter-spacing:0.08em; line-height:1.9; color:rgba(0,0,0,0.38); margin-top:26px; max-width:500px; margin-left:auto; margin-right:auto; font-weight:400; text-transform:uppercase;">Proposed Wisewell X Handhal Collab: Cobranded refillable bottles to be sold at ADNOC Distribution retail across the UAE. All profits are given back to Handhal Program.</p>
-                </div></div>
-        </div>
-    </section>
-
-    <!-- PARTNERS -->
-    <section id="partners">
-        <div class="partners-photo"></div>
-        <div class="partners-inner">
-            <div class="partners-content">
-                <h2 class="reveal-left">FOUNDING<br>PARTNERS</h2>
-                <p class="reveal reveal-delay-1">Direct capital contributed into Handhal by stakeholders is targeted to be returned at par within 24 to 36 months. Early contributors will be recognized as Handhal Founding Organizations.</p>
-                <p class="reveal reveal-delay-2">Co-branded goods, services, and investment returns recycle back into the capital pool for follow-on and new investments.</p>
-                <p class="partners-cta reveal reveal-delay-3">ROOTED. RESILIENT. STRONGER. TOGETHER.</p>
-            </div>
-            <div class="reveal-right reveal-delay-2" style="display:flex;justify-content:center;">
-                <img src="assets/logo-fruit-white.png" alt="Handhal" class="partners-logo">
-            </div>
-        </div>
-    </section>
-
-    <!-- WISEWELL ANCHOR SPOTLIGHT -->
-    <section id="anchor-spotlight">
-        <div class="anchor-inner">
-            <div class="anchor-text reveal-left">
-                <div class="anchor-label">PLATFORM ANCHOR</div>
-                <h2 class="anchor-title">WISEWELL.</h2>
-                <p class="anchor-sub">UAE-built. Globally trusted. Already serving households, hotels, and partners across the country.</p>
-                <p class="anchor-body">Wisewell anchors the Handhal program — bringing manufacturing capacity, retail relationships, distribution muscle, and a proven hardware platform to every recipient. Co-branded products convert visibility into capital, and capital back into the program.</p>
-                <ul class="anchor-stats">
-                    <li><strong>UAE</strong><span>Designed &amp; deployed</span></li>
-                    <li><strong>ADNOC · Hotels · Retail</strong><span>Live distribution</span></li>
-                    <li><strong>Nano · Sparkle</strong><span>Hardware platform</span></li>
+    <!-- PRODUCT SHOWCASE -->
+    <section id="product">
+        <div class="product-inner">
+            <div class="product-text">
+                <div class="eyebrow">THE WISEWELL PLATFORM</div>
+                <h2>UAE-built hydration, serving households nationwide.</h2>
+                <p>From the Nano filtration system in homes to the Sparkle smart hydration platform &mdash; Wisewell brings a UAE-designed, globally trusted hardware platform to every Handhal partnership.</p>
+                <p>Manufacturing capacity, retail relationships, and distribution muscle convert visibility into capital &mdash; and capital back into the program.</p>
+                <ul class="product-list">
+                    <li>UAE Designed &amp; Deployed</li>
+                    <li>ADNOC &middot; Hotels &middot; Retail Distribution</li>
+                    <li>Nano &middot; Sparkle Hardware Platform</li>
                 </ul>
             </div>
-            <div class="anchor-visual reveal-right">
-                <img src="assets/wisewell/sparkle_mockup.png" alt="Wisewell Sparkle product" class="anchor-product">
-                <div class="anchor-product-caption">Wisewell Sparkle &mdash; smart hydration platform</div>
+            <div class="product-visual">
+                <img src="assets/wisewell/wisewell-product.png" alt="Wisewell Nano filtration system">
+                <div class="product-caption">Wisewell Nano &mdash; certified water filtration</div>
             </div>
-        </div>
-        <div class="anchor-collab reveal">
-            <div class="anchor-collab-label">CO-BRANDED COLLAB &middot; PROPOSED</div>
-            <img src="assets/bottles-collab.png" alt="Wisewell x Handhal co-branded refillable bottle concepts" class="anchor-collab-img">
-            <p class="anchor-collab-note">Wisewell &times; Handhal refillable bottles &mdash; sold across ADNOC Distribution retail in the UAE. Every profit dollar recycles back into the Handhal program.</p>
-        </div>
-    </section>
-
-    <!-- AERIAL BREAK -->
-    <section id="aerial">
-        <div class="aerial-text reveal">
-            <h2>LEARN FROM THE HANDHAL</h2>
-            <p>تعلّم من الحنظل</p>
         </div>
     </section>
 
     <!-- FOOTER -->
     <section id="footer">
-        <img src="assets/dual-ovals-black.png" alt="Handhal" class="footer-badge reveal-scale">
-        <h2 class="footer-tagline reveal reveal-delay-1">CAPITAL. PARTNERS.<br>COMMUNITY.</h2>
-        <div class="footer-email reveal reveal-delay-2"><a href="mailto:info@handhal.ae">info@handhal.ae</a></div>
-        <div class="footer-url reveal reveal-delay-2">www.handhal.ae</div>
-        <div class="footer-credits reveal reveal-delay-3">
-            Sami Khoreibi / Founding Partner<br>Wisewell / Platform Anchor
+        <img src="assets/wisewell/wisewell-mark-white.png" alt="" class="footer-mark" aria-hidden="true">
+        <img src="assets/wisewell/wisewell-logo-white.svg" alt="Wisewell" class="footer-wordmark">
+        <div class="footer-tag">CAPITAL. PARTNERS. COMMUNITY.</div>
+        <div class="footer-meta">
+            <a href="mailto:info@handhal.ae">info@handhal.ae</a> &nbsp;&middot;&nbsp; handhal.ae
+        </div>
+        <div class="footer-credits">
+            A Wisewell Initiative &middot; United Arab Emirates<br>
+            &copy; 2026 Handhal &middot; All Rights Reserved
         </div>
     </section>
 
-    <script>
-        // Word-by-word typewriter effect for hero columns
-        (function() {
-            const cols = document.querySelectorAll('.hero-tw-col');
-            cols.forEach(col => {
-                const colDelay = parseInt(col.getAttribute('data-delay')) || 2200;
-                const lines = col.querySelectorAll('div');
-                // Collect all words across all lines in this column
-                const wordEls = [];
-                lines.forEach(line => {
-                    const text = line.textContent;
-                    const words = text.split(/\s+/);
-                    line.textContent = '';
-                    words.forEach((word, wi) => {
-                        const span = document.createElement('span');
-                        span.textContent = (wi > 0 ? ' ' : '') + word;
-                        span.style.opacity = '0';
-                        span.style.transition = 'opacity 0.12s ease';
-                        line.appendChild(span);
-                        wordEls.push(span);
-                    });
-                });
-                // Reveal words one at a time
-                setTimeout(() => {
-                    wordEls.forEach((span, i) => {
-                        setTimeout(() => {
-                            span.style.opacity = '1';
-                            span.closest('div').classList.add('tw-visible');
-                        }, i * 90);
-                    });
-                }, colDelay);
-            });
-        })();
-
-        // Nav auto-hide after 2 seconds, reappear on hover
-        (function() {
-            const nav = document.querySelector('nav');
-            let hideTimer = setTimeout(() => nav.classList.add('nav-hidden'), 2000);
-            nav.addEventListener('mouseenter', () => {
-                clearTimeout(hideTimer);
-                nav.classList.remove('nav-hidden');
-            });
-            nav.addEventListener('mouseleave', () => {
-                hideTimer = setTimeout(() => nav.classList.add('nav-hidden'), 1200);
-            });
-        })();
-
-        // Close mobile nav when a link is tapped
-        function closeMobileNav() {
-            document.querySelector('.nav-hamburger').classList.remove('open');
-            document.querySelector('.nav-links').classList.remove('open');
-        }
-
-        // Intersection observer for all reveal types
-        const obs = new IntersectionObserver((entries) => {
-            entries.forEach(e => {
-                if (e.isIntersecting) {
-                    e.target.classList.add('visible');
-                    obs.unobserve(e.target);
-                }
-            });
-        }, { threshold: 0.1, rootMargin: '0px 0px -80px 0px' });
-
-        document.querySelectorAll('.reveal, .reveal-scale, .reveal-left, .reveal-right').forEach(el => obs.observe(el));
-
-        // Smooth scroll
-        document.querySelectorAll('a[href^="#"]').forEach(a => {
-            a.addEventListener('click', e => {
-                e.preventDefault();
-                document.querySelector(a.getAttribute('href'))?.scrollIntoView({ behavior: 'smooth' });
-            });
-        });
-
-        // Process stage accordion
-        function toggleProcess(el) {
-            const wasOpen = el.classList.contains('open');
-            document.querySelectorAll('.process-stage').forEach(s => s.classList.remove('open'));
-            if (!wasOpen) el.classList.add('open');
-        }
-
-        // Subtle parallax on scroll
-        let ticking = false;
-        window.addEventListener('scroll', () => {
-            if (!ticking) {
-                requestAnimationFrame(() => {
-                    const scrollY = window.scrollY;
-
-                    // Hero watermark parallax
-                    const watermark = document.querySelector('.hero-watermark');
-                    if (watermark) {
-                        watermark.style.transform = `translate(-50%, calc(-50% + ${scrollY * 0.15}px))`;
-                    }
-
-                    // Crisis fruit parallax
-                    const crisisFruit = document.querySelector('.crisis-fruit');
-                    if (crisisFruit) {
-                        const offset = crisisFruit.getBoundingClientRect().top;
-                        crisisFruit.style.transform = `translateY(${offset * -0.05}px)`;
-                    }
-
-                    // Pilot fruit parallax
-                    const pilotFruit = document.querySelector('.pilot-fruit-bg');
-                    if (pilotFruit) {
-                        const offset = pilotFruit.getBoundingClientRect().top;
-                        pilotFruit.style.transform = `translateY(${offset * -0.04}px)`;
-                    }
-
-                    ticking = false;
-                });
-                ticking = true;
-            }
-        });
-    </script>
 </body>
 </html>
