@@ -476,33 +476,119 @@
         }
 
         /* ---------- RESPONSIVE ---------- */
-        @media (max-width: 900px) {
-            #hero { padding: 70px 18px 50px; }
-            #intro { padding: 70px 18px 90px; }
-            .product-grid { grid-template-columns: 1fr; gap: 28px; }
-            .product-header { margin-bottom: 50px; }
-            #mission, #product, #closing { padding: 80px 22px; }
-            #mbz { padding: 80px 22px; }
-            .mbz-quote { font-size: 22px; }
-            #erf { padding: 80px 22px 80px; }
-            .erf-hero { padding: 36px 22px; min-height: auto; flex-direction: column; align-items: flex-start; }
-            .erf-hero-logo { width: 200px; margin-bottom: 22px; }
-            .erf-hero-title { font-size: 30px; }
-            .erf-hero-sub { font-size: 14px; }
-            .erf-fund-card { padding: 36px 22px; }
-            .erf-pillars { grid-template-columns: 1fr; gap: 18px; }
-            .erf-header { margin-bottom: 50px; }
-            .closing-lockup { flex-direction: column; gap: 18px; }
-            #closing { padding: 80px 22px 90px; }
-            .closing-x { font-size: 24px; opacity: 0.4; }
+        /* Tablet + medium screens */
+        @media (max-width: 1024px) {
+            .product-grid { gap: 36px; }
+            .erf-pillars { grid-template-columns: repeat(2, 1fr); }
         }
-        @media (max-width: 560px) {
-            .ww-strip { padding: 48px 18px 44px; }
-            .ww-strip-mark { width: 58px; margin-bottom: 16px; }
+        /* Mobile breakpoint */
+        @media (max-width: 768px) {
+            /* HERO + INTRO */
+            #hero { padding: 60px 18px 40px; }
+            #intro { padding: 60px 18px 90px; }
+            .hero-arabic img { width: clamp(180px, 60vw, 280px); }
+            .hero-tagline { font-size: clamp(28px, 8vw, 42px); margin-top: 24px; }
+            .hero-eyebrow { font-size: 10px; letter-spacing: 0.32em; }
+            .hero-sub { font-size: 14px; margin-top: 22px; line-height: 1.65; }
+
+            /* WISEWELL STRIP */
+            .ww-strip { padding: 50px 22px 46px; }
             .ww-strip-logo { width: 170px; }
-            .ww-strip-label { font-size: 10px; letter-spacing: 0.34em; margin-top: 20px; }
-            .mission-body { font-size: 19px; }
+            .ww-strip-label { font-size: 10px; letter-spacing: 0.34em; margin-top: 18px; }
+
+            /* MISSION */
+            #mission { padding: 80px 22px; }
+            .mission-body { font-size: 18px; line-height: 1.55; }
+            .mission-eyebrow { letter-spacing: 0.36em; margin-bottom: 22px; }
+            .mission-signature { font-size: 10px; letter-spacing: 0.3em; margin-top: 36px; }
+
+            /* MBZ QUOTE */
+            #mbz {
+                padding: 90px 22px;
+                background-position: center 18%;
+            }
+            .mbz-eyebrow { font-size: 10px; letter-spacing: 0.4em; margin-bottom: 28px; }
+            .mbz-quote { font-size: 21px; line-height: 1.4; margin-bottom: 30px; }
+            .mbz-name { font-size: 12px; letter-spacing: 0.22em; }
+            .mbz-title { font-size: 9px; letter-spacing: 0.26em; }
+
+            /* ERF (CONTRIBUTION PARTNER) */
+            #erf { padding: 80px 0 80px; }
+            .erf-header { padding: 0 22px; margin-bottom: 40px; max-width: 100%; }
+            .erf-lead { font-size: clamp(20px, 5.4vw, 28px); }
+            .erf-hero {
+                margin: 0 0 60px;
+                margin-left: 0;
+                margin-right: 0;
+                padding: 60px 24px 60px;
+                min-height: auto;
+                flex-direction: column;
+                align-items: flex-start;
+                background-position: center;
+            }
+            .erf-hero-sheraa { top: 18px; left: 18px; }
+            .erf-hero-sheraa img { width: 48px; }
+            .erf-hero-content { max-width: 100%; padding-top: 40px; }
+            .erf-hero-logo { width: clamp(160px, 50vw, 220px); margin-bottom: 22px; }
+            .erf-hero-title { font-size: clamp(26px, 7.5vw, 36px); margin-bottom: 18px; }
+            .erf-hero-sub { font-size: 14px; margin-bottom: 28px; line-height: 1.55; }
+            .erf-hero-cta { padding: 14px 28px; font-size: 10px; letter-spacing: 0.28em; }
+            .erf-fund-card { margin: 0 22px; padding: 32px 22px; }
+            .erf-fund-header { margin-bottom: 36px; }
+            .erf-fund-title { font-size: clamp(22px, 5.6vw, 30px); margin-bottom: 16px; }
+            .erf-fund-intro { font-size: 14px; }
+            .erf-pillars { grid-template-columns: 1fr; gap: 14px; }
+            .erf-pillar { padding: 22px 20px; }
+            .erf-pillar p { font-size: 12.5px; }
+
+            /* BOTTLES */
+            #bottles { padding: 70px 18px 90px; }
+            .bottles-eyebrow { font-size: 10px; letter-spacing: 0.36em; margin-bottom: 16px; }
+            .bottles-title { font-size: clamp(22px, 6vw, 30px); }
+            .bottles-img { border-radius: 4px; }
+            .bottles-caption { font-size: 14px; margin-top: 28px; padding: 0 6px; }
+
+            /* PRODUCT */
+            #product { padding: 80px 22px 70px; }
+            .product-header { margin-bottom: 36px; }
+            .product-h2 { font-size: clamp(26px, 6vw, 34px); }
+            .product-intro { font-size: 14px; }
+            .product-grid { grid-template-columns: 1fr; gap: 36px; }
+            .product-card-img { padding: 28px; }
+            .product-card-meta { padding: 22px 0 0; }
+            .product-card-name { font-size: 22px; }
+            .product-card-desc { font-size: 13px; max-width: 100%; }
+            .product-footnote { margin: 50px 0 0; padding: 26px 22px; }
+            .product-footnote p { font-size: 13.5px; }
+
+            /* CLOSING LOCKUP */
+            #closing { padding: 80px 22px 90px; }
+            .closing-lockup { flex-direction: column; gap: 22px; margin-bottom: 36px; }
+            .closing-handhal { width: 150px; }
+            .closing-wisewell { width: 170px; }
+            .closing-x { font-size: 22px; opacity: 0.4; }
+            .closing-body { font-size: 15px; line-height: 1.6; }
+
+            /* FOOTER */
+            #footer { padding: 44px 22px 44px; }
+            .footer-link { font-size: 12px; letter-spacing: 0.24em; }
         }
+        /* Very narrow phones */
+        @media (max-width: 420px) {
+            .hero-arabic img { width: 70vw; }
+            .hero-tagline { font-size: 26px; }
+            .ww-strip-logo { width: 150px; }
+            .mission-body { font-size: 17px; }
+            .mbz-quote { font-size: 19px; }
+            .erf-hero { padding: 50px 20px; }
+            .erf-hero-title { font-size: 24px; }
+            .product-card-img { padding: 22px; }
+            .closing-handhal { width: 130px; }
+            .closing-wisewell { width: 150px; }
+        }
+        /* Prevent horizontal scroll across the board */
+        html, body { overflow-x: hidden; }
+        img, .erf-hero { max-width: 100%; }
     
         /* ---------- CONTRIBUTION PARTNER (ERF) ---------- */
         #erf {
