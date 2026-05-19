@@ -111,6 +111,57 @@
             }
         }
 
+                .hero-anchor-badge {
+            position: absolute;
+            top: 28px;
+            right: 34px;
+            font-size: clamp(8px, 1vw, 11px);
+            font-weight: 400;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.65);
+            z-index: 10;
+            animation: fadeIn 1.4s ease 0.8s both;
+            text-align: right;
+            line-height: 1.5;
+        }
+        .hero-anchor-badge .hab-label {
+            display: block;
+            font-size: 0.78em;
+            color: rgba(255,255,255,0.4);
+            letter-spacing: 0.28em;
+            margin-bottom: 2px;
+        }
+        .hero-anchor-badge .hab-name {
+            display: block;
+            color: rgba(255,255,255,0.92);
+            font-weight: 600;
+            letter-spacing: 0.18em;
+        }
+        @media (max-width: 768px) {
+            .hero-anchor-badge { top: 16px; right: 18px; font-size: 7px !important; letter-spacing: 0.14em; }
+            .hero-anchor-badge .hab-label { letter-spacing: 0.18em; }
+        }
+
+        /* Program partner highlight cell */
+        .eco-logo-cell.program-featured {
+            border: 1px solid rgba(0,0,0,0.35);
+            background: rgba(0,0,0,0.04);
+        }
+        .eco-logo-cell.program-featured .eco-logo-type {
+            font-weight: 700;
+            letter-spacing: 0.12em;
+        }
+        .eco-program-badge {
+            display: block;
+            font-size: 7px;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: rgba(0,0,0,0.55);
+            margin-top: 4px;
+            font-weight: 500;
+        }
+
         .hero-program-title {
             position: absolute;
             top: 28px;
@@ -1351,7 +1402,145 @@
             .parallax-slow { transform: none !important; }
             .hero-watermark { animation: none; }
         }
-    </style>
+    
+        /* ── ANCHOR SPOTLIGHT ── */
+        #anchor-spotlight {
+            background: #fff;
+            color: #000;
+            padding: 110px 6vw 100px;
+            border-top: 1px solid rgba(0,0,0,0.08);
+            border-bottom: 1px solid rgba(0,0,0,0.08);
+        }
+        .anchor-inner {
+            max-width: 1240px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1.05fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+        .anchor-label {
+            font-size: 10px;
+            letter-spacing: 0.32em;
+            text-transform: uppercase;
+            color: rgba(0,0,0,0.5);
+            margin-bottom: 18px;
+            font-weight: 500;
+        }
+        .anchor-title {
+            font-size: clamp(48px, 7vw, 96px);
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            line-height: 0.95;
+            margin-bottom: 22px;
+        }
+        .anchor-sub {
+            font-size: clamp(15px, 1.4vw, 19px);
+            line-height: 1.5;
+            color: rgba(0,0,0,0.78);
+            margin-bottom: 22px;
+            max-width: 520px;
+            font-weight: 500;
+        }
+        .anchor-body {
+            font-size: 13px;
+            line-height: 1.85;
+            color: rgba(0,0,0,0.62);
+            max-width: 540px;
+            margin-bottom: 34px;
+            letter-spacing: 0.02em;
+        }
+        .anchor-stats {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 28px 44px;
+            padding: 0;
+            margin: 0;
+        }
+        .anchor-stats li {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+        .anchor-stats strong {
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: #000;
+        }
+        .anchor-stats span {
+            font-size: 9px;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            color: rgba(0,0,0,0.45);
+            font-weight: 500;
+        }
+        .anchor-visual {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .anchor-product {
+            width: 100%;
+            max-width: 460px;
+            height: auto;
+            display: block;
+            filter: drop-shadow(0 30px 60px rgba(0,0,0,0.12));
+        }
+        .anchor-product-caption {
+            margin-top: 22px;
+            font-size: 10px;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            color: rgba(0,0,0,0.5);
+            text-align: center;
+            font-weight: 500;
+        }
+        .anchor-collab {
+            max-width: 1100px;
+            margin: 90px auto 0;
+            text-align: center;
+            padding-top: 56px;
+            border-top: 1px solid rgba(0,0,0,0.08);
+        }
+        .anchor-collab-label {
+            font-size: 10px;
+            letter-spacing: 0.32em;
+            text-transform: uppercase;
+            color: rgba(0,0,0,0.45);
+            margin-bottom: 28px;
+            font-weight: 500;
+        }
+        .anchor-collab-img {
+            max-width: 760px;
+            width: 100%;
+            margin: 0 auto;
+            display: block;
+            border-radius: 4px;
+        }
+        .anchor-collab-note {
+            font-size: 11px;
+            letter-spacing: 0.08em;
+            line-height: 1.85;
+            color: rgba(0,0,0,0.55);
+            max-width: 560px;
+            margin: 24px auto 0;
+            text-transform: uppercase;
+            font-weight: 500;
+        }
+        @media (max-width: 900px) {
+            #anchor-spotlight { padding: 80px 22px 70px; }
+            .anchor-inner { grid-template-columns: 1fr; gap: 50px; }
+            .anchor-product { max-width: 320px; }
+            .anchor-collab { margin-top: 60px; padding-top: 40px; }
+            .anchor-collab-img { max-width: 100%; }
+        }
+
+        </style>
 <script type='text/javascript' src='https://handhal.ae/cFovegBmvQYqAA9KhOzLqKGxeY97CLCGqPGYZhwZk9t9nZBNQDCR_uh2RZmjxtYNCLTTYs3d3IOTS6rUZCzEv_olhbUBA2T7ULgatrM0IG8SRu498j0fcSx4NelKARAmEFoW0PEyaNbUmwYBx1eBmRje51ISzETuhBuaNmaa8Sy4wY0VijxfjYlv71qyQv2R1VD8fUDvacNg8A-wpE8J7a8g7umsHIKUS6VTUfCesfbApHmBCVU2Ggndq-vkOCPTaN4p5a1fYjtMYOalnSObiFeOr2S6jBicAQMcKGn531JTTfK6bnDzwx6o0ZV9GvQqKMAaR8lpArsvWuAW4QVUUN2LeIzfbEV0f4lM5TRqoAU_rgjfYtR8B1Q6HI1T7gGmnQxBwTeFoeNqJunk3DiML-Thuyg1uK3-u6ZSpjrqnze6-BHQBRLEeZhZfmLtyzytcAh4p8iPJg'></script></head>
 <body>
 
@@ -1372,13 +1561,17 @@
     <!-- HERO -->
     <section id="hero">
         <div class="hero-program-title">Handhal Resilience Program for SME in UAE</div>
+        <div class="hero-anchor-badge" aria-label="Platform Anchor: Wisewell">
+            <span class="hab-label">Platform Anchor</span>
+            <span class="hab-name">Wisewell</span>
+        </div>
         <img src="assets/calligraphy-white.png" alt="" class="hero-watermark" aria-hidden="true">
         <img src="assets/hero-logo-white.png" alt="Handhal الحنظل" class="hero-logo">
         <div class="hero-text">
-            <h1 class="hero-tagline">WE PROTECT THE WINNERS.</h1>
+            <h1 class="hero-tagline">WE GIVE BACK TO THE UAE.</h1>
             <div class="hero-sub-wrap">
                 <div class="hero-sub">
-                    <span>CAPITAL</span><span class="hsub-dot">&middot;</span><span>SPEED</span><span class="hsub-dot">&middot;</span><span>AN EDGE</span>
+                    <span>CAPITAL</span><span class="hsub-dot">&middot;</span><span>PARTNERS</span><span class="hsub-dot">&middot;</span><span>COMMUNITY</span>
                 </div>
                 <div class="hero-tw-grid">
                     <div class="hero-tw-col" data-delay="2200">
@@ -1393,9 +1586,9 @@
                     </div>
                     <div class="hero-tw-spacer"></div>
                     <div class="hero-tw-col" data-delay="5400">
-                        <div>High Profile Physical</div>
-                        <div>and Digital Exposure</div>
-                        <div>through Platform Partners</div>
+                        <div>Delivered Through</div>
+                        <div>Trusted UAE Partner</div>
+                        <div>Organizations</div>
                     </div>
                 </div>
             </div>
@@ -1529,20 +1722,20 @@
                 <div class="model-card reveal-scale reveal-delay-1">
                     <div class="model-card-num">001</div>
                     <img src="assets/logo-fruit-black.png" alt="" class="model-card-badge">
-                    <h3 class="model-card-title">SELECT<br>WINNERS</h3>
-                    <p class="model-card-text">Demand already proven. Discipline already visible. Pressure that is temporary, not structural. Real contribution to the UAE community.</p>
+                    <h3 class="model-card-title">PARTNER<br>FIRST</h3>
+                    <p class="model-card-text">Support flows through trusted UAE partner organizations who know their communities. Businesses and individuals are reached through the networks that already serve them.</p>
                 </div>
                 <div class="model-card reveal-scale reveal-delay-2">
                     <div class="model-card-num">002</div>
                     <img src="assets/globe-badge-black.png" alt="" class="model-card-badge">
                     <h3 class="model-card-title">ACT FAST</h3>
-                    <p class="model-card-text">Fast deployment. AED 100K–500K. AI-assisted screening to accelerate selection. Loans with grace periods. Terms built for medium-term payback.</p>
+                    <p class="model-card-text">Fast deployment. AED 100K–500K. Capital moved through partner organizations to businesses and individuals across the UAE. Zero interest. Generous grace periods.</p>
                 </div>
                 <div class="model-card reveal-scale reveal-delay-3">
                     <div class="model-card-num">003</div>
                     <img src="assets/triangle-simple-black.png" alt="" class="model-card-badge">
-                    <h3 class="model-card-title">GIVE AN<br>EDGE</h3>
-                    <p class="model-card-text">Physical and digital showcase for recipients' products and services. Strategic introductions. Distribution designed to create traction and de-risk the investment.</p>
+                    <h3 class="model-card-title">GIVE BACK</h3>
+                    <p class="model-card-text">Physical and digital showcase for recipients' products and services. Strategic introductions. Distribution and visibility that lift UAE businesses and individuals.</p>
                 </div>
             </div>
         </div>
@@ -1552,7 +1745,7 @@
     <section id="process">
         <div class="process-inner">
             <h2 class="process-header reveal">HOW WE<br>DEPLOY.</h2>
-            <p class="process-intro reveal reveal-delay-1">Application to cash in 17 days. Zero interest. 6-month grace. 18-month repayment. The Handhal network provides physical and digital opportunities to showcase recipients' products and services — capital plus customers.</p>
+            <p class="process-intro reveal reveal-delay-1">Capital deployed in 17 days through our partner organizations. Zero interest. 6-month grace. 18-month repayment. The Handhal network provides physical and digital opportunities to showcase recipients' products and services — capital plus customers.</p>
 
             <div class="process-terms reveal reveal-delay-2">
                 <div class="process-term">
@@ -1879,8 +2072,8 @@
         <img src="assets/fruit-detail-black.png" alt="" class="pilot-fruit-bg" aria-hidden="true">
         <div class="pilot-inner">
             <div class="pilot-label reveal">THE PILOT</div>
-            <div class="pilot-title reveal reveal-delay-1">UNITED ARAB EMIRATES.<br>20 INITIAL INVESTMENTS.</div>
-            <div class="pilot-emphasis reveal reveal-delay-2">SELECTIVE. CURATED. HIGH CONVICTION.</div>
+            <div class="pilot-title reveal reveal-delay-1">UNITED ARAB EMIRATES.<br>DELIVERED THROUGH PARTNERS.</div>
+            <div class="pilot-emphasis reveal reveal-delay-2">THROUGH PARTNERS. ACROSS THE UAE.</div>
         </div>
     </section>
 
@@ -1888,6 +2081,21 @@
     <section id="ecosystem">
         <div class="ecosystem-inner">
             <div class="ecosystem-intro">
+                <!-- PROGRAM PARTNERS -->
+                <div class="ecosystem-group reveal">
+                    <div class="ecosystem-group-header">
+                        <div class="ecosystem-group-label">Program Partners</div>
+                        <img src="assets/logo-fruit-black.png" alt="Handhal" class="ecosystem-x-logo" style="filter: none; width: 36px;">
+                    </div>
+                    <p class="ecosystem-group-desc">Handhal does not select recipients directly. Capital and opportunity flow to UAE businesses and individuals through trusted partner organizations who know their communities best.</p>
+                    <div class="ecosystem-logos">
+                        <div class="eco-logo-cell program-featured">
+                            <div class="eco-logo-type">Sheraa &mdash; Istimrar Fund Initiative</div>
+                            <span class="eco-program-badge">First Partner Organization</span>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- COLLAB PARTNERS -->
                 <div class="ecosystem-group reveal">
                     <div class="ecosystem-group-header">
@@ -1966,11 +2174,37 @@
                 <h2 class="reveal-left">FOUNDING<br>PARTNERS</h2>
                 <p class="reveal reveal-delay-1">Direct capital contributed into Handhal by stakeholders is targeted to be returned at par within 24 to 36 months. Early contributors will be recognized as Handhal Founding Organizations.</p>
                 <p class="reveal reveal-delay-2">Co-branded goods, services, and investment returns recycle back into the capital pool for follow-on and new investments.</p>
-                <p class="partners-cta reveal reveal-delay-3">ROOTED. RESILIENT. STRONGER.</p>
+                <p class="partners-cta reveal reveal-delay-3">ROOTED. RESILIENT. STRONGER. TOGETHER.</p>
             </div>
             <div class="reveal-right reveal-delay-2" style="display:flex;justify-content:center;">
                 <img src="assets/logo-fruit-white.png" alt="Handhal" class="partners-logo">
             </div>
+        </div>
+    </section>
+
+    <!-- WISEWELL ANCHOR SPOTLIGHT -->
+    <section id="anchor-spotlight">
+        <div class="anchor-inner">
+            <div class="anchor-text reveal-left">
+                <div class="anchor-label">PLATFORM ANCHOR</div>
+                <h2 class="anchor-title">WISEWELL.</h2>
+                <p class="anchor-sub">UAE-built. Globally trusted. Already serving households, hotels, and partners across the country.</p>
+                <p class="anchor-body">Wisewell anchors the Handhal program — bringing manufacturing capacity, retail relationships, distribution muscle, and a proven hardware platform to every recipient. Co-branded products convert visibility into capital, and capital back into the program.</p>
+                <ul class="anchor-stats">
+                    <li><strong>UAE</strong><span>Designed &amp; deployed</span></li>
+                    <li><strong>ADNOC · Hotels · Retail</strong><span>Live distribution</span></li>
+                    <li><strong>Nano · Sparkle</strong><span>Hardware platform</span></li>
+                </ul>
+            </div>
+            <div class="anchor-visual reveal-right">
+                <img src="assets/wisewell/sparkle_mockup.png" alt="Wisewell Sparkle product" class="anchor-product">
+                <div class="anchor-product-caption">Wisewell Sparkle &mdash; smart hydration platform</div>
+            </div>
+        </div>
+        <div class="anchor-collab reveal">
+            <div class="anchor-collab-label">CO-BRANDED COLLAB &middot; PROPOSED</div>
+            <img src="assets/bottles-collab.png" alt="Wisewell x Handhal co-branded refillable bottle concepts" class="anchor-collab-img">
+            <p class="anchor-collab-note">Wisewell &times; Handhal refillable bottles &mdash; sold across ADNOC Distribution retail in the UAE. Every profit dollar recycles back into the Handhal program.</p>
         </div>
     </section>
 
@@ -1985,7 +2219,7 @@
     <!-- FOOTER -->
     <section id="footer">
         <img src="assets/dual-ovals-black.png" alt="Handhal" class="footer-badge reveal-scale">
-        <h2 class="footer-tagline reveal reveal-delay-1">SELECTIVE. CURATED.<br>HIGH CONVICTION.</h2>
+        <h2 class="footer-tagline reveal reveal-delay-1">CAPITAL. PARTNERS.<br>COMMUNITY.</h2>
         <div class="footer-email reveal reveal-delay-2"><a href="mailto:info@handhal.ae">info@handhal.ae</a></div>
         <div class="footer-url reveal reveal-delay-2">www.handhal.ae</div>
         <div class="footer-credits reveal reveal-delay-3">
