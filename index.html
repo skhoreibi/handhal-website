@@ -479,7 +479,7 @@
         /* Tablet + medium screens */
         @media (max-width: 1024px) {
             .product-grid { gap: 36px; }
-            .erf-pillars { grid-template-columns: repeat(2, 1fr); }
+            /* tablet: no fund pillars anymore */
         }
         /* Mobile breakpoint */
         @media (max-width: 768px) {
@@ -533,13 +533,7 @@
             .erf-hero-title { font-size: clamp(26px, 7.5vw, 36px); margin-bottom: 18px; }
             .erf-hero-sub { font-size: 14px; margin-bottom: 28px; line-height: 1.55; }
             .erf-hero-cta { padding: 14px 28px; font-size: 10px; letter-spacing: 0.28em; }
-            .erf-fund-card { margin: 0 22px; padding: 32px 22px; }
-            .erf-fund-header { margin-bottom: 36px; }
-            .erf-fund-title { font-size: clamp(22px, 5.6vw, 30px); margin-bottom: 16px; }
-            .erf-fund-intro { font-size: 14px; }
-            .erf-pillars { grid-template-columns: 1fr; gap: 14px; }
-            .erf-pillar { padding: 22px 20px; }
-            .erf-pillar p { font-size: 12.5px; }
+            /* (fund card removed — no longer applicable) */
 
             /* BOTTLES */
             #bottles { padding: 70px 18px 90px; }
@@ -593,8 +587,9 @@
         /* ---------- CONTRIBUTION PARTNER (ERF) ---------- */
         #erf {
             background: var(--bg);
-            padding: 120px clamp(24px, 4vw, 60px) 110px;
+            padding: 120px clamp(24px, 4vw, 60px) 60px;
             border-top: 1px solid var(--line);
+            overflow: hidden;
         }
         .erf-header {
             text-align: center;
@@ -618,7 +613,11 @@
         }
         .erf-hero {
             position: relative;
-            margin: 0 0 70px;
+            width: 100vw;
+            margin-left: calc(-50vw + 50%);
+            margin-right: calc(-50vw + 50%);
+            margin-top: 0;
+            margin-bottom: 70px;
             min-height: clamp(440px, 60vw, 680px);
             background-image: url('assets/erf/solidarity-banner.jpg');
             background-size: cover;
@@ -627,8 +626,6 @@
             display: flex;
             align-items: center;
             padding: clamp(60px, 8vw, 120px) clamp(24px, 8vw, 120px);
-            margin-left: calc(-1 * clamp(24px, 4vw, 60px));
-            margin-right: calc(-1 * clamp(24px, 4vw, 60px));
         }
         .erf-hero-sheraa {
             position: absolute;
@@ -821,26 +818,6 @@
             </div>
         </div>
 
-        <div class="erf-fund-card">
-            <div class="erf-fund-header">
-                <h3 class="erf-fund-title">A fund valued at AED 5M</h3>
-                <p class="erf-fund-intro">The Entrepreneurs Resilience Fund provides a combination of financial and non-financial support designed to ensure business continuity and resilience.</p>
-            </div>
-            <div class="erf-pillars">
-                <div class="erf-pillar">
-                    <div class="erf-pillar-name">Equity-free Grants</div>
-                    <p>Non-dilutive, non-repayable grant funding. In-kind support, including partner-led services and resources.</p>
-                </div>
-                <div class="erf-pillar">
-                    <div class="erf-pillar-name">Operational Support</div>
-                    <p>Tailored advisory and programming. Access to Sheraa&rsquo;s ecosystem of partners and opportunities.</p>
-                </div>
-                <div class="erf-pillar">
-                    <div class="erf-pillar-name">Marketing Opportunities</div>
-                    <p>Marketing exposure across Sheraa and partner platforms.</p>
-                </div>
-            </div>
-        </div>
     </section>
 
     <!-- BOTTLES -->
