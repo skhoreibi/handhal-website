@@ -212,83 +212,139 @@
 
         /* ---------- PRODUCT SHOWCASE ---------- */
         #product {
-            padding: 130px 24px 130px;
+            padding: 130px 24px 100px;
             background: var(--bg);
         }
-        .product-inner {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 90px;
-            align-items: center;
+        .product-header {
+            max-width: 880px;
+            margin: 0 auto 70px;
+            text-align: center;
         }
-        .product-text .eyebrow {
+        .product-header .eyebrow {
             font-size: 10px;
             letter-spacing: 0.46em;
             text-transform: uppercase;
             color: var(--muted);
-            margin-bottom: 24px;
+            margin-bottom: 22px;
             font-weight: 500;
         }
-        .product-text h2 {
-            font-size: clamp(34px, 4.6vw, 60px);
+        .product-h2 {
+            font-size: clamp(30px, 4.2vw, 54px);
             font-weight: 700;
             letter-spacing: -0.02em;
-            line-height: 1.02;
-            margin-bottom: 28px;
+            line-height: 1.04;
+            margin-bottom: 22px;
         }
-        .product-text p {
-            font-size: clamp(14px, 1.2vw, 16px);
-            line-height: 1.8;
+        .product-intro {
+            font-size: clamp(14px, 1.25vw, 17px);
+            line-height: 1.7;
             color: var(--muted);
-            margin-bottom: 20px;
-            max-width: 540px;
+            max-width: 620px;
+            margin: 0 auto;
             letter-spacing: 0.02em;
         }
-        .product-list {
-            list-style: none;
-            margin-top: 32px;
-            padding: 0;
-        }
-        .product-list li {
-            font-size: 12px;
-            letter-spacing: 0.22em;
-            text-transform: uppercase;
-            color: var(--ink);
-            font-weight: 600;
-            padding: 14px 0;
-            border-top: 1px solid var(--line);
-        }
-        .product-list li:last-child { border-bottom: 1px solid var(--line); }
-        .product-visual { position: relative; }
-        .product-logo-card {
-            width: 100%;
-            max-width: 540px;
+        .product-grid {
+            max-width: 1240px;
             margin: 0 auto;
-            background: #000;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 36px;
+        }
+        .product-card {
+            background: var(--bg-soft);
+            border: 1px solid var(--line);
             border-radius: 6px;
-            padding: 90px 60px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+        .product-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.10);
+        }
+        .product-card-img {
+            background: #f1efea;
+            aspect-ratio: 4 / 5;
             display: flex;
             align-items: center;
             justify-content: center;
-            min-height: 380px;
-            box-shadow: 0 32px 64px rgba(0,0,0,0.12);
+            overflow: hidden;
         }
-        .product-logo-card img {
-            width: 70%;
-            max-width: 320px;
-            height: auto;
-            display: block;
+        .product-card-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
-        .product-caption {
-            margin-top: 24px;
+        .product-card-name {
+            font-size: clamp(18px, 1.8vw, 24px);
+            font-weight: 700;
+            letter-spacing: -0.005em;
+            padding: 26px 26px 8px;
+            color: var(--ink);
+        }
+        .product-card-desc {
+            font-size: 13px;
+            line-height: 1.7;
+            color: var(--muted);
+            padding: 0 26px 28px;
+            letter-spacing: 0.015em;
+        }
+        .product-footnote {
+            max-width: 760px;
+            margin: 70px auto 0;
+            padding: 32px 28px;
+            background: var(--bg-soft);
+            border: 1px solid var(--line);
+            border-radius: 6px;
+            text-align: center;
+        }
+        .product-footnote p {
+            font-size: clamp(13px, 1.15vw, 16px);
+            line-height: 1.7;
+            color: var(--ink);
+            margin: 0;
+            letter-spacing: 0.02em;
+            font-weight: 500;
+        }
+
+        /* ---------- CLOSING ---------- */
+        #closing {
+            padding: 110px 24px 130px;
+            background: var(--bg);
+            display: flex;
+            justify-content: center;
+        }
+        .closing-inner {
+            max-width: 780px;
+            text-align: center;
+        }
+        .closing-eyebrow {
             font-size: 10px;
-            letter-spacing: 0.26em;
+            letter-spacing: 0.46em;
             text-transform: uppercase;
             color: var(--muted);
-            text-align: center;
+            margin-bottom: 28px;
             font-weight: 500;
+        }
+        .closing-body {
+            font-size: clamp(19px, 2vw, 26px);
+            line-height: 1.55;
+            letter-spacing: -0.005em;
+            color: var(--ink);
+            font-weight: 400;
+        }
+
+        /* ---------- BOTTLES CAPTION ---------- */
+        .bottles-caption {
+            margin: 38px auto 0;
+            font-size: clamp(13px, 1.3vw, 17px);
+            line-height: 1.6;
+            color: var(--ink);
+            font-weight: 600;
+            letter-spacing: 0.02em;
+            max-width: 700px;
+            text-align: center;
         }
 
         /* ---------- FOOTER STRIP ---------- */
@@ -335,11 +391,9 @@
         /* ---------- RESPONSIVE ---------- */
         @media (max-width: 900px) {
             #hero { min-height: 76vh; padding: 80px 18px 60px; }
-            .product-inner { grid-template-columns: 1fr; gap: 60px; text-align: center; }
-            .product-text p, .product-list { margin-left: auto; margin-right: auto; }
-            .product-logo-card { padding: 60px 36px; min-height: 280px; max-width: 380px; }
-            .product-logo-card img { max-width: 220px; }
-            #mission, #product { padding: 90px 22px; }
+            .product-grid { grid-template-columns: 1fr; gap: 28px; }
+            .product-header { margin-bottom: 50px; }
+            #mission, #product, #closing { padding: 80px 22px; }
         }
         @media (max-width: 560px) {
             .ww-strip { padding: 48px 18px 44px; }
@@ -384,32 +438,52 @@
         <div class="bottles-inner">
             <div class="bottles-eyebrow">CO-BRANDED COLLAB &middot; PROPOSED</div>
             <h2 class="bottles-title">Wisewell &times; Handhal Refillable Bottles</h2>
-            <p class="bottles-sub">Sold across ADNOC Distribution retail in the UAE. Every profit dollar from the collaboration flows directly into the Handhal program.</p>
+            <p class="bottles-sub">Sold across ADNOC Distribution retail in the UAE.</p>
             <img src="assets/bottles-collab.png" alt="Wisewell x Handhal co-branded refillable bottle concepts" class="bottles-img">
-            <div class="bottles-note">Design shown represents conceptual art only. Final scale and position of art may change slightly in final production.</div>
+            <p class="bottles-caption">100% of profits from Handhal Bottle sales will be distributed to our support partners.</p>
         </div>
     </section>
 
     <!-- PRODUCT SHOWCASE -->
     <section id="product">
-        <div class="product-inner">
-            <div class="product-text">
-                <div class="eyebrow">THE WISEWELL PLATFORM</div>
-                <h2>UAE-built hydration, serving households nationwide.</h2>
-                <p>From the Nano filtration system in homes to the Sparkle smart hydration platform &mdash; Wisewell brings a UAE-designed, globally trusted hardware platform to every Handhal partnership.</p>
-                <p>Manufacturing capacity, retail relationships, and distribution muscle convert visibility into capital &mdash; and capital back into the program.</p>
-                <ul class="product-list">
-                    <li>UAE Designed &amp; Deployed</li>
-                    <li>ADNOC &middot; Hotels &middot; Retail Distribution</li>
-                    <li>Nano &middot; Sparkle Hardware Platform</li>
-                </ul>
-            </div>
-            <div class="product-visual">
-                <div class="product-logo-card">
-                    <img src="assets/wisewell/wisewell-logo-white.svg" alt="Wisewell">
+        <div class="product-header">
+            <div class="eyebrow">THE WISEWELL PLATFORM</div>
+            <h2 class="product-h2">UAE-built hydration, serving households nationwide.</h2>
+            <p class="product-intro">Every Wisewell subscription powers the Handhal program. UAE-designed, globally trusted, and built to give back.</p>
+        </div>
+        <div class="product-grid">
+            <div class="product-card">
+                <div class="product-card-img">
+                    <img src="assets/wisewell/products/sparkle.jpg" alt="Wisewell Sparkle">
                 </div>
-                <div class="product-caption">Wisewell &mdash; UAE-built water platform</div>
+                <div class="product-card-name">Sparkle</div>
+                <div class="product-card-desc">Smart hydration with sparkling, cold, ambient and hot water on demand.</div>
             </div>
+            <div class="product-card">
+                <div class="product-card-img">
+                    <img src="assets/wisewell/products/model1.jpg" alt="Wisewell Model 1">
+                </div>
+                <div class="product-card-name">Model 1</div>
+                <div class="product-card-desc">The flagship floor-standing platform, engineered for households and high-traffic spaces.</div>
+            </div>
+            <div class="product-card">
+                <div class="product-card-img">
+                    <img src="assets/wisewell/products/nano.jpg" alt="Wisewell Nano">
+                </div>
+                <div class="product-card-name">Nano</div>
+                <div class="product-card-desc">Compact, connected, app-controlled filtration designed for any countertop.</div>
+            </div>
+        </div>
+        <div class="product-footnote">
+            <p>AED 50 from every Wisewell subscription sold will be contributed to our support partners. During this program, customers will receive UAE Flag Handhal bottles.</p>
+        </div>
+    </section>
+
+    <!-- CLOSING -->
+    <section id="closing">
+        <div class="closing-inner">
+            <div class="closing-eyebrow">WHAT&rsquo;S NEXT</div>
+            <p class="closing-body">Our goal is to onboard more brands and partner with local UAE companies &mdash; creating more opportunities for customers to experience exceptional UAE products and services, while giving back.</p>
         </div>
     </section>
 
