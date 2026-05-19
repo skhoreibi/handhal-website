@@ -253,41 +253,60 @@
         .product-card {
             background: var(--bg-soft);
             border: 1px solid var(--line);
-            border-radius: 6px;
+            border-radius: 8px;
             overflow: hidden;
             display: flex;
             flex-direction: column;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.04);
             transition: transform 0.4s ease, box-shadow 0.4s ease;
         }
         .product-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 30px 60px rgba(0,0,0,0.10);
+            transform: translateY(-6px);
+            box-shadow: 0 32px 64px rgba(0,0,0,0.10);
         }
         .product-card-img {
-            background: #f1efea;
-            aspect-ratio: 4 / 5;
+            background: #000;
+            aspect-ratio: 1 / 1;
             display: flex;
             align-items: center;
             justify-content: center;
+            padding: 32px;
             overflow: hidden;
+            position: relative;
         }
         .product-card-img img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
+            max-width: 100%;
+            max-height: 100%;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+            filter: drop-shadow(0 16px 28px rgba(0,0,0,0.40));
+        }
+        .product-card-meta {
+            padding: 30px 30px 34px;
+            border-top: 1px solid var(--line);
+            background: var(--bg-soft);
+        }
+        .product-card-eyebrow {
+            font-size: 9px;
+            letter-spacing: 0.34em;
+            text-transform: uppercase;
+            color: var(--muted);
+            font-weight: 700;
+            margin-bottom: 12px;
         }
         .product-card-name {
-            font-size: clamp(18px, 1.8vw, 24px);
+            font-size: clamp(20px, 2vw, 26px);
             font-weight: 700;
-            letter-spacing: -0.005em;
-            padding: 26px 26px 8px;
+            letter-spacing: -0.012em;
             color: var(--ink);
+            margin-bottom: 12px;
+            line-height: 1.1;
         }
         .product-card-desc {
             font-size: 13px;
             line-height: 1.7;
             color: var(--muted);
-            padding: 0 26px 28px;
             letter-spacing: 0.015em;
         }
         .product-footnote {
@@ -308,31 +327,53 @@
             font-weight: 500;
         }
 
-        /* ---------- CLOSING ---------- */
+        /* ---------- CLOSING LOCKUP ---------- */
         #closing {
-            padding: 110px 24px 130px;
-            background: var(--bg);
-            display: flex;
-            justify-content: center;
-        }
-        .closing-inner {
-            max-width: 780px;
+            padding: 120px 24px 130px;
+            background: var(--strip);
+            color: var(--on-strip);
             text-align: center;
         }
-        .closing-eyebrow {
-            font-size: 10px;
-            letter-spacing: 0.46em;
-            text-transform: uppercase;
-            color: var(--muted);
-            margin-bottom: 28px;
-            font-weight: 500;
+        .closing-inner {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .closing-lockup {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: clamp(28px, 4vw, 56px);
+            margin-bottom: 48px;
+            flex-wrap: wrap;
+        }
+        .closing-logo {
+            height: auto;
+            display: block;
+        }
+        .closing-handhal {
+            width: clamp(140px, 18vw, 240px);
+            filter: brightness(0) invert(1);
+            opacity: 0.95;
+        }
+        .closing-wisewell {
+            width: clamp(160px, 20vw, 270px);
+            opacity: 0.96;
+        }
+        .closing-x {
+            font-family: inherit;
+            font-size: clamp(28px, 3.4vw, 44px);
+            font-weight: 300;
+            color: rgba(255,255,255,0.55);
+            line-height: 1;
         }
         .closing-body {
-            font-size: clamp(19px, 2vw, 26px);
-            line-height: 1.55;
-            letter-spacing: -0.005em;
-            color: var(--ink);
+            font-size: clamp(16px, 1.5vw, 20px);
+            line-height: 1.6;
+            letter-spacing: 0.01em;
+            color: rgba(255,255,255,0.82);
             font-weight: 400;
+            max-width: 720px;
+            margin: 0 auto;
         }
 
         /* ---------- BOTTLES CAPTION ---------- */
@@ -351,8 +392,9 @@
         #footer {
             background: var(--strip);
             color: var(--on-strip);
-            padding: 80px 24px 64px;
+            padding: 60px 24px 64px;
             text-align: center;
+            border-top: 1px solid rgba(255,255,255,0.08);
         }
         .footer-logo {
             width: 180px;
@@ -401,6 +443,9 @@
             .erf-logo-card { padding: 40px 24px; margin-bottom: 60px; }
             .erf-header { margin-bottom: 50px; }
             .erf-cta-wrap { margin-top: 60px; }
+            .closing-lockup { flex-direction: column; gap: 18px; }
+            #closing { padding: 80px 22px 90px; }
+            .closing-x { font-size: 24px; opacity: 0.4; }
         }
         @media (max-width: 560px) {
             .ww-strip { padding: 48px 18px 44px; }
@@ -620,24 +665,33 @@
         <div class="product-grid">
             <div class="product-card">
                 <div class="product-card-img">
-                    <img src="assets/wisewell/products/sparkle.jpg" alt="Wisewell Sparkle">
+                    <img src="assets/wisewell/products/sparkle.jpg" alt="Wisewell Bubble">
                 </div>
-                <div class="product-card-name">Sparkle</div>
-                <div class="product-card-desc">Smart hydration with sparkling, cold, ambient and hot water on demand.</div>
+                <div class="product-card-meta">
+                    <div class="product-card-eyebrow">Countertop &middot; Premium</div>
+                    <div class="product-card-name">Bubble</div>
+                    <div class="product-card-desc">Smart hydration with sparkling, cold, ambient and hot water on demand.</div>
+                </div>
             </div>
             <div class="product-card">
                 <div class="product-card-img">
                     <img src="assets/wisewell/products/model1.jpg" alt="Wisewell Model 1">
                 </div>
-                <div class="product-card-name">Model 1</div>
-                <div class="product-card-desc">The flagship floor-standing platform, engineered for households and high-traffic spaces.</div>
+                <div class="product-card-meta">
+                    <div class="product-card-eyebrow">Floor-standing &middot; Flagship</div>
+                    <div class="product-card-name">Model 1</div>
+                    <div class="product-card-desc">Flagship floor-standing platform, engineered for households and high-traffic spaces.</div>
+                </div>
             </div>
             <div class="product-card">
                 <div class="product-card-img">
                     <img src="assets/wisewell/products/nano.jpg" alt="Wisewell Nano">
                 </div>
-                <div class="product-card-name">Nano</div>
-                <div class="product-card-desc">Compact, connected, app-controlled filtration designed for any countertop.</div>
+                <div class="product-card-meta">
+                    <div class="product-card-eyebrow">Countertop &middot; Connected</div>
+                    <div class="product-card-name">Nano</div>
+                    <div class="product-card-desc">Compact, connected, app-controlled filtration designed for any countertop.</div>
+                </div>
             </div>
         </div>
         <div class="product-footnote">
@@ -657,7 +711,7 @@
                 <img src="assets/erf/erf-logo.png" alt="Entrepreneurs Resilience Fund — Sheraa">
             </div>
 
-            <div class="erf-section">
+            <div class="erf-section is-last">
                 <h3 class="erf-section-title">A fund valued at AED 5M</h3>
                 <p class="erf-section-intro">The Entrepreneurs Resilience Fund provides a combination of financial and non-financial support designed to ensure business continuity and resilience.</p>
                 <div class="erf-pillars">
@@ -676,33 +730,21 @@
                 </div>
             </div>
 
-            <div class="erf-section erf-section-grid is-last">
-                <div class="erf-section-text">
-                    <h3 class="erf-section-title">Who can apply</h3>
-                    <ul class="erf-list">
-                        <li>Startups and SMEs based in the UAE.</li>
-                        <li>Businesses operating in sectors critical to national resilience &mdash; manufacturing, food security, healthcare, logistics, and more.</li>
-                        <li>Businesses with 1+ years of operations.</li>
-                        <li>Businesses that can demonstrate financial health over the past 6 months.</li>
-                    </ul>
-                    <p class="erf-priority">Priority is given to Sheraa portfolio companies, Sharjah-licensed businesses, and national priority sectors, with all applications evaluated on a case-by-case basis.</p>
-                </div>
-                <div class="erf-section-image">
-                    <img src="assets/erf/who-can-apply.jpg" alt="Sheraa entrepreneurs in session">
-                </div>
-            </div>
-
             <div class="erf-cta-wrap">
                 <a href="https://sheraa.ae/erf" target="_blank" rel="noopener" class="erf-cta">Learn More</a>
             </div>
         </div>
     </section>
 
-    <!-- CLOSING -->
+    <!-- CLOSING LOCKUP -->
     <section id="closing">
         <div class="closing-inner">
-            <div class="closing-eyebrow">WHAT&rsquo;S NEXT</div>
-            <p class="closing-body">Our goal is to onboard more brands and partner with local UAE companies &mdash; creating more opportunities for customers to experience exceptional UAE products and services, while giving back.</p>
+            <div class="closing-lockup">
+                <img src="assets/hero-logo-white.png" alt="Handhal" class="closing-logo closing-handhal">
+                <span class="closing-x" aria-hidden="true">&times;</span>
+                <img src="assets/wisewell/wisewell-logo-white.svg" alt="Wisewell" class="closing-logo closing-wisewell">
+            </div>
+            <p class="closing-body">An initiative by Wisewell to give back to our community in the UAE &mdash; while providing plastic-free drinking water technology to our nation and beyond.</p>
         </div>
     </section>
 
