@@ -41,12 +41,10 @@
 
         /* ---------- HERO: HANDHAL ---------- */
         #hero {
-            min-height: 86vh;
             display: flex;
-            flex-direction: column;
             align-items: center;
             justify-content: center;
-            padding: 100px 24px 80px;
+            padding: 90px 24px 70px;
             text-align: center;
             background: var(--bg);
             position: relative;
@@ -57,17 +55,26 @@
             animation: fadeUp 1s ease 0.2s forwards;
         }
         .hero-arabic img {
-            width: clamp(220px, 32vw, 380px);
+            width: clamp(220px, 30vw, 360px);
             margin: 0 auto;
             filter: invert(0.92);
             opacity: 0.92;
+        }
+        /* INTRO — tagline that sits below the strip */
+        #intro {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 100px 24px 110px;
+            text-align: center;
+            background: var(--bg);
         }
         .hero-eyebrow {
             font-size: 11px;
             letter-spacing: 0.42em;
             text-transform: uppercase;
             color: var(--muted);
-            margin-top: 28px;
             opacity: 0;
             animation: fadeUp 1s ease 0.6s forwards;
             font-weight: 500;
@@ -77,7 +84,7 @@
             font-weight: 700;
             letter-spacing: -0.02em;
             line-height: 1.04;
-            margin-top: 36px;
+            margin-top: 28px;
             max-width: 900px;
             opacity: 0;
             animation: fadeUp 1s ease 0.95s forwards;
@@ -470,7 +477,8 @@
 
         /* ---------- RESPONSIVE ---------- */
         @media (max-width: 900px) {
-            #hero { min-height: 76vh; padding: 80px 18px 60px; }
+            #hero { padding: 70px 18px 50px; }
+            #intro { padding: 70px 18px 90px; }
             .product-grid { grid-template-columns: 1fr; gap: 28px; }
             .product-header { margin-bottom: 50px; }
             #mission, #product, #closing { padding: 80px 22px; }
@@ -663,20 +671,24 @@
 </head>
 <body>
 
-    <!-- HERO: HANDHAL -->
+    <!-- HERO: HANDHAL LOGO ONLY -->
     <section id="hero">
         <div class="hero-arabic">
             <img src="assets/hero-logo-white.png" alt="Handhal · الحنظل">
         </div>
-        <div class="hero-eyebrow">HANDHAL &middot; الحنظل</div>
-        <h1 class="hero-tagline">WE GIVE BACK TO THE UAE.</h1>
-        <p class="hero-sub">Channeling resources to UAE businesses and households impacted by recent events &mdash; in partnership with trusted foundations and initiatives across the country.</p>
     </section>
 
-    <!-- WISEWELL INITIATIVE STRIP -->
+    <!-- WISEWELL INITIATIVE STRIP (immediately under Handhal logo) -->
     <section class="ww-strip" aria-label="A Wisewell Initiative">
         <img src="assets/wisewell/wisewell-logo-white.svg" alt="Wisewell" class="ww-strip-logo">
         <div class="ww-strip-label">A Wisewell Initiative</div>
+    </section>
+
+    <!-- INTRO: tagline + subline -->
+    <section id="intro">
+        <div class="hero-eyebrow">HANDHAL &middot; الحنظل</div>
+        <h1 class="hero-tagline">WE GIVE BACK TO THE UAE.</h1>
+        <p class="hero-sub">Channeling resources to UAE businesses and households impacted by recent events &mdash; in partnership with trusted foundations and initiatives across the country.</p>
     </section>
 
     <!-- MISSION -->
