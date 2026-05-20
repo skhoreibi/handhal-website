@@ -25,6 +25,11 @@
             --strip: #000;
             --on-strip: #ffffff;
             --on-strip-muted: rgba(255,255,255,0.55);
+            --box-radius: 14px;
+            /* Border tone helpers — slightly darker on light bg, slightly lighter on dark bg */
+            --box-line-on-light: rgba(10,10,10,0.18);
+            --box-line-on-dark: rgba(255,255,255,0.22);
+            --box-line-on-beige: #d8d2c4;
         }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; }
@@ -39,17 +44,27 @@
         }
         img { max-width: 100%; height: auto; display: block; }
 
-        /* ---------- HERO: HANDHAL ---------- */
-        #hero {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 90px 24px 70px;
-            text-align: center;
-            background: var(--bg);
+        /* ---------- HANDHAL (merged hero + intro + commitment) ---------- */
+        #handhal {
             position: relative;
+            background-color: #f6f4f0;
+            background-image: linear-gradient(rgba(246,244,240,0.78), rgba(246,244,240,0.85)), url('UAE%20MAP.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            padding: 90px 24px 110px;
+            text-align: center;
             overflow: hidden;
         }
+        #handhal::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse at center, rgba(246,244,240,0.15) 0%, rgba(246,244,240,0.55) 70%, rgba(246,244,240,0.7) 100%);
+            pointer-events: none;
+            z-index: 0;
+        }
+        .handhal-inner { position: relative; z-index: 1; }
         .hero-arabic {
             opacity: 0;
             animation: fadeUp 1s ease 0.2s forwards;
@@ -58,17 +73,15 @@
             width: clamp(220px, 30vw, 360px);
             margin: 0 auto;
             filter: invert(0.92);
-            opacity: 0.92;
+            opacity: 0.95;
         }
-        /* INTRO — tagline that sits below the strip */
-        #intro {
+        .handhal-intro {
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            padding: 100px 24px 110px;
+            padding: 70px 0 90px;
             text-align: center;
-            background: var(--bg);
         }
         .hero-eyebrow {
             font-size: 11px;
@@ -99,6 +112,20 @@
             opacity: 0;
             animation: fadeUp 1s ease 1.25s forwards;
         }
+        .handhal-commitment {
+            padding: 50px 0 30px;
+            display: flex;
+            justify-content: center;
+        }
+        .handhal-commitment .mission-inner {
+            max-width: 780px;
+            text-align: center;
+            background: rgba(246,244,240,0.72);
+            border: 1px solid var(--box-line-on-light);
+            border-radius: var(--box-radius);
+            padding: 56px 44px;
+            backdrop-filter: blur(2px);
+        }
         @keyframes fadeUp {
             from { opacity: 0; transform: translateY(14px); }
             to   { opacity: 1; transform: translateY(0); }
@@ -108,58 +135,96 @@
         .ww-strip {
             background: var(--strip);
             color: var(--on-strip);
-            padding: 64px 24px 60px;
+            padding: 48px 24px 46px;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             text-align: center;
+            position: relative;
+        }
+        .ww-nav {
+            position: absolute;
+            top: 50%;
+            left: clamp(20px, 4vw, 48px);
+            transform: translateY(-50%);
+            display: flex;
+            gap: clamp(14px, 1.8vw, 26px);
+            align-items: center;
+            z-index: 4;
+        }
+        .ww-nav a {
+            color: rgba(255,255,255,0.72);
+            text-decoration: none;
+            font-size: 10px;
+            letter-spacing: 0.32em;
+            text-transform: uppercase;
+            font-weight: 500;
+            padding: 6px 2px;
+            border-bottom: 1px solid transparent;
+            transition: color 0.3s, border-color 0.3s;
+        }
+        .ww-nav a:hover {
+            color: #fff;
+            border-bottom-color: rgba(255,255,255,0.7);
         }
         .ww-strip-logo {
-            width: clamp(180px, 22vw, 300px);
+            width: clamp(135px, 16.5vw, 225px);
             height: auto;
             display: block;
             margin: 0 auto;
         }
         .ww-strip-label {
-            font-size: 11px;
+            font-size: 10px;
             letter-spacing: 0.46em;
             text-transform: uppercase;
             color: var(--on-strip-muted);
-            margin-top: 26px;
+            margin-top: 20px;
             font-weight: 500;
         }
 
-        /* ---------- UAE MAP (between intro and mission) ---------- */
-        #uae-map {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 40px 24px 80px;
-            background: var(--bg);
+        /* ---------- SHIMMER + BOX STYLES ---------- */
+        .shimmer-box {
+            position: relative;
+            border-radius: var(--box-radius);
+            overflow: hidden;
+            isolation: isolate;
         }
-        .uae-map-inner {
-            width: 100%;
-            max-width: 720px;
-            display: flex;
-            justify-content: center;
+        .shimmer-box::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -150%;
+            width: 60%;
+            height: 100%;
+            background: linear-gradient(
+                100deg,
+                rgba(255,255,255,0) 0%,
+                rgba(255,255,255,0.18) 50%,
+                rgba(255,255,255,0) 100%
+            );
+            transform: skewX(-18deg);
+            animation: shimmerSweep 5.5s ease-in-out infinite;
+            pointer-events: none;
+            z-index: 3;
+            mix-blend-mode: overlay;
         }
-        .uae-map-img {
-            width: 100%;
-            height: auto;
-            display: block;
-            margin: 0 auto;
-            mix-blend-mode: multiply;
-            opacity: 0.92;
+        .shimmer-box.shimmer-dark::after {
+            background: linear-gradient(
+                100deg,
+                rgba(255,255,255,0) 0%,
+                rgba(255,255,255,0.10) 50%,
+                rgba(255,255,255,0) 100%
+            );
+            mix-blend-mode: screen;
+        }
+        @keyframes shimmerSweep {
+            0%   { left: -150%; }
+            55%  { left: 150%; }
+            100% { left: 150%; }
         }
 
-        /* ---------- MISSION ---------- */
-        #mission {
-            padding: 130px 24px 130px;
-            display: flex;
-            justify-content: center;
-            background: var(--bg);
-        }
+        /* ---------- MISSION (now inside #handhal) ---------- */
         .mission-inner {
             max-width: 780px;
             text-align: center;
@@ -222,11 +287,22 @@
             max-width: 620px;
             margin: 0 auto 56px;
         }
-        .bottles-img {
+        .bottles-img-wrap {
             max-width: 960px;
             width: 100%;
             margin: 0 auto;
-            border-radius: 4px;
+            position: relative;
+            border-radius: var(--box-radius);
+            overflow: hidden;
+            border: 1px solid var(--box-line-on-light);
+            isolation: isolate;
+        }
+        .bottles-img {
+            max-width: 100%;
+            width: 100%;
+            margin: 0 auto;
+            display: block;
+            border-radius: 0;
         }
         .bottles-note {
             margin-top: 32px;
@@ -298,8 +374,10 @@
             padding: 36px;
             overflow: hidden;
             position: relative;
-            border: 1px solid var(--line);
+            border: 1px solid var(--box-line-on-light);
+            border-radius: var(--box-radius);
             transition: border-color 0.4s ease;
+            isolation: isolate;
         }
         .product-card-img img {
             max-width: 100%;
@@ -342,9 +420,12 @@
             margin: 70px auto 0;
             padding: 32px 28px;
             background: var(--bg-soft);
-            border: 1px solid var(--line);
-            border-radius: 6px;
+            border: 1px solid var(--box-line-on-light);
+            border-radius: var(--box-radius);
             text-align: center;
+            position: relative;
+            overflow: hidden;
+            isolation: isolate;
         }
         .product-footnote p {
             font-size: clamp(13px, 1.15vw, 16px);
@@ -408,7 +489,7 @@
         #mbz {
             position: relative;
             background: var(--strip);
-            background-image: linear-gradient(rgba(0,0,0,0.62), rgba(0,0,0,0.78)), url('assets/bg-mbz-quote.jpg');
+            background-image: linear-gradient(rgba(0,0,0,0.32), rgba(0,0,0,0.48)), url('assets/bg-mbz-quote.jpg');
             background-size: cover;
             background-position: center 22%;
             background-repeat: no-repeat;
@@ -416,6 +497,21 @@
             padding: 160px 24px 160px;
             overflow: hidden;
         }
+        #mbz::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: url('assets/bg-mbz-quote.jpg');
+            background-size: cover;
+            background-position: center 22%;
+            background-repeat: no-repeat;
+            filter: brightness(1.18) saturate(0.95);
+            opacity: 0.32;
+            mix-blend-mode: screen;
+            pointer-events: none;
+            z-index: 0;
+        }
+        #mbz .mbz-inner { position: relative; z-index: 1; }
         .mbz-inner {
             max-width: 920px;
             margin: 0 auto;
@@ -478,9 +574,21 @@
         #footer {
             background: var(--strip);
             color: var(--on-strip);
-            padding: 60px 24px 60px;
+            padding: 50px 24px 60px;
             text-align: center;
             border-top: 1px solid rgba(255,255,255,0.08);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 26px;
+        }
+        .footer-globe {
+            width: clamp(72px, 7vw, 96px);
+            height: auto;
+            display: block;
+            opacity: 0.95;
+            filter: drop-shadow(0 4px 14px rgba(255,255,255,0.05));
         }
         .footer-link {
             color: rgba(255,255,255,0.78);
@@ -506,21 +614,34 @@
         }
         /* Mobile breakpoint */
         @media (max-width: 768px) {
-            /* HERO + INTRO */
-            #hero { padding: 60px 18px 40px; }
-            #intro { padding: 60px 18px 90px; }
+            /* HANDHAL (merged hero + intro + commitment) */
+            #handhal { padding: 60px 18px 80px; }
+            .handhal-intro { padding: 40px 0 60px; }
             .hero-arabic img { width: clamp(180px, 60vw, 280px); }
             .hero-tagline { font-size: clamp(28px, 8vw, 42px); margin-top: 24px; }
             .hero-eyebrow { font-size: 10px; letter-spacing: 0.32em; }
             .hero-sub { font-size: 14px; margin-top: 22px; line-height: 1.65; }
 
             /* WISEWELL STRIP */
-            .ww-strip { padding: 50px 22px 46px; }
-            .ww-strip-logo { width: 170px; }
-            .ww-strip-label { font-size: 10px; letter-spacing: 0.34em; margin-top: 18px; }
+            .ww-strip { padding: 70px 22px 38px; }
+            .ww-strip-logo { width: 128px; }
+            .ww-strip-label { font-size: 9px; letter-spacing: 0.34em; margin-top: 14px; }
+            .ww-nav {
+                position: relative;
+                top: auto;
+                left: auto;
+                transform: none;
+                width: 100%;
+                justify-content: center;
+                gap: 12px;
+                flex-wrap: wrap;
+                margin-bottom: 22px;
+            }
+            .ww-nav a { font-size: 9px; letter-spacing: 0.24em; }
 
-            /* MISSION */
-            #mission { padding: 80px 22px; }
+            /* MISSION (inside #handhal on mobile) */
+            .handhal-commitment { padding: 30px 0 10px; }
+            .handhal-commitment .mission-inner { padding: 36px 22px; }
             .mission-body { font-size: 18px; line-height: 1.55; }
             .mission-eyebrow { letter-spacing: 0.36em; margin-bottom: 22px; }
             .mission-signature { font-size: 10px; letter-spacing: 0.3em; margin-top: 36px; }
@@ -594,7 +715,7 @@
         @media (max-width: 420px) {
             .hero-arabic img { width: 70vw; }
             .hero-tagline { font-size: 26px; }
-            .ww-strip-logo { width: 150px; }
+            .ww-strip-logo { width: 115px; }
             .mission-body { font-size: 17px; }
             .mbz-quote { font-size: 19px; }
             .erf-hero { padding: 50px 20px; }
@@ -614,6 +735,8 @@
             border-top: 1px solid var(--line);
             overflow: hidden;
         }
+        /* Continuous beige flow between header + image banner */
+        #erf .erf-header { background: var(--bg); }
         .erf-header {
             text-align: center;
             max-width: 880px;
@@ -642,14 +765,28 @@
             margin-top: 0;
             margin-bottom: 70px;
             min-height: clamp(440px, 60vw, 680px);
-            background-image: url('assets/erf/solidarity-banner.jpg');
-            background-size: cover;
-            background-position: center;
+            background-color: #f6f4f0;
             overflow: hidden;
             display: flex;
             align-items: center;
             padding: clamp(60px, 8vw, 120px) clamp(24px, 8vw, 120px);
+            border-top: 1px solid var(--box-line-on-beige);
+            border-bottom: 1px solid var(--box-line-on-beige);
+            isolation: isolate;
         }
+        .erf-hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(246,244,240,0.32), rgba(120,98,68,0.28)),
+                url('assets/erf/solidarity-banner.jpg');
+            background-size: cover;
+            background-position: center;
+            filter: sepia(0.55) saturate(0.78) hue-rotate(-6deg) brightness(1.05);
+            z-index: 0;
+        }
+        .erf-hero > * { position: relative; z-index: 2; }
         .erf-hero-sheraa {
             position: absolute;
             top: clamp(20px, 2.4vw, 32px);
@@ -777,43 +914,41 @@
 </head>
 <body>
 
-    <!-- WISEWELL INITIATIVE STRIP (top of page) -->
-    <section class="ww-strip" aria-label="A Wisewell Initiative">
+    <!-- WISEWELL INITIATIVE STRIP (top of page) with nav -->
+    <header class="ww-strip" aria-label="A Wisewell Initiative">
+        <nav class="ww-nav" aria-label="Main">
+            <a href="#handhal">Handhal</a>
+            <a href="#mbz">Spirit</a>
+            <a href="#erf">Partner</a>
+            <a href="#bottles">Offerings</a>
+            <a href="#products">Products</a>
+        </nav>
         <img src="assets/wisewell/wisewell-logo-white.svg" alt="Wisewell" class="ww-strip-logo">
         <div class="ww-strip-label">A Wisewell Initiative</div>
-    </section>
+    </header>
 
-    <!-- HERO: HANDHAL LOGO ONLY -->
-    <section id="hero">
-        <div class="hero-arabic">
-            <img src="assets/hero-logo-white.png" alt="Handhal · الحنظل">
-        </div>
-    </section>
+    <!-- HANDHAL (merged hero + intro + commitment, UAE map as background) -->
+    <section id="handhal">
+        <div class="handhal-inner">
+            <div class="hero-arabic">
+                <img src="assets/hero-logo-white.png" alt="Handhal · الحنظل">
+            </div>
 
+            <div class="handhal-intro">
+                <div class="hero-eyebrow">HANDHAL &middot; الحنظل</div>
+                <h1 class="hero-tagline">WE GIVE BACK TO THE UAE.</h1>
+                <p class="hero-sub">Channeling resources to UAE businesses and households impacted by recent events &mdash; in partnership with trusted foundations and initiatives across the country.</p>
+            </div>
 
-    <!-- INTRO: tagline + subline -->
-    <section id="intro">
-        <div class="hero-eyebrow">HANDHAL &middot; الحنظل</div>
-        <h1 class="hero-tagline">WE GIVE BACK TO THE UAE.</h1>
-        <p class="hero-sub">Channeling resources to UAE businesses and households impacted by recent events &mdash; in partnership with trusted foundations and initiatives across the country.</p>
-    </section>
-
-
-    <!-- UAE MAP (centered, between intro and mission) -->
-    <section id="uae-map" aria-label="Vintage map of the UAE">
-        <div class="uae-map-inner">
-            <img src="UAE%20MAP.jpg" alt="Historical Arabic map of the United Arab Emirates and the Gulf region" class="uae-map-img">
-        </div>
-    </section>
-
-    <!-- MISSION -->
-    <section id="mission">
-        <div class="mission-inner">
-            <div class="mission-eyebrow">OUR COMMITMENT</div>
-            <p class="mission-body">
-                Wisewell is contributing a portion of all sales and profits to initiatives that support UAE businesses and households impacted by recent events. Through partnership with established foundations and initiatives, we are proud and motivated to do our part &mdash; as a UAE company, for the UAE.
-            </p>
-            <div class="mission-signature">ROOTED. RESILIENT. STRONGER. TOGETHER.</div>
+            <div class="handhal-commitment">
+                <div class="mission-inner shimmer-box">
+                    <div class="mission-eyebrow">OUR COMMITMENT</div>
+                    <p class="mission-body">
+                        Wisewell is contributing a portion of all sales and profits to initiatives that support UAE businesses and households impacted by recent events. Through partnership with established foundations and initiatives, we are proud and motivated to do our part &mdash; as a UAE company, for the UAE.
+                    </p>
+                    <div class="mission-signature">ROOTED. RESILIENT. STRONGER. TOGETHER.</div>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -838,7 +973,7 @@
             <h2 class="erf-lead">Wisewell&rsquo;s Handhal program is launching with direct giving into the Entrepreneurs Resilience Fund by Sheraa.</h2>
         </div>
 
-        <div class="erf-hero">
+        <div class="erf-hero shimmer-box">
             <a href="https://sheraa.ae" target="_blank" rel="noopener" class="erf-hero-sheraa" aria-label="Sheraa">
                 <img src="assets/erf/sheraa-logo.png" alt="Sheraa">
             </a>
@@ -855,23 +990,24 @@
     <!-- BOTTLES -->
     <section id="bottles">
         <div class="bottles-inner">
-            <div class="bottles-eyebrow">CO-BRANDED COLLAB &middot; PROPOSED</div>
-            <h2 class="bottles-title">Wisewell &times; Handhal Refillable Bottles</h2>
-            <img src="assets/bottles-collab.jpg" alt="Wisewell x Handhal co-branded refillable bottle concepts" class="bottles-img">
+            <div class="bottles-eyebrow">WISEWELL HANDHAL OFFERINGS</div>
+            <h2 class="bottles-title">Wisewell Handhal UAE Flag Bottles</h2>
+            <div class="bottles-img-wrap shimmer-box">
+                <img src="assets/bottles-collab.jpg" alt="Wisewell Handhal UAE Flag refillable bottle concepts" class="bottles-img">
+            </div>
             <p class="bottles-caption">100% of profits from Handhal Bottle sales will be distributed to our support partners.</p>
         </div>
     </section>
 
     <!-- PRODUCT SHOWCASE -->
-    <section id="product">
+    <section id="products">
         <div class="product-header">
-            <div class="eyebrow">THE WISEWELL PLATFORM</div>
-            <h2 class="product-h2">UAE-built hydration, serving households nationwide.</h2>
-            <p class="product-intro">Every Wisewell subscription powers the Handhal program. UAE-designed, globally trusted, and built to give back.</p>
+            <h2 class="product-h2">Born in the UAE: Resilient, Intelligent, Elegant Drinking Water systems, serving households and businesses nationwide.</h2>
+            <p class="product-intro">Wisewell X Handhal subscriptions will add a set of UAE Flag Handhal bottles along with the subscription thousands of households and businesses already enjoy.</p>
         </div>
         <div class="product-grid">
             <div class="product-card">
-                <div class="product-card-img">
+                <div class="product-card-img shimmer-box">
                     <img src="assets/wisewell/products/sparkle.jpg" alt="Wisewell Bubble">
                 </div>
                 <div class="product-card-meta">
@@ -881,7 +1017,7 @@
                 </div>
             </div>
             <div class="product-card">
-                <div class="product-card-img">
+                <div class="product-card-img shimmer-box">
                     <img src="assets/wisewell/products/model1.jpg" alt="Wisewell Model 1">
                 </div>
                 <div class="product-card-meta">
@@ -891,7 +1027,7 @@
                 </div>
             </div>
             <div class="product-card">
-                <div class="product-card-img">
+                <div class="product-card-img shimmer-box">
                     <img src="assets/wisewell/products/nano.jpg" alt="Wisewell Nano">
                 </div>
                 <div class="product-card-meta">
@@ -901,7 +1037,7 @@
                 </div>
             </div>
         </div>
-        <div class="product-footnote">
+        <div class="product-footnote shimmer-box">
             <p>AED 50 from every Wisewell subscription sold will be contributed to our support partners. During this program, customers will receive UAE Flag Handhal bottles.</p>
         </div>
     </section>
@@ -920,6 +1056,7 @@
 
     <!-- FOOTER -->
     <section id="footer">
+        <img src="assets/globe-badge.png" alt="Global presence" class="footer-globe">
         <a href="https://www.wisewell.com" target="_blank" rel="noopener" class="footer-link">www.wisewell.com</a>
     </section>
 </body>

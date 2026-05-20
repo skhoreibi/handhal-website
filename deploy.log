@@ -9,3 +9,36 @@ UAE MAP.jpg already present (  793676 bytes)
 
 === Staging ===
 rm '.new_index.html'
+D  .new_index.html
+A  "UAE MAP.jpg"
+A  deploy.command
+A  deploy.log
+
+=== Amending previous commit with the corrected file set ===
+[main c4a146a] Move Wisewell strip above hero; add centered UAE map between intro and mission
+ Date: Wed May 20 10:47:26 2026 +0400
+ 4 files changed, 99 insertions(+), 5 deletions(-)
+ create mode 100644 UAE MAP.jpg
+ create mode 100755 deploy.command
+ create mode 100644 deploy.log
+
+=== HEAD state ===
+c4a146a Move Wisewell strip above hero; add centered UAE map between intro and mission
+621cdc5 feat(assets): add user-cropped bottles-collab.jpg (clean 4-bottle Handhal x Wisewell concept)
+a083f21 fix: drop max-width override on ERF hero so it stretches 100vw; switch bottles to user-cropped JPG
+
+=== Files in HEAD commit ===
+commit c4a146ae6e07eea9c77c857e1a793fc7e6d349b4
+Author: Sami Khoreibi <skhoreibi@gmail.com>
+Date:   Wed May 20 10:47:26 2026 +0400
+
+    Move Wisewell strip above hero; add centered UAE map between intro and mission
+
+ UAE MAP.jpg    | Bin 0 -> 793676 bytes
+ deploy.command |  51 +++++++++++++++++++++++++++++++++++++++++++++++++++
+ deploy.log     |  11 +++++++++++
+ index.html     |  42 +++++++++++++++++++++++++++++++++++++-----
+ 4 files changed, 99 insertions(+), 5 deletions(-)
+
+✅ Local main is 1 clean commit ahead of origin/main.
+👉  Open GitHub Desktop and click 'Push origin' to deploy.
