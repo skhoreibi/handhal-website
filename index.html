@@ -164,23 +164,27 @@
             z-index: 2;
             mix-blend-mode: multiply;
         }
-        /* Variant: badge placed INSIDE the OUR COMMITMENT box as the bottom signature
-           (replaces the old "ROOTED. RESILIENT..." text line). Same size, no overlap. */
+        /* Variant: badge placed INSIDE the OUR COMMITMENT block as the bottom signature
+           (replaces the old "ROOTED. RESILIENT..." text line).
+           Gap above the badge is HALF the standard rhythm — sits closer to "for the UAE." */
         .learn-handhal-inside {
-            margin: var(--section-pad) auto 0;
+            margin: calc(var(--section-pad) / 2) auto 0;
             position: static;
             mix-blend-mode: multiply;
         }
         .handhal-commitment .mission-inner {
             max-width: 780px;
             text-align: center;
-            background: rgba(246,244,240,0.72);
-            border: 1px solid var(--box-line-on-light);
-            border-radius: var(--box-radius);
-            padding: 56px 44px;
-            backdrop-filter: blur(2px);
+            /* No box — let the UAE map backdrop show through */
+            background: transparent;
+            border: none;
+            border-radius: 0;
+            padding: 0 24px;
+            backdrop-filter: none;
             position: relative;
         }
+        /* Also disable the shimmer overlay on the now-boxless commitment block */
+        .handhal-commitment .mission-inner.shimmer-box::after { display: none; }
         @keyframes fadeUp {
             from { opacity: 0; transform: translateY(14px); }
             to   { opacity: 1; transform: translateY(0); }
@@ -641,7 +645,8 @@
             padding: 0 12px;
         }
         .closing-learn-badge {
-            width: clamp(44px, 5vw, 64px);
+            /* Same size as the badge inside the OUR COMMITMENT block */
+            width: clamp(220px, 26vw, 340px);
             height: auto;
             display: block;
             margin: 14px auto 0;
@@ -932,7 +937,7 @@
             .closing-wisewell { width: 100px; }
             .closing-x { font-size: 14px; opacity: 0.45; }
             .closing-body { font-size: 13px; letter-spacing: 0.02em; line-height: 1.6; max-width: 100%; padding: 0 8px; }
-            .closing-learn-badge { width: 48px; margin-top: 12px; }
+            .closing-learn-badge { width: clamp(180px, 60vw, 240px); margin-top: 12px; }
             .closing-link { font-size: 10px; margin-top: 8px; }
 
             /* FOOTER */
