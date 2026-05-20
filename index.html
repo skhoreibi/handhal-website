@@ -30,6 +30,10 @@
             --box-line-on-light: rgba(10,10,10,0.18);
             --box-line-on-dark: rgba(255,255,255,0.22);
             --box-line-on-beige: #d8d2c4;
+            /* ONE consistent rhythm used across the entire site:
+               above/below sections, above/below images, between sub-elements */
+            --section-pad: 100px;
+            --section-pad-mobile: 70px;
         }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; }
@@ -52,7 +56,7 @@
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
-            padding: 90px 24px 110px;
+            padding: var(--section-pad) 24px;
             text-align: center;
             overflow: hidden;
         }
@@ -102,12 +106,12 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            padding: 70px 0 90px;
+            padding: var(--section-pad) 0;
             text-align: center;
         }
         .handhal-section-title {
-            margin-top: 64px;
-            margin-bottom: 80px;
+            margin-top: var(--section-pad);
+            margin-bottom: var(--section-pad);
         }
         .hero-eyebrow {
             font-size: 11px;
@@ -139,7 +143,7 @@
             animation: fadeUp 1s ease 1.25s forwards;
         }
         .handhal-commitment {
-            padding: 50px 0 30px;
+            padding: var(--section-pad) 0 0;
             display: flex;
             justify-content: center;
         }
@@ -251,7 +255,7 @@
         /* ---------- SECTION TITLE (eyebrow left, headline centered) ---------- */
         .section-title {
             max-width: 1180px;
-            margin: 0 auto 70px;
+            margin: 0 auto var(--section-pad);
             padding: 0 clamp(8px, 1.4vw, 24px);
         }
         .section-eyebrow {
@@ -372,7 +376,7 @@
 
         /* ---------- BOTTLES ---------- */
         #bottles {
-            padding: 120px 24px 130px;
+            padding: var(--section-pad) 24px;
             background: var(--bg);
             border-top: 1px solid var(--line);
             border-bottom: 1px solid var(--line);
@@ -450,7 +454,7 @@
 
         /* ---------- PRODUCT SHOWCASE ---------- */
         #product, #products {
-            padding: 120px 24px 130px;
+            padding: var(--section-pad) 24px;
             background: var(--bg);
         }
         .product-header {
@@ -566,23 +570,21 @@
             margin-right: auto;
         }
 
-        /* ---------- CLOSING LOCKUP — 50% width centered card on beige page ---------- */
+        /* ---------- CLOSING LOCKUP — full-width final section, narrow top-to-bottom ---------- */
         #closing {
-            background: var(--bg);
-            padding: 70px 24px 90px;
-            display: flex;
-            justify-content: center;
-        }
-        .closing-card {
-            width: 50%;
-            min-width: 320px;
-            max-width: 720px;
             background: var(--strip);
             color: var(--on-strip);
-            /* All inner padding and spacing reduced ~50% from the prior full-width section */
-            padding: 60px 28px 64px;
-            border-radius: var(--box-radius);
+            padding: var(--section-pad) 24px;
             text-align: center;
+        }
+        .closing-card {
+            /* No box — just a centering container for the content */
+            width: 100%;
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 0;
+            background: transparent;
+            border-radius: 0;
         }
         .closing-inner {
             max-width: 100%;
@@ -661,7 +663,7 @@
             background-position: center 22%;
             background-repeat: no-repeat;
             color: var(--on-strip);
-            padding: 130px 24px 140px;
+            padding: var(--section-pad) 24px;
             overflow: hidden;
         }
         #mbz::after {
@@ -798,8 +800,8 @@
         /* Mobile breakpoint */
         @media (max-width: 768px) {
             /* HANDHAL (merged hero + intro + commitment) */
-            #handhal { padding: 60px 18px 80px; }
-            .handhal-intro { padding: 40px 0 60px; }
+            #handhal { padding: var(--section-pad-mobile) 18px; }
+            .handhal-intro { padding: var(--section-pad-mobile) 0; }
             .hero-arabic img { width: clamp(180px, 60vw, 280px); }
             .hero-tagline { font-size: clamp(28px, 8vw, 42px); margin-top: 24px; }
             .hero-eyebrow { font-size: 10px; letter-spacing: 0.32em; }
@@ -834,19 +836,19 @@
             .learn-handhal-badge { width: clamp(180px, 60vw, 240px); margin-bottom: -22px; }
 
             /* SECTION TITLE */
-            .section-title { margin-bottom: 48px; }
+            .section-title { margin-bottom: var(--section-pad-mobile); }
             .section-eyebrow { font-size: 10px; letter-spacing: 0.36em; margin-bottom: 18px; gap: 12px; }
             .section-eyebrow::before { width: 28px; }
             .section-headline { font-size: clamp(28px, 7.5vw, 40px); letter-spacing: -0.02em; }
             .section-sub { margin-top: 20px; font-size: 14px; }
-            .handhal-section-title { margin-top: 40px; margin-bottom: 50px; }
+            .handhal-section-title { margin-top: var(--section-pad-mobile); margin-bottom: var(--section-pad-mobile); }
 
             /* MBZ */
             .mbz-inner { text-align: left; }
             .mbz-quote { font-size: clamp(22px, 6vw, 32px); margin-bottom: 32px; }
 
             /* MISSION (inside #handhal on mobile) */
-            .handhal-commitment { padding: 30px 0 10px; }
+            .handhal-commitment { padding: var(--section-pad-mobile) 0 0; }
             .handhal-commitment .mission-inner { padding: 40px 22px 36px; }
             .mission-body { font-size: 18px; line-height: 1.55; }
             .mission-eyebrow { letter-spacing: 0.36em; margin-bottom: 22px; }
@@ -857,7 +859,7 @@
 
             /* MBZ QUOTE */
             #mbz {
-                padding: 90px 22px;
+                padding: var(--section-pad-mobile) 22px;
                 background-position: center 18%;
             }
             .mbz-eyebrow { font-size: 10px; letter-spacing: 0.4em; margin-bottom: 28px; }
@@ -866,7 +868,7 @@
             .mbz-title { font-size: 9px; letter-spacing: 0.26em; }
 
             /* ERF (CONTRIBUTION PARTNER) */
-            #erf { padding: 80px 22px 80px; }
+            #erf { padding: var(--section-pad-mobile) 22px; }
             .erf-header { padding: 0; margin-bottom: 50px; max-width: 100%; margin-top: 36px; }
             .erf-lead { font-size: clamp(20px, 5.4vw, 28px); }
             .erf-hero {
@@ -886,14 +888,14 @@
             /* (fund card removed — no longer applicable) */
 
             /* BOTTLES */
-            #bottles { padding: 70px 18px 90px; }
+            #bottles { padding: var(--section-pad-mobile) 18px; }
             .bottles-eyebrow { font-size: 10px; letter-spacing: 0.36em; margin-bottom: 16px; }
             .bottles-title { font-size: clamp(22px, 6vw, 30px); }
             .bottles-img { border-radius: 4px; }
             .bottles-caption { font-size: 14px; margin-top: 28px; padding: 0 6px; }
 
             /* PRODUCT */
-            #product { padding: 80px 22px 70px; }
+            #product, #products { padding: var(--section-pad-mobile) 22px; }
             .product-header { margin-bottom: 36px; }
             .product-h2 { font-size: clamp(26px, 6vw, 34px); }
             .product-intro { font-size: 14px; }
@@ -905,9 +907,9 @@
             .product-footnote { margin: 50px 0 0; padding: 26px 22px; }
             .product-footnote p { font-size: 13.5px; }
 
-            /* CLOSING LOCKUP — card on mobile fills width */
-            #closing { padding: 50px 18px 60px; }
-            .closing-card { width: 100%; min-width: 0; padding: 44px 22px 48px; }
+            /* CLOSING LOCKUP — full-width section on mobile too */
+            #closing { padding: var(--section-pad-mobile) 18px; }
+            .closing-card { width: 100%; min-width: 0; max-width: 100%; padding: 0; background: transparent; border-radius: 0; }
             .closing-lockup { flex-direction: row; gap: 14px; margin-bottom: 22px; }
             .closing-handhal { width: 70px; }
             .closing-wisewell { width: 80px; }
@@ -947,7 +949,7 @@
             background-position: center;
             background-repeat: no-repeat;
             color: var(--on-strip);
-            padding: 130px clamp(24px, 4vw, 60px) 140px;
+            padding: var(--section-pad) clamp(24px, 4vw, 60px);
             border-top: 1px solid rgba(255,255,255,0.08);
             overflow: hidden;
         }
