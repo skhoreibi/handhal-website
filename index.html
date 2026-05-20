@@ -70,28 +70,24 @@
             pointer-events: none;
             z-index: 0;
         }
-        .handhal-inner { position: relative; z-index: 1; }
+        .handhal-inner {
+            position: relative;
+            z-index: 1;
+            max-width: 1180px;
+            margin: 0 auto;
+            padding: 0 clamp(8px, 1.4vw, 24px);
+        }
         .handhal-title {
-            text-align: center;
-            margin-bottom: 22px;
+            /* Left-aligned eyebrow with accent rule — matches other section eyebrows */
+            text-align: left;
+            margin-bottom: var(--section-pad);
             opacity: 0;
             animation: fadeUp 1s ease 0.05s forwards;
         }
-        .handhal-title-en {
+        /* Inherits .section-eyebrow base style; this override just removes inline-flex display issues */
+        .handhal-eyebrow {
             font-family: 'Source Code Variable', 'Source Code Pro', monospace;
-            font-weight: 500;
-            font-size: 10px;
-            letter-spacing: 0.46em;
-            text-transform: uppercase;
-            line-height: 1;
-            color: var(--muted);
-        }
-        .handhal-title-ar {
-            font-family: 'Source Code Variable', 'Source Code Pro', sans-serif;
-            font-size: 13px;
-            line-height: 1;
-            color: var(--muted);
-            margin-top: 8px;
+            font-weight: 700;
         }
         .hero-arabic {
             opacity: 0;
@@ -145,7 +141,9 @@
             animation: fadeUp 1s ease 1.25s forwards;
         }
         .handhal-commitment {
-            padding: var(--section-pad) 0 0;
+            /* Gap below Handhal logo = the benchmark spacing unit (32px) */
+            margin-top: var(--section-pad);
+            padding: 0;
             display: flex;
             justify-content: center;
         }
@@ -1157,20 +1155,15 @@
         </nav>
     </header>
 
-    <!-- HANDHAL (merged hero + intro + commitment, UAE map as background) -->
+    <!-- HANDHAL (merged hero + commitment, UAE map as background) -->
     <section id="handhal">
         <div class="handhal-inner">
             <div class="handhal-title">
-                <div class="handhal-title-en">HANDHAL &middot; الحنظل</div>
+                <span class="section-eyebrow handhal-eyebrow">HANDHAL &middot; الحنظل</span>
             </div>
 
             <div class="hero-arabic">
                 <img src="assets/hero-logo-white.png" alt="Handhal · الحنظل">
-            </div>
-
-            <div class="section-title handhal-section-title">
-                <h1 class="section-headline">Giving back to UAE.</h1>
-                <p class="section-sub">Channeling resources to UAE businesses and households impacted by recent events &mdash; in partnership with trusted foundations and initiatives across the country.</p>
             </div>
 
             <div class="handhal-commitment">
