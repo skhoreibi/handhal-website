@@ -846,7 +846,7 @@
                 flex-wrap: wrap;
                 margin-top: 16px;
             }
-            .ww-nav a { font-size: 9px; letter-spacing: 0.24em; }
+            .ww-nav a { font-size: 9px; letter-spacing: 0.24em; padding: 6px 4px; }
 
             /* HANDHAL TITLES */
             .handhal-title { margin-bottom: 22px; }
@@ -899,9 +899,16 @@
                 min-height: auto;
                 flex-direction: column;
                 align-items: center;
+                gap: 18px;
             }
-            .erf-hero-sheraa { top: 14px; left: 14px; }
-            .erf-hero-sheraa img { width: 52px; }
+            /* Inline (not absolute) on mobile so Sheraa doesn't overlap the ERF logo */
+            .erf-hero-sheraa {
+                position: static;
+                top: auto; left: auto;
+                display: block;
+                margin: 0 auto;
+            }
+            .erf-hero-sheraa img { width: 56px; margin: 0 auto; }
             .erf-hero-content { max-width: 100%; padding-top: 0; text-align: center; }
             .erf-hero-logo { width: clamp(160px, 50vw, 220px); margin: 0 auto 22px; }
             .erf-hero-title { font-size: clamp(26px, 7.5vw, 36px); margin-bottom: 18px; }
@@ -943,6 +950,10 @@
             /* FOOTER */
             #footer { padding: 44px 22px 44px; }
             .footer-link { font-size: 12px; letter-spacing: 0.24em; }
+
+            /* Access gate — responsive input width on mobile */
+            #hh-gate { padding: 0 24px; }
+            #hh-gate-input { width: 100%; max-width: 280px; font-size: 16px; }
         }
         /* Very narrow phones */
         @media (max-width: 420px) {
@@ -954,9 +965,13 @@
             .erf-hero { padding: 0; }
             .erf-hero-title { font-size: 24px; }
             .product-card-img { padding: 22px; }
-            .closing-handhal { width: 130px; }
-            .closing-wisewell { width: 150px; }
-            .learn-handhal-badge { width: 70vw; }
+            /* Keep closing logos smaller on very narrow phones (was inverted previously) */
+            .closing-handhal { width: 64px; }
+            .closing-wisewell { width: 80px; }
+            .closing-learn-badge { width: 60vw; max-width: 200px; }
+            /* The OVERLAP-style learn-handhal badge stays narrow; the INSIDE variant scales but capped */
+            .learn-handhal-badge { width: 60vw; }
+            .learn-handhal-inside { max-width: 60vw; }
         }
         /* Prevent horizontal scroll across the board */
         html, body { overflow-x: hidden; }
