@@ -248,12 +248,11 @@
             font-weight: 500;
         }
 
-        /* ---------- SECTION TITLE (left-aligned design system) ---------- */
+        /* ---------- SECTION TITLE (eyebrow left, headline centered) ---------- */
         .section-title {
             max-width: 1180px;
             margin: 0 auto 70px;
             padding: 0 clamp(8px, 1.4vw, 24px);
-            text-align: left;
         }
         .section-eyebrow {
             font-family: 'Source Code Variable', 'Source Code Pro', monospace;
@@ -262,11 +261,12 @@
             text-transform: uppercase;
             color: var(--muted);
             font-weight: 700;
-            margin: 0 0 24px;
+            margin: 0 0 36px;
             display: inline-flex;
             align-items: center;
             gap: 18px;
             line-height: 1;
+            text-align: left;
         }
         .section-eyebrow::before {
             content: '';
@@ -277,21 +277,24 @@
             opacity: 0.45;
         }
         .section-headline {
-            font-size: clamp(34px, 5vw, 62px);
+            /* 25% smaller than the previous clamp(34, 5vw, 62) */
+            font-size: clamp(26px, 3.75vw, 46px);
             font-weight: 700;
-            letter-spacing: -0.025em;
-            line-height: 1.04;
+            letter-spacing: -0.022em;
+            line-height: 1.08;
             color: var(--ink);
-            margin: 0;
-            max-width: 980px;
+            margin: 0 auto;
+            max-width: 920px;
+            text-align: center;
         }
         .section-sub {
-            margin: 26px 0 0;
-            font-size: clamp(14px, 1.25vw, 17px);
+            margin: 24px auto 0;
+            font-size: clamp(14px, 1.2vw, 16px);
             line-height: 1.7;
             color: var(--muted);
             max-width: 640px;
             letter-spacing: 0.02em;
+            text-align: center;
         }
         .section-title.on-dark .section-eyebrow { color: rgba(255,255,255,0.62); }
         .section-title.on-dark .section-headline { color: #fff; }
@@ -541,44 +544,56 @@
             letter-spacing: 0.015em;
             max-width: 320px;
         }
+        /* AED 54 footnote — identical style to .bottles-caption-box */
         .product-footnote {
             max-width: 760px;
-            margin: 70px auto 0;
-            padding: 32px 28px;
-            background: var(--bg-soft);
-            border: 1px solid var(--box-line-on-light);
+            margin: 38px auto 0;
+            padding: 22px 32px;
+            background: transparent;
+            border: 1.5px solid var(--ink);
             border-radius: var(--box-radius);
             text-align: center;
-            position: relative;
-            overflow: hidden;
-            isolation: isolate;
         }
         .product-footnote p {
-            font-size: clamp(13px, 1.15vw, 16px);
-            line-height: 1.7;
+            font-size: clamp(13px, 1.3vw, 17px);
+            line-height: 1.6;
             color: var(--ink);
             margin: 0;
             letter-spacing: 0.02em;
-            font-weight: 500;
+            font-weight: 600;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
-        /* ---------- CLOSING LOCKUP ---------- */
+        /* ---------- CLOSING LOCKUP — 50% width centered card on beige page ---------- */
         #closing {
-            padding: 120px 24px 130px;
+            background: var(--bg);
+            padding: 70px 24px 90px;
+            display: flex;
+            justify-content: center;
+        }
+        .closing-card {
+            width: 50%;
+            min-width: 320px;
+            max-width: 720px;
             background: var(--strip);
             color: var(--on-strip);
+            /* All inner padding and spacing reduced ~50% from the prior full-width section */
+            padding: 60px 28px 64px;
+            border-radius: var(--box-radius);
             text-align: center;
         }
         .closing-inner {
-            max-width: 900px;
+            max-width: 100%;
             margin: 0 auto;
         }
         .closing-lockup {
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: clamp(28px, 4vw, 56px);
-            margin-bottom: 48px;
+            gap: clamp(14px, 2vw, 28px);
+            margin-bottom: 24px;
             flex-wrap: wrap;
         }
         .closing-logo {
@@ -586,50 +601,50 @@
             display: block;
         }
         .closing-handhal {
-            width: clamp(140px, 18vw, 240px);
+            width: clamp(70px, 9vw, 120px);
             filter: brightness(0) invert(1);
             opacity: 0.95;
         }
         .closing-wisewell {
-            width: clamp(160px, 20vw, 270px);
+            width: clamp(80px, 10vw, 135px);
             opacity: 0.96;
         }
         .closing-x {
             font-family: inherit;
-            font-size: clamp(28px, 3.4vw, 44px);
+            font-size: clamp(14px, 1.7vw, 22px);
             font-weight: 300;
             color: rgba(255,255,255,0.55);
             line-height: 1;
         }
         .closing-body {
-            font-size: clamp(16px, 1.5vw, 20px);
+            font-size: clamp(12px, 1.05vw, 14px);
             line-height: 1.6;
             letter-spacing: 0.01em;
             color: rgba(255,255,255,0.82);
             font-weight: 400;
-            max-width: 720px;
+            max-width: 360px;
             margin: 0 auto;
         }
-        /* learn-from-handhal in closing — same gap as lockup→body (48px) */
+        /* learn-from-handhal in closing — same gap as lockup→body (24px) */
         .closing-learn-badge {
-            width: clamp(220px, 26vw, 340px);
+            width: clamp(110px, 13vw, 170px);
             height: auto;
             display: block;
-            margin: 48px auto 0;
+            margin: 24px auto 0;
             opacity: 0.96;
             filter: invert(1) brightness(1.05);
         }
         .closing-link {
             display: inline-block;
-            margin: 22px auto 0;
+            margin: 12px auto 0;
             color: rgba(255,255,255,0.78);
             text-decoration: none;
-            font-size: 13px;
+            font-size: 11px;
             letter-spacing: 0.28em;
             text-transform: lowercase;
             font-weight: 500;
             border-bottom: 1px solid rgba(255,255,255,0.18);
-            padding-bottom: 4px;
+            padding-bottom: 3px;
             transition: color 0.3s, border-color 0.3s;
         }
         .closing-link:hover {
@@ -668,7 +683,7 @@
             max-width: 1180px;
             margin: 0 auto;
             padding: 0 clamp(8px, 1.4vw, 24px);
-            text-align: left;
+            text-align: center;
         }
         .mbz-eyebrow {
             /* legacy — superseded by .section-eyebrow */
@@ -680,21 +695,23 @@
             font-weight: 600;
         }
         .mbz-quote {
-            font-size: clamp(26px, 3.6vw, 48px);
+            /* 25% smaller than the previous clamp(26, 3.6vw, 48) */
+            font-size: clamp(20px, 2.7vw, 36px);
             font-weight: 400;
-            line-height: 1.32;
+            line-height: 1.34;
             letter-spacing: -0.01em;
             color: rgba(255,255,255,0.96);
-            margin: 0 0 44px;
-            max-width: 980px;
+            margin: 0 auto 44px;
+            max-width: 880px;
             font-style: normal;
             border: none;
             padding: 0;
+            text-align: center;
         }
         .mbz-attr {
             display: flex;
             flex-direction: column;
-            align-items: flex-start;
+            align-items: center;
             gap: 6px;
         }
         .mbz-name {
@@ -888,13 +905,16 @@
             .product-footnote { margin: 50px 0 0; padding: 26px 22px; }
             .product-footnote p { font-size: 13.5px; }
 
-            /* CLOSING LOCKUP */
-            #closing { padding: 80px 22px 90px; }
-            .closing-lockup { flex-direction: column; gap: 22px; margin-bottom: 36px; }
-            .closing-handhal { width: 150px; }
-            .closing-wisewell { width: 170px; }
-            .closing-x { font-size: 22px; opacity: 0.4; }
-            .closing-body { font-size: 15px; line-height: 1.6; }
+            /* CLOSING LOCKUP — card on mobile fills width */
+            #closing { padding: 50px 18px 60px; }
+            .closing-card { width: 100%; min-width: 0; padding: 44px 22px 48px; }
+            .closing-lockup { flex-direction: row; gap: 14px; margin-bottom: 22px; }
+            .closing-handhal { width: 70px; }
+            .closing-wisewell { width: 80px; }
+            .closing-x { font-size: 14px; opacity: 0.4; }
+            .closing-body { font-size: 12px; line-height: 1.55; }
+            .closing-learn-badge { width: 120px; margin-top: 22px; }
+            .closing-link { font-size: 10px; margin-top: 10px; }
 
             /* FOOTER */
             #footer { padding: 44px 22px 44px; }
@@ -1127,8 +1147,7 @@
     <section id="handhal">
         <div class="handhal-inner">
             <div class="handhal-title">
-                <div class="handhal-title-en">HANDHAL</div>
-                <div class="handhal-title-ar">الحنظل</div>
+                <div class="handhal-title-en">HANDHAL &middot; الحنظل</div>
             </div>
 
             <div class="hero-arabic">
@@ -1136,8 +1155,7 @@
             </div>
 
             <div class="section-title handhal-section-title">
-                <div class="section-eyebrow">Handhal</div>
-                <h1 class="section-headline">We give back to the UAE.</h1>
+                <h1 class="section-headline">Giving back to UAE.</h1>
                 <p class="section-sub">Channeling resources to UAE businesses and households impacted by recent events &mdash; in partnership with trusted foundations and initiatives across the country.</p>
             </div>
 
@@ -1228,7 +1246,7 @@
                 </div>
             </div>
         </div>
-        <div class="product-footnote shimmer-box">
+        <div class="product-footnote">
             <p>AED 54 &mdash; the age of the UAE &mdash; from every Wisewell subscription sold will be contributed to our support partners. During this program, customers will receive UAE Flag Handhal bottles.</p>
         </div>
     </section>
@@ -1251,15 +1269,17 @@
 
     <!-- CLOSING LOCKUP -->
     <section id="closing">
-        <div class="closing-inner">
-            <div class="closing-lockup">
-                <img src="assets/hero-logo-white.png" alt="Handhal" class="closing-logo closing-handhal">
-                <span class="closing-x" aria-hidden="true">&times;</span>
-                <img src="assets/wisewell/wisewell-logo-white.svg" alt="Wisewell" class="closing-logo closing-wisewell">
+        <div class="closing-card">
+            <div class="closing-inner">
+                <div class="closing-lockup">
+                    <img src="assets/hero-logo-white.png" alt="Handhal" class="closing-logo closing-handhal">
+                    <span class="closing-x" aria-hidden="true">&times;</span>
+                    <img src="assets/wisewell/wisewell-logo-white.svg" alt="Wisewell" class="closing-logo closing-wisewell">
+                </div>
+                <p class="closing-body">An initiative by Wisewell to give back to our community in the UAE &mdash; while providing plastic-free drinking water technology to our nation and beyond.</p>
+                <img src="assets/learn from handhal.png" alt="Learn from the Handhal" class="closing-learn-badge">
+                <a href="https://www.wisewell.ae" target="_blank" rel="noopener" class="closing-link">www.wisewell.ae</a>
             </div>
-            <p class="closing-body">An initiative by Wisewell to give back to our community in the UAE &mdash; while providing plastic-free drinking water technology to our nation and beyond.</p>
-            <img src="assets/learn from handhal.png" alt="Learn from the Handhal" class="closing-learn-badge">
-            <a href="https://www.wisewell.ae" target="_blank" rel="noopener" class="closing-link">www.wisewell.ae</a>
         </div>
     </section>
 </body>
