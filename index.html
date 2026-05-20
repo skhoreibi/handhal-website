@@ -584,7 +584,7 @@
         .closing-card {
             /* No box — just a centering container for the content */
             width: 100%;
-            max-width: 720px;
+            max-width: 920px;
             margin: 0 auto;
             padding: 0;
             background: transparent;
@@ -624,15 +624,16 @@
             color: rgba(255,255,255,0.55);
             line-height: 1;
         }
-        /* Body text styled like the top-strip's "A Wisewell Initiative" label */
+        /* Body text — readable, spans wider portion of the closing section */
         .closing-body {
-            font-size: 11px;
-            line-height: 1.6;
-            letter-spacing: 0.06em;
-            color: rgba(255,255,255,0.7);
+            font-size: clamp(13px, 1.1vw, 15px);
+            line-height: 1.65;
+            letter-spacing: 0.02em;
+            color: rgba(255,255,255,0.82);
             font-weight: 400;
-            max-width: 480px;
+            max-width: 680px;
             margin: 0 auto;
+            padding: 0 12px;
         }
         .closing-learn-badge {
             width: clamp(44px, 5vw, 64px);
@@ -660,7 +661,7 @@
             border-bottom-color: rgba(255,255,255,0.9);
         }
 
-        /* ---------- MBZ QUOTE ---------- */
+        /* ---------- MBZ QUOTE — taller so more of the portrait shows ---------- */
         #mbz {
             position: relative;
             background: var(--strip);
@@ -670,6 +671,10 @@
             background-repeat: no-repeat;
             color: var(--on-strip);
             padding: var(--section-pad) 24px;
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             overflow: hidden;
         }
         #mbz::after {
@@ -867,6 +872,7 @@
             #mbz {
                 padding: var(--section-pad-mobile) 22px;
                 background-position: center 18%;
+                min-height: 70vh;
             }
             .mbz-eyebrow { font-size: 10px; letter-spacing: 0.4em; margin-bottom: 28px; }
             .mbz-quote { font-size: 21px; line-height: 1.4; margin-bottom: var(--section-pad-mobile); }
@@ -920,7 +926,7 @@
             .closing-handhal { width: 80px; }
             .closing-wisewell { width: 100px; }
             .closing-x { font-size: 14px; opacity: 0.45; }
-            .closing-body { font-size: 11px; letter-spacing: 0.04em; line-height: 1.55; }
+            .closing-body { font-size: 13px; letter-spacing: 0.02em; line-height: 1.6; max-width: 100%; padding: 0 8px; }
             .closing-learn-badge { width: 48px; margin-top: 12px; }
             .closing-link { font-size: 10px; margin-top: 8px; }
 
