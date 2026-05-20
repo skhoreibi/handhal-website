@@ -164,6 +164,13 @@
             z-index: 2;
             mix-blend-mode: multiply;
         }
+        /* Variant: badge placed INSIDE the OUR COMMITMENT box as the bottom signature
+           (replaces the old "ROOTED. RESILIENT..." text line). Same size, no overlap. */
+        .learn-handhal-inside {
+            margin: var(--section-pad) auto 0;
+            position: static;
+            mix-blend-mode: multiply;
+        }
         .handhal-commitment .mission-inner {
             max-width: 780px;
             text-align: center;
@@ -982,6 +989,10 @@
             max-width: 880px;
             margin: 0 auto var(--section-pad);
         }
+        /* Larger breathing room under the ERF headline → ERF logo */
+        #erf .section-title {
+            margin-bottom: calc(var(--section-pad) * 2.5);
+        }
         .erf-header .eyebrow {
             font-size: 10px;
             letter-spacing: 0.46em;
@@ -1138,6 +1149,38 @@
         </style>
 </head>
 <body>
+    <!-- Access gate (client-side, code: Sheraa). Note: this is a soft gate; for stricter
+         protection use Netlify Pro password protection. -->
+    <div id="hh-gate" style="position:fixed;inset:0;background:#0a0a0a;color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:999999;font-family:'Source Code Variable','Source Code Pro',monospace;">
+        <div style="font-size:11px;letter-spacing:0.46em;text-transform:uppercase;opacity:0.6;margin-bottom:24px;">Enter access code</div>
+        <input id="hh-gate-input" type="password" autocomplete="off" autofocus
+               style="background:transparent;border:none;border-bottom:1px solid rgba(255,255,255,0.4);color:#fff;font-family:inherit;font-size:18px;letter-spacing:0.3em;text-align:center;padding:8px 16px;outline:none;width:260px;" />
+        <div id="hh-gate-err" style="font-size:10px;letter-spacing:0.3em;text-transform:uppercase;opacity:0;margin-top:18px;color:#ff8080;">Incorrect code</div>
+    </div>
+    <script>
+    (function(){
+      var gate = document.getElementById('hh-gate');
+      var input = document.getElementById('hh-gate-input');
+      var err   = document.getElementById('hh-gate-err');
+      try {
+        if (sessionStorage.getItem('hh_auth') === 'ok') { gate.remove(); return; }
+      } catch (e) {}
+      document.body.style.overflow = 'hidden';
+      input.focus();
+      input.addEventListener('keydown', function(e){
+        if (e.key === 'Enter') {
+          if (input.value.trim().toLowerCase() === 'sheraa') {
+            try { sessionStorage.setItem('hh_auth', 'ok'); } catch(e){}
+            gate.remove();
+            document.body.style.overflow = '';
+          } else {
+            err.style.opacity = '1';
+            input.value = '';
+          }
+        }
+      });
+    })();
+    </script>
 
     <!-- WISEWELL INITIATIVE STRIP (top of page) with nav -->
     <header class="ww-strip" aria-label="A Wisewell Initiative">
@@ -1168,13 +1211,12 @@
 
             <div class="handhal-commitment">
                 <div class="commitment-stack">
-                    <img src="assets/learn from handhal.png" alt="Learn from the Handhal" class="learn-handhal-badge">
                     <div class="mission-inner shimmer-box">
                         <div class="mission-eyebrow">OUR COMMITMENT</div>
                         <p class="mission-body">
                             Wisewell is contributing a portion of all sales and profits to initiatives that support UAE businesses and households impacted by recent events. Through partnership with established foundations and initiatives, we are proud and motivated to do our part &mdash; as a UAE company, for the UAE.
                         </p>
-                        <div class="mission-signature">ROOTED. RESILIENT. STRONGER. TOGETHER.</div>
+                        <img src="assets/learn from handhal.png" alt="Learn from the Handhal" class="learn-handhal-badge learn-handhal-inside">
                     </div>
                 </div>
             </div>
@@ -1194,7 +1236,6 @@
             </a>
             <div class="erf-hero-content">
                 <img src="assets/erf/erf-logo.png" alt="Entrepreneurs Resilience Fund" class="erf-hero-logo">
-                <h1 class="erf-hero-title">Entrepreneurs Resilience Fund</h1>
                 <p class="erf-hero-sub">Providing targeted financial, operational, and ecosystem support to businesses operating in sectors critical to national resilience.</p>
                 <a href="https://sheraa.ae/erf" target="_blank" rel="noopener" class="erf-hero-cta">Learn More <span aria-hidden="true">&rsaquo;</span></a>
             </div>
