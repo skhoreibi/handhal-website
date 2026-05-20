@@ -67,26 +67,25 @@
         .handhal-inner { position: relative; z-index: 1; }
         .handhal-title {
             text-align: center;
-            margin-bottom: 28px;
+            margin-bottom: 22px;
             opacity: 0;
             animation: fadeUp 1s ease 0.05s forwards;
         }
         .handhal-title-en {
             font-family: 'Source Code Variable', 'Source Code Pro', monospace;
-            font-weight: 700;
-            font-size: clamp(28px, 4.6vw, 56px);
-            letter-spacing: 0.32em;
+            font-weight: 500;
+            font-size: 10px;
+            letter-spacing: 0.46em;
             text-transform: uppercase;
             line-height: 1;
-            color: var(--ink);
+            color: var(--muted);
         }
         .handhal-title-ar {
             font-family: 'Source Code Variable', 'Source Code Pro', sans-serif;
-            font-size: clamp(22px, 3.4vw, 40px);
+            font-size: 13px;
             line-height: 1;
-            color: var(--ink);
-            margin-top: 14px;
-            opacity: 0.85;
+            color: var(--muted);
+            margin-top: 8px;
         }
         .hero-arabic {
             opacity: 0;
@@ -318,7 +317,7 @@
         /* ---------- BOTTLES ---------- */
         #bottles {
             padding: 100px 24px 110px;
-            background: var(--bg-soft);
+            background: var(--bg);
             border-top: 1px solid var(--line);
             border-bottom: 1px solid var(--line);
         }
@@ -336,10 +335,22 @@
             font-weight: 500;
         }
         .bottles-title {
-            font-size: clamp(24px, 2.8vw, 38px);
-            font-weight: 600;
-            letter-spacing: -0.005em;
-            margin-bottom: 16px;
+            font-size: clamp(30px, 4.2vw, 54px);
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            line-height: 1.04;
+            margin-bottom: 22px;
+            max-width: 880px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .bottles-subtitle {
+            font-size: clamp(14px, 1.25vw, 17px);
+            line-height: 1.7;
+            color: var(--muted);
+            max-width: 620px;
+            margin: 0 auto 56px;
+            letter-spacing: 0.02em;
         }
         .bottles-sub {
             font-size: 13px;
@@ -379,8 +390,8 @@
         }
 
         /* ---------- PRODUCT SHOWCASE ---------- */
-        #product {
-            padding: 130px 24px 100px;
+        #product, #products {
+            padding: 80px 24px 100px;
             background: var(--bg);
         }
         .product-header {
@@ -545,6 +556,32 @@
             font-weight: 400;
             max-width: 720px;
             margin: 0 auto;
+        }
+        /* learn-from-handhal in closing — same gap as lockup→body (48px) */
+        .closing-learn-badge {
+            width: clamp(220px, 26vw, 340px);
+            height: auto;
+            display: block;
+            margin: 48px auto 0;
+            opacity: 0.96;
+            filter: invert(1) brightness(1.05);
+        }
+        .closing-link {
+            display: inline-block;
+            margin: 22px auto 0;
+            color: rgba(255,255,255,0.78);
+            text-decoration: none;
+            font-size: 13px;
+            letter-spacing: 0.28em;
+            text-transform: lowercase;
+            font-weight: 500;
+            border-bottom: 1px solid rgba(255,255,255,0.18);
+            padding-bottom: 4px;
+            transition: color 0.3s, border-color 0.3s;
+        }
+        .closing-link:hover {
+            color: #fff;
+            border-bottom-color: rgba(255,255,255,0.9);
         }
 
         /* ---------- MBZ QUOTE ---------- */
@@ -1076,7 +1113,8 @@
     <section id="bottles">
         <div class="bottles-inner">
             <div class="bottles-eyebrow">WISEWELL HANDHAL OFFERINGS</div>
-            <h2 class="bottles-title">Wisewell Handhal UAE Flag Bottles</h2>
+            <h2 class="bottles-title">Born in the UAE: Resilient, Intelligent, Elegant Drinking Water systems, serving households and businesses nationwide.</h2>
+            <p class="bottles-subtitle">Wisewell Handhal UAE Flag Bottles. Reusable premium aluminum bottles that are proudly made in the UAE.</p>
             <div class="bottles-img-wrap shimmer-box">
                 <img src="assets/bottles-collab.jpg" alt="Wisewell Handhal UAE Flag refillable bottle concepts" class="bottles-img">
             </div>
@@ -1088,10 +1126,6 @@
 
     <!-- PRODUCT SHOWCASE -->
     <section id="products">
-        <div class="product-header">
-            <h2 class="product-h2">Born in the UAE: Resilient, Intelligent, Elegant Drinking Water systems, serving households and businesses nationwide.</h2>
-            <p class="product-intro">Wisewell X Handhal subscriptions will add a set of UAE Flag Handhal bottles along with the subscription thousands of households and businesses already enjoy.</p>
-        </div>
         <div class="product-grid">
             <div class="product-card">
                 <div class="product-card-img shimmer-box">
@@ -1152,13 +1186,9 @@
                 <img src="assets/wisewell/wisewell-logo-white.svg" alt="Wisewell" class="closing-logo closing-wisewell">
             </div>
             <p class="closing-body">An initiative by Wisewell to give back to our community in the UAE &mdash; while providing plastic-free drinking water technology to our nation and beyond.</p>
+            <img src="assets/learn from handhal.png" alt="Learn from the Handhal" class="closing-learn-badge">
+            <a href="https://www.wisewell.ae" target="_blank" rel="noopener" class="closing-link">www.wisewell.ae</a>
         </div>
-    </section>
-
-    <!-- FOOTER -->
-    <section id="footer">
-        <img src="assets/learn from handhal.png" alt="Learn from the Handhal" class="footer-globe">
-        <a href="https://www.wisewell.ae" target="_blank" rel="noopener" class="footer-link">www.wisewell.ae</a>
     </section>
 </body>
 </html>
