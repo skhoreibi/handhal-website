@@ -105,6 +105,10 @@
             padding: 70px 0 90px;
             text-align: center;
         }
+        .handhal-section-title {
+            margin-top: 64px;
+            margin-bottom: 80px;
+        }
         .hero-eyebrow {
             font-size: 11px;
             letter-spacing: 0.42em;
@@ -244,6 +248,55 @@
             font-weight: 500;
         }
 
+        /* ---------- SECTION TITLE (left-aligned design system) ---------- */
+        .section-title {
+            max-width: 1180px;
+            margin: 0 auto 70px;
+            padding: 0 clamp(8px, 1.4vw, 24px);
+            text-align: left;
+        }
+        .section-eyebrow {
+            font-family: 'Source Code Variable', 'Source Code Pro', monospace;
+            font-size: 11px;
+            letter-spacing: 0.5em;
+            text-transform: uppercase;
+            color: var(--muted);
+            font-weight: 700;
+            margin: 0 0 24px;
+            display: inline-flex;
+            align-items: center;
+            gap: 18px;
+            line-height: 1;
+        }
+        .section-eyebrow::before {
+            content: '';
+            display: inline-block;
+            width: 44px;
+            height: 1px;
+            background: currentColor;
+            opacity: 0.45;
+        }
+        .section-headline {
+            font-size: clamp(34px, 5vw, 62px);
+            font-weight: 700;
+            letter-spacing: -0.025em;
+            line-height: 1.04;
+            color: var(--ink);
+            margin: 0;
+            max-width: 980px;
+        }
+        .section-sub {
+            margin: 26px 0 0;
+            font-size: clamp(14px, 1.25vw, 17px);
+            line-height: 1.7;
+            color: var(--muted);
+            max-width: 640px;
+            letter-spacing: 0.02em;
+        }
+        .section-title.on-dark .section-eyebrow { color: rgba(255,255,255,0.62); }
+        .section-title.on-dark .section-headline { color: #fff; }
+        .section-title.on-dark .section-sub { color: rgba(255,255,255,0.78); }
+
         /* ---------- SHIMMER + BOX STYLES ---------- */
         .shimmer-box {
             position: relative;
@@ -316,7 +369,7 @@
 
         /* ---------- BOTTLES ---------- */
         #bottles {
-            padding: 100px 24px 110px;
+            padding: 120px 24px 130px;
             background: var(--bg);
             border-top: 1px solid var(--line);
             border-bottom: 1px solid var(--line);
@@ -369,6 +422,7 @@
             overflow: hidden;
             border: 1px solid var(--box-line-on-light);
             isolation: isolate;
+            background: var(--bg);
         }
         .bottles-img {
             max-width: 100%;
@@ -376,6 +430,8 @@
             margin: 0 auto;
             display: block;
             border-radius: 0;
+            /* Knock out the white background so it blends with the beige section */
+            mix-blend-mode: multiply;
         }
         .bottles-note {
             margin-top: 32px;
@@ -391,7 +447,7 @@
 
         /* ---------- PRODUCT SHOWCASE ---------- */
         #product, #products {
-            padding: 80px 24px 100px;
+            padding: 120px 24px 130px;
             background: var(--bg);
         }
         .product-header {
@@ -441,10 +497,8 @@
         .product-card-img {
             background: #ffffff;
             aspect-ratio: 1 / 1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 36px;
+            display: block;
+            padding: 0;
             overflow: hidden;
             position: relative;
             border: 1px solid var(--box-line-on-light);
@@ -453,15 +507,14 @@
             isolation: isolate;
         }
         .product-card-img img {
-            max-width: 100%;
-            max-height: 100%;
-            width: auto;
-            height: auto;
-            object-fit: contain;
-            filter: grayscale(1) contrast(1.02);
-            transition: filter 0.4s ease;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            display: block;
+            transition: transform 0.5s ease;
         }
-        .product-card:hover .product-card-img img { filter: grayscale(0.4) contrast(1.0); }
+        .product-card:hover .product-card-img img { transform: scale(1.03); }
         .product-card-meta {
             padding: 28px 0 0;
         }
@@ -490,7 +543,7 @@
         }
         .product-footnote {
             max-width: 760px;
-            margin: 70px auto 80px;
+            margin: 70px auto 0;
             padding: 32px 28px;
             background: var(--bg-soft);
             border: 1px solid var(--box-line-on-light);
@@ -593,7 +646,7 @@
             background-position: center 22%;
             background-repeat: no-repeat;
             color: var(--on-strip);
-            padding: 160px 24px 160px;
+            padding: 130px 24px 140px;
             overflow: hidden;
         }
         #mbz::after {
@@ -612,11 +665,13 @@
         }
         #mbz .mbz-inner { position: relative; z-index: 1; }
         .mbz-inner {
-            max-width: 920px;
+            max-width: 1180px;
             margin: 0 auto;
-            text-align: center;
+            padding: 0 clamp(8px, 1.4vw, 24px);
+            text-align: left;
         }
         .mbz-eyebrow {
+            /* legacy — superseded by .section-eyebrow */
             font-size: 10px;
             letter-spacing: 0.5em;
             text-transform: uppercase;
@@ -625,13 +680,13 @@
             font-weight: 600;
         }
         .mbz-quote {
-            font-size: clamp(24px, 3.4vw, 44px);
+            font-size: clamp(26px, 3.6vw, 48px);
             font-weight: 400;
-            line-height: 1.35;
+            line-height: 1.32;
             letter-spacing: -0.01em;
             color: rgba(255,255,255,0.96);
-            margin: 0 auto 40px;
-            max-width: 880px;
+            margin: 0 0 44px;
+            max-width: 980px;
             font-style: normal;
             border: none;
             padding: 0;
@@ -639,7 +694,7 @@
         .mbz-attr {
             display: flex;
             flex-direction: column;
-            align-items: center;
+            align-items: flex-start;
             gap: 6px;
         }
         .mbz-name {
@@ -761,6 +816,18 @@
             /* LEARN FROM HANDHAL BADGE */
             .learn-handhal-badge { width: clamp(180px, 60vw, 240px); margin-bottom: -22px; }
 
+            /* SECTION TITLE */
+            .section-title { margin-bottom: 48px; }
+            .section-eyebrow { font-size: 10px; letter-spacing: 0.36em; margin-bottom: 18px; gap: 12px; }
+            .section-eyebrow::before { width: 28px; }
+            .section-headline { font-size: clamp(28px, 7.5vw, 40px); letter-spacing: -0.02em; }
+            .section-sub { margin-top: 20px; font-size: 14px; }
+            .handhal-section-title { margin-top: 40px; margin-bottom: 50px; }
+
+            /* MBZ */
+            .mbz-inner { text-align: left; }
+            .mbz-quote { font-size: clamp(22px, 6vw, 32px); margin-bottom: 32px; }
+
             /* MISSION (inside #handhal on mobile) */
             .handhal-commitment { padding: 30px 0 10px; }
             .handhal-commitment .mission-inner { padding: 40px 22px 36px; }
@@ -860,7 +927,7 @@
             background-position: center;
             background-repeat: no-repeat;
             color: var(--on-strip);
-            padding: 120px clamp(24px, 4vw, 60px) 120px;
+            padding: 130px clamp(24px, 4vw, 60px) 140px;
             border-top: 1px solid rgba(255,255,255,0.08);
             overflow: hidden;
         }
@@ -1068,9 +1135,10 @@
                 <img src="assets/hero-logo-white.png" alt="Handhal · الحنظل">
             </div>
 
-            <div class="handhal-intro">
-                <h1 class="hero-tagline">WE GIVE BACK TO THE UAE.</h1>
-                <p class="hero-sub">Channeling resources to UAE businesses and households impacted by recent events &mdash; in partnership with trusted foundations and initiatives across the country.</p>
+            <div class="section-title handhal-section-title">
+                <div class="section-eyebrow">Handhal</div>
+                <h1 class="section-headline">We give back to the UAE.</h1>
+                <p class="section-sub">Channeling resources to UAE businesses and households impacted by recent events &mdash; in partnership with trusted foundations and initiatives across the country.</p>
             </div>
 
             <div class="handhal-commitment">
@@ -1090,9 +1158,9 @@
 
     <!-- CONTRIBUTION PARTNER -->
     <section id="erf">
-        <div class="erf-header">
-            <div class="eyebrow">CONTRIBUTION PARTNER</div>
-            <h2 class="erf-lead">Wisewell&rsquo;s Handhal program is launching with direct giving into the Entrepreneurs Resilience Fund by Sheraa.</h2>
+        <div class="section-title on-dark">
+            <div class="section-eyebrow">Contribution Partner</div>
+            <h2 class="section-headline">Wisewell&rsquo;s Handhal program is launching with direct giving into the Entrepreneurs Resilience Fund by Sheraa.</h2>
         </div>
 
         <div class="erf-hero">
@@ -1111,10 +1179,12 @@
 
     <!-- BOTTLES -->
     <section id="bottles">
+        <div class="section-title">
+            <div class="section-eyebrow">Wisewell Handhal Offerings</div>
+            <h2 class="section-headline">Born in the UAE: Resilient, Intelligent, Elegant Drinking Water systems, serving households and businesses nationwide.</h2>
+            <p class="section-sub">Wisewell Handhal UAE Flag Bottles. Reusable premium aluminum bottles that are proudly made in the UAE.</p>
+        </div>
         <div class="bottles-inner">
-            <div class="bottles-eyebrow">WISEWELL HANDHAL OFFERINGS</div>
-            <h2 class="bottles-title">Born in the UAE: Resilient, Intelligent, Elegant Drinking Water systems, serving households and businesses nationwide.</h2>
-            <p class="bottles-subtitle">Wisewell Handhal UAE Flag Bottles. Reusable premium aluminum bottles that are proudly made in the UAE.</p>
             <div class="bottles-img-wrap shimmer-box">
                 <img src="assets/bottles-collab.jpg" alt="Wisewell Handhal UAE Flag refillable bottle concepts" class="bottles-img">
             </div>
@@ -1159,14 +1229,16 @@
             </div>
         </div>
         <div class="product-footnote shimmer-box">
-            <p>AED 50 from every Wisewell subscription sold will be contributed to our support partners. During this program, customers will receive UAE Flag Handhal bottles.</p>
+            <p>AED 54 &mdash; the age of the UAE &mdash; from every Wisewell subscription sold will be contributed to our support partners. During this program, customers will receive UAE Flag Handhal bottles.</p>
         </div>
     </section>
 
     <!-- MBZ QUOTE (Spirit) -->
     <section id="mbz">
+        <div class="section-title on-dark">
+            <div class="section-eyebrow">The Spirit</div>
+        </div>
         <div class="mbz-inner">
-            <div class="mbz-eyebrow">THE SPIRIT</div>
             <blockquote class="mbz-quote">
                 &ldquo;Do not be misled by the UAE&rsquo;s appearance. The UAE has thick skin and bitter flesh &mdash; we are no easy prey.&rdquo;
             </blockquote>
