@@ -130,6 +130,29 @@
             font-weight: 500;
         }
 
+        /* ---------- UAE MAP (between intro and mission) ---------- */
+        #uae-map {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 24px 80px;
+            background: var(--bg);
+        }
+        .uae-map-inner {
+            width: 100%;
+            max-width: 720px;
+            display: flex;
+            justify-content: center;
+        }
+        .uae-map-img {
+            width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+            mix-blend-mode: multiply;
+            opacity: 0.92;
+        }
+
         /* ---------- MISSION ---------- */
         #mission {
             padding: 130px 24px 130px;
@@ -754,6 +777,12 @@
 </head>
 <body>
 
+    <!-- WISEWELL INITIATIVE STRIP (top of page) -->
+    <section class="ww-strip" aria-label="A Wisewell Initiative">
+        <img src="assets/wisewell/wisewell-logo-white.svg" alt="Wisewell" class="ww-strip-logo">
+        <div class="ww-strip-label">A Wisewell Initiative</div>
+    </section>
+
     <!-- HERO: HANDHAL LOGO ONLY -->
     <section id="hero">
         <div class="hero-arabic">
@@ -761,17 +790,20 @@
         </div>
     </section>
 
-    <!-- WISEWELL INITIATIVE STRIP (immediately under Handhal logo) -->
-    <section class="ww-strip" aria-label="A Wisewell Initiative">
-        <img src="assets/wisewell/wisewell-logo-white.svg" alt="Wisewell" class="ww-strip-logo">
-        <div class="ww-strip-label">A Wisewell Initiative</div>
-    </section>
 
     <!-- INTRO: tagline + subline -->
     <section id="intro">
         <div class="hero-eyebrow">HANDHAL &middot; الحنظل</div>
         <h1 class="hero-tagline">WE GIVE BACK TO THE UAE.</h1>
         <p class="hero-sub">Channeling resources to UAE businesses and households impacted by recent events &mdash; in partnership with trusted foundations and initiatives across the country.</p>
+    </section>
+
+
+    <!-- UAE MAP (centered, between intro and mission) -->
+    <section id="uae-map" aria-label="Vintage map of the UAE">
+        <div class="uae-map-inner">
+            <img src="UAE%20MAP.jpg" alt="Historical Arabic map of the United Arab Emirates and the Gulf region" class="uae-map-img">
+        </div>
     </section>
 
     <!-- MISSION -->
