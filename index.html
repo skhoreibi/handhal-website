@@ -32,9 +32,10 @@
             --box-line-on-beige: #d8d2c4;
             /* ONE consistent rhythm used across the entire site:
                above/below sections, above/below images, between sub-elements.
-               Matches the tight gap between the learn-from-handhal image and the OUR COMMITMENT box. */
-            --section-pad: 48px;
-            --section-pad-mobile: 32px;
+               Matches the visible whitespace gap between the learn-from-handhal image
+               and the OUR COMMITMENT box (~32px). This is the single design unit. */
+            --section-pad: 32px;
+            --section-pad-mobile: 24px;
         }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; }
@@ -356,7 +357,7 @@
             letter-spacing: 0.46em;
             text-transform: uppercase;
             color: var(--muted);
-            margin-bottom: 32px;
+            margin-bottom: var(--section-pad);
             font-weight: 500;
         }
         .mission-body {
@@ -367,7 +368,7 @@
             font-weight: 400;
         }
         .mission-signature {
-            margin-top: 56px;
+            margin-top: var(--section-pad);
             font-size: 11px;
             letter-spacing: 0.38em;
             text-transform: uppercase;
@@ -410,7 +411,7 @@
             line-height: 1.7;
             color: var(--muted);
             max-width: 620px;
-            margin: 0 auto 56px;
+            margin: 0 auto var(--section-pad);
             letter-spacing: 0.02em;
         }
         .bottles-sub {
@@ -419,7 +420,7 @@
             letter-spacing: 0.06em;
             line-height: 1.75;
             max-width: 620px;
-            margin: 0 auto 56px;
+            margin: 0 auto var(--section-pad);
         }
         .bottles-img-wrap {
             max-width: 960px;
@@ -442,7 +443,7 @@
             mix-blend-mode: multiply;
         }
         .bottles-note {
-            margin-top: 32px;
+            margin-top: var(--section-pad);
             font-size: 10px;
             letter-spacing: 0.26em;
             text-transform: uppercase;
@@ -460,7 +461,7 @@
         }
         .product-header {
             max-width: 880px;
-            margin: 0 auto 70px;
+            margin: 0 auto var(--section-pad);
             text-align: center;
         }
         .product-header .eyebrow {
@@ -552,7 +553,7 @@
         /* AED 54 footnote — identical style to .bottles-caption-box */
         .product-footnote {
             max-width: 760px;
-            margin: 38px auto 0;
+            margin: var(--section-pad) auto 0;
             padding: 22px 32px;
             background: transparent;
             border: 1.5px solid var(--ink);
@@ -571,11 +572,13 @@
             margin-right: auto;
         }
 
-        /* ---------- CLOSING LOCKUP — full-width final section, ~1/4 the prior height ---------- */
+        /* ---------- CLOSING LOCKUP — full-width final section,
+           mirrors top strip sizes; ~25% taller than top strip ---------- */
         #closing {
             background: var(--strip);
             color: var(--on-strip);
-            padding: 18px 24px;
+            /* top-strip padding is 22px → 1.25x = 28px */
+            padding: 28px 32px;
             text-align: center;
         }
         .closing-card {
@@ -595,54 +598,57 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: clamp(10px, 1.4vw, 18px);
-            margin-bottom: 10px;
+            /* same lockup gap as top-strip's logo→label rhythm (14px) */
+            gap: clamp(16px, 2vw, 28px);
+            margin-bottom: 14px;
             flex-wrap: wrap;
         }
         .closing-logo {
             height: auto;
             display: block;
         }
+        /* Handhal + Wisewell logos sized to match the top-strip Wisewell logo */
         .closing-handhal {
-            width: clamp(34px, 4vw, 56px);
+            width: clamp(80px, 10vw, 130px);
             filter: brightness(0) invert(1);
             opacity: 0.95;
         }
         .closing-wisewell {
-            width: clamp(40px, 4.6vw, 64px);
+            width: clamp(100px, 14vw, 180px);
             opacity: 0.96;
         }
         .closing-x {
             font-family: inherit;
-            font-size: clamp(10px, 1.1vw, 14px);
+            font-size: clamp(14px, 1.6vw, 20px);
             font-weight: 300;
             color: rgba(255,255,255,0.55);
             line-height: 1;
         }
+        /* Body text styled like the top-strip's "A Wisewell Initiative" label */
         .closing-body {
-            font-size: clamp(10px, 0.85vw, 12px);
-            line-height: 1.5;
-            letter-spacing: 0.01em;
-            color: rgba(255,255,255,0.78);
+            font-size: 11px;
+            line-height: 1.6;
+            letter-spacing: 0.06em;
+            color: rgba(255,255,255,0.7);
             font-weight: 400;
-            max-width: 360px;
+            max-width: 480px;
             margin: 0 auto;
         }
         .closing-learn-badge {
-            width: clamp(54px, 6.4vw, 84px);
+            width: clamp(44px, 5vw, 64px);
             height: auto;
             display: block;
-            margin: 10px auto 0;
+            margin: 14px auto 0;
             opacity: 0.96;
             filter: invert(1) brightness(1.05);
         }
         .closing-link {
             display: inline-block;
-            margin: 6px auto 0;
+            margin: 10px auto 0;
             color: rgba(255,255,255,0.78);
             text-decoration: none;
-            font-size: 9px;
-            letter-spacing: 0.24em;
+            font-size: 10px;
+            letter-spacing: 0.32em;
             text-transform: lowercase;
             font-weight: 500;
             border-bottom: 1px solid rgba(255,255,255,0.18);
@@ -693,7 +699,7 @@
             letter-spacing: 0.5em;
             text-transform: uppercase;
             color: rgba(255,255,255,0.45);
-            margin-bottom: 38px;
+            margin-bottom: var(--section-pad);
             font-weight: 600;
         }
         .mbz-quote {
@@ -703,7 +709,7 @@
             line-height: 1.34;
             letter-spacing: -0.01em;
             color: rgba(255,255,255,0.96);
-            margin: 0 auto 44px;
+            margin: 0 auto var(--section-pad);
             max-width: 880px;
             font-style: normal;
             border: none;
@@ -734,7 +740,7 @@
         /* ---------- BOTTLES CAPTION ---------- */
         .bottles-caption-box {
             max-width: 760px;
-            margin: 38px auto 0;
+            margin: var(--section-pad) auto 0;
             padding: 22px 32px;
             border: 1.5px solid var(--ink);
             border-radius: var(--box-radius);
@@ -845,14 +851,14 @@
 
             /* MBZ */
             .mbz-inner { text-align: left; }
-            .mbz-quote { font-size: clamp(22px, 6vw, 32px); margin-bottom: 32px; }
+            .mbz-quote { font-size: clamp(22px, 6vw, 32px); margin-bottom: var(--section-pad-mobile); }
 
             /* MISSION (inside #handhal on mobile) */
             .handhal-commitment { padding: var(--section-pad-mobile) 0 0; }
             .handhal-commitment .mission-inner { padding: 40px 22px 36px; }
             .mission-body { font-size: 18px; line-height: 1.55; }
             .mission-eyebrow { letter-spacing: 0.36em; margin-bottom: 22px; }
-            .mission-signature { font-size: 10px; letter-spacing: 0.3em; margin-top: 36px; }
+            .mission-signature { font-size: 10px; letter-spacing: 0.3em; margin-top: var(--section-pad-mobile); }
 
             /* BOTTLES CAPTION BOX */
             .bottles-caption-box { padding: 18px 22px; margin-top: 28px; }
@@ -863,13 +869,13 @@
                 background-position: center 18%;
             }
             .mbz-eyebrow { font-size: 10px; letter-spacing: 0.4em; margin-bottom: 28px; }
-            .mbz-quote { font-size: 21px; line-height: 1.4; margin-bottom: 30px; }
+            .mbz-quote { font-size: 21px; line-height: 1.4; margin-bottom: var(--section-pad-mobile); }
             .mbz-name { font-size: 12px; letter-spacing: 0.22em; }
             .mbz-title { font-size: 9px; letter-spacing: 0.26em; }
 
             /* ERF (CONTRIBUTION PARTNER) — section#erf for higher specificity since the desktop rule comes later in the cascade */
             section#erf { padding: var(--section-pad-mobile) 22px; }
-            .erf-header { padding: 0; margin-bottom: 50px; max-width: 100%; margin-top: 36px; }
+            .erf-header { padding: 0; margin-bottom: var(--section-pad-mobile); max-width: 100%; margin-top: var(--section-pad-mobile); }
             .erf-lead { font-size: clamp(20px, 5.4vw, 28px); }
             .erf-hero {
                 margin: 0 auto;
@@ -896,7 +902,7 @@
 
             /* PRODUCT */
             #product, #products { padding: var(--section-pad-mobile) 22px; }
-            .product-header { margin-bottom: 36px; }
+            .product-header { margin-bottom: var(--section-pad-mobile); }
             .product-h2 { font-size: clamp(26px, 6vw, 34px); }
             .product-intro { font-size: 14px; }
             .product-grid { grid-template-columns: 1fr; gap: 36px; }
@@ -904,19 +910,19 @@
             .product-card-meta { padding: 22px 0 0; }
             .product-card-name { font-size: 22px; }
             .product-card-desc { font-size: 13px; max-width: 100%; }
-            .product-footnote { margin: 50px 0 0; padding: 26px 22px; }
+            .product-footnote { margin: var(--section-pad-mobile) 0 0; padding: 22px 22px; }
             .product-footnote p { font-size: 13.5px; }
 
-            /* CLOSING LOCKUP — full-width section, 1/4 the prior height on mobile too */
-            #closing { padding: 14px 18px; }
+            /* CLOSING LOCKUP — mirrors top strip, ~25% taller, full width on mobile too */
+            #closing { padding: 22px 18px; }
             .closing-card { width: 100%; min-width: 0; max-width: 100%; padding: 0; background: transparent; border-radius: 0; }
-            .closing-lockup { flex-direction: row; gap: 10px; margin-bottom: 8px; }
-            .closing-handhal { width: 36px; }
-            .closing-wisewell { width: 42px; }
-            .closing-x { font-size: 10px; opacity: 0.4; }
-            .closing-body { font-size: 10px; line-height: 1.45; }
-            .closing-learn-badge { width: 54px; margin-top: 8px; }
-            .closing-link { font-size: 9px; margin-top: 6px; }
+            .closing-lockup { flex-direction: row; gap: 16px; margin-bottom: 12px; }
+            .closing-handhal { width: 80px; }
+            .closing-wisewell { width: 100px; }
+            .closing-x { font-size: 14px; opacity: 0.45; }
+            .closing-body { font-size: 11px; letter-spacing: 0.04em; line-height: 1.55; }
+            .closing-learn-badge { width: 48px; margin-top: 12px; }
+            .closing-link { font-size: 10px; margin-top: 8px; }
 
             /* FOOTER */
             #footer { padding: 44px 22px 44px; }
@@ -970,7 +976,7 @@
         .erf-header {
             text-align: center;
             max-width: 880px;
-            margin: 0 auto 60px;
+            margin: 0 auto var(--section-pad);
         }
         .erf-header .eyebrow {
             font-size: 10px;
@@ -1023,7 +1029,7 @@
         .erf-hero-logo {
             width: clamp(200px, 24vw, 340px);
             height: auto;
-            margin-bottom: 30px;
+            margin-bottom: var(--section-pad);
             display: block;
             filter: drop-shadow(0 8px 24px rgba(0,0,0,0.25));
         }
@@ -1034,14 +1040,14 @@
             line-height: 1.05;
             letter-spacing: -0.02em;
             color: #fff;
-            margin: 0 0 22px;
+            margin: 0 0 var(--section-pad);
         }
         .erf-hero-sub {
             font-size: clamp(14px, 1.35vw, 18px);
             line-height: 1.65;
             color: rgba(255,255,255,0.94);
             max-width: 480px;
-            margin: 0 0 36px;
+            margin: 0 0 var(--section-pad);
             letter-spacing: 0.015em;
         }
         .erf-hero-cta {
@@ -1081,7 +1087,7 @@
         .erf-fund-header {
             text-align: center;
             max-width: 720px;
-            margin: 0 auto 50px;
+            margin: 0 auto var(--section-pad);
         }
         .erf-fund-title {
             font-size: clamp(26px, 3.4vw, 42px);
