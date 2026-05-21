@@ -581,17 +581,23 @@
             margin-right: auto;
         }
 
-        /* ---------- CLOSING LOCKUP — full-width final section,
-           mirrors top strip sizes; ~25% taller than top strip ---------- */
+        /* ---------- CLOSING LOCKUP — full width, ~50% shorter ----------
+           One unified gap (--closing-gap) governs:
+             • logos (lockup) → body text
+             • body text     → learn-from-handhal image
+             • learn image   → wisewell.ae link
+           So the learn-from-handhal image is the same distance from
+           the text above it AND the text below it, and that distance
+           equals the gap between the Handhal/Wisewell lockup and the
+           body text below it. */
         #closing {
+            --closing-gap: 20px;
             background: var(--strip);
             color: var(--on-strip);
-            /* Compact: shorter section so the lockup, image and link sit closer together */
-            padding: 4px 32px;
+            padding: 28px 32px 32px;
             text-align: center;
         }
         .closing-card {
-            /* No box — just a centering container for the content */
             width: 100%;
             max-width: 920px;
             margin: 0 auto;
@@ -607,65 +613,60 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            /* same lockup gap as top-strip's logo→label rhythm (14px) */
             gap: clamp(16px, 2vw, 28px);
-            margin-bottom: 14px;
+            margin-bottom: var(--closing-gap);
             flex-wrap: wrap;
         }
         .closing-logo {
             height: auto;
             display: block;
         }
-        /* Handhal + Wisewell logos sized to match the top-strip Wisewell logo */
         .closing-handhal {
-            width: clamp(80px, 10vw, 130px);
+            width: clamp(64px, 7vw, 96px);
             filter: brightness(0) invert(1);
             opacity: 0.95;
         }
         .closing-wisewell {
-            width: clamp(100px, 14vw, 180px);
+            width: clamp(80px, 9.5vw, 124px);
             opacity: 0.96;
         }
         .closing-x {
             font-family: inherit;
-            font-size: clamp(14px, 1.6vw, 20px);
+            font-size: clamp(12px, 1.3vw, 18px);
             font-weight: 300;
             color: rgba(255,255,255,0.55);
             line-height: 1;
         }
-        /* Body text — readable, spans wider portion of the closing section */
         .closing-body {
-            font-size: clamp(13px, 1.1vw, 15px);
-            line-height: 1.65;
+            font-size: clamp(12px, 0.95vw, 14px);
+            line-height: 1.55;
             letter-spacing: 0.02em;
             color: rgba(255,255,255,0.82);
             font-weight: 400;
-            max-width: 680px;
+            max-width: 620px;
             margin: 0 auto;
             padding: 0 12px;
         }
         .closing-learn-badge {
-            /* Same size as the badge inside the OUR COMMITMENT block */
-            width: clamp(220px, 26vw, 340px);
+            /* Reduced ~50% so the section is half its prior height */
+            width: clamp(120px, 14vw, 180px);
             height: auto;
             display: block;
-            /* Tighter again — flush against the body text above */
-            margin: 1px auto 0;
+            margin: var(--closing-gap) auto 0;
             opacity: 0.96;
             filter: invert(1) brightness(1.05);
         }
         .closing-link {
             display: inline-block;
-            /* Tighter again — flush against the learn-handhal image above */
-            margin: 1px auto 0;
+            margin: var(--closing-gap) auto 0;
             color: rgba(255,255,255,0.78);
             text-decoration: none;
-            font-size: 10px;
-            letter-spacing: 0.32em;
+            font-size: 11px;
+            letter-spacing: 0.3em;
             text-transform: lowercase;
             font-weight: 500;
             border-bottom: 1px solid rgba(255,255,255,0.18);
-            padding-bottom: 2px;
+            padding-bottom: 3px;
             transition: color 0.3s, border-color 0.3s;
         }
         .closing-link:hover {
@@ -938,16 +939,16 @@
             .product-footnote { margin: var(--section-pad-mobile) 0 0; padding: 22px 22px; }
             .product-footnote p { font-size: 13.5px; }
 
-            /* CLOSING LOCKUP — compact, full width on mobile too */
-            #closing { padding: 3px 18px; }
+            /* CLOSING LOCKUP — full width, compressed on mobile */
+            #closing { --closing-gap: 16px; padding: 22px 18px 26px; }
             .closing-card { width: 100%; min-width: 0; max-width: 100%; padding: 0; background: transparent; border-radius: 0; }
-            .closing-lockup { flex-direction: row; gap: 16px; margin-bottom: 12px; }
-            .closing-handhal { width: 80px; }
-            .closing-wisewell { width: 100px; }
+            .closing-lockup { flex-direction: row; gap: 14px; margin-bottom: var(--closing-gap); }
+            .closing-handhal { width: 60px; }
+            .closing-wisewell { width: 80px; }
             .closing-x { font-size: 14px; opacity: 0.45; }
             .closing-body { font-size: 13px; letter-spacing: 0.02em; line-height: 1.6; max-width: 100%; padding: 0 8px; }
-            .closing-learn-badge { width: clamp(180px, 60vw, 240px); margin-top: 1px; }
-            .closing-link { font-size: 10px; margin-top: 1px; }
+            .closing-learn-badge { width: clamp(110px, 36vw, 160px); margin-top: var(--closing-gap); }
+            .closing-link { font-size: 10px; margin-top: var(--closing-gap); }
 
             /* FOOTER */
             #footer { padding: 44px 22px 44px; }
