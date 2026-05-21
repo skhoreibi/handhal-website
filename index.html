@@ -586,8 +586,8 @@
         #closing {
             background: var(--strip);
             color: var(--on-strip);
-            /* top-strip padding is 22px → 1.25x = 28px */
-            padding: 28px 32px;
+            /* Compact: shorter section so the lockup, image and link sit closer together */
+            padding: 16px 32px;
             text-align: center;
         }
         .closing-card {
@@ -649,13 +649,15 @@
             width: clamp(220px, 26vw, 340px);
             height: auto;
             display: block;
-            margin: 14px auto 0;
+            /* 50% closer to the body text above */
+            margin: 7px auto 0;
             opacity: 0.96;
             filter: invert(1) brightness(1.05);
         }
         .closing-link {
             display: inline-block;
-            margin: 10px auto 0;
+            /* 50% closer to the learn-handhal image above */
+            margin: 5px auto 0;
             color: rgba(255,255,255,0.78);
             text-decoration: none;
             font-size: 10px;
@@ -936,16 +938,16 @@
             .product-footnote { margin: var(--section-pad-mobile) 0 0; padding: 22px 22px; }
             .product-footnote p { font-size: 13.5px; }
 
-            /* CLOSING LOCKUP — mirrors top strip, ~25% taller, full width on mobile too */
-            #closing { padding: 22px 18px; }
+            /* CLOSING LOCKUP — compact, full width on mobile too */
+            #closing { padding: 12px 18px; }
             .closing-card { width: 100%; min-width: 0; max-width: 100%; padding: 0; background: transparent; border-radius: 0; }
             .closing-lockup { flex-direction: row; gap: 16px; margin-bottom: 12px; }
             .closing-handhal { width: 80px; }
             .closing-wisewell { width: 100px; }
             .closing-x { font-size: 14px; opacity: 0.45; }
             .closing-body { font-size: 13px; letter-spacing: 0.02em; line-height: 1.6; max-width: 100%; padding: 0 8px; }
-            .closing-learn-badge { width: clamp(180px, 60vw, 240px); margin-top: 12px; }
-            .closing-link { font-size: 10px; margin-top: 8px; }
+            .closing-learn-badge { width: clamp(180px, 60vw, 240px); margin-top: 6px; }
+            .closing-link { font-size: 10px; margin-top: 4px; }
 
             /* FOOTER */
             #footer { padding: 44px 22px 44px; }
