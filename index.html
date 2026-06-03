@@ -983,28 +983,11 @@
         /* ---------- CONTRIBUTION PARTNER (ERF) — Spirit-style full-bleed bg ---------- */
         #erf {
             position: relative;
-            background-color: var(--strip);
-            background-image: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.72)), url('assets/erf/solidarity-banner.jpg');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
+            background: var(--strip);
             color: var(--on-strip);
             padding: var(--section-pad) clamp(24px, 4vw, 60px);
             border-top: 1px solid rgba(255,255,255,0.08);
             overflow: hidden;
-        }
-        #erf::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background-image: url('assets/erf/solidarity-banner.jpg');
-            background-size: cover;
-            background-position: center;
-            filter: brightness(1.18) saturate(0.95);
-            opacity: 0.28;
-            mix-blend-mode: screen;
-            pointer-events: none;
-            z-index: 0;
         }
         #erf > * { position: relative; z-index: 1; }
         .erf-header {
