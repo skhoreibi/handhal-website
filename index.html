@@ -599,7 +599,7 @@
         }
         .closing-card {
             width: 100%;
-            max-width: 920px;
+            max-width: 1180px;
             margin: 0 auto;
             padding: 0;
             background: transparent;
@@ -613,7 +613,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: clamp(16px, 2vw, 28px);
+            gap: clamp(22px, 2.8vw, 40px);
             margin-bottom: var(--closing-gap);
             flex-wrap: wrap;
         }
@@ -622,34 +622,33 @@
             display: block;
         }
         .closing-handhal {
-            width: clamp(64px, 7vw, 96px);
+            width: clamp(96px, 11vw, 150px);
             filter: brightness(0) invert(1);
             opacity: 0.95;
         }
         .closing-wisewell {
-            width: clamp(80px, 9.5vw, 124px);
+            width: clamp(120px, 14vw, 180px);
             opacity: 0.96;
         }
         .closing-x {
             font-family: inherit;
-            font-size: clamp(12px, 1.3vw, 18px);
+            font-size: clamp(16px, 1.8vw, 26px);
             font-weight: 300;
             color: rgba(255,255,255,0.55);
             line-height: 1;
         }
         .closing-body {
-            font-size: clamp(12px, 0.95vw, 14px);
-            line-height: 1.55;
+            font-size: clamp(14px, 1.15vw, 18px);
+            line-height: 1.6;
             letter-spacing: 0.02em;
             color: rgba(255,255,255,0.82);
             font-weight: 400;
-            max-width: 620px;
+            max-width: 860px;
             margin: 0 auto;
             padding: 0 12px;
         }
         .closing-learn-badge {
-            /* Reduced ~50% so the section is half its prior height */
-            width: clamp(120px, 14vw, 180px);
+            width: clamp(180px, 22vw, 280px);
             height: auto;
             display: block;
             margin: var(--closing-gap) auto 0;
@@ -661,7 +660,7 @@
             margin: var(--closing-gap) auto 0;
             color: rgba(255,255,255,0.78);
             text-decoration: none;
-            font-size: 11px;
+            font-size: 13px;
             letter-spacing: 0.3em;
             text-transform: lowercase;
             font-weight: 500;
@@ -679,13 +678,14 @@
             position: relative;
             background: var(--strip);
             background-image: linear-gradient(rgba(0,0,0,0.32), rgba(0,0,0,0.48)), url('assets/bg-mbz-quote.jpg');
-            /* Zoomed out so more of the portrait is visible (was: cover) */
-            background-size: contain;
-            background-position: center;
+            /* Full-bleed cover, framed on the face, locked to greyscale */
+            background-size: cover;
+            background-position: center 22%;
             background-repeat: no-repeat;
+            filter: grayscale(100%);
             color: var(--on-strip);
             padding: var(--section-pad) 24px;
-            min-height: 115vh;
+            min-height: 95vh;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -696,11 +696,11 @@
             position: absolute;
             inset: 0;
             background-image: url('assets/bg-mbz-quote.jpg');
-            background-size: contain;
-            background-position: center;
+            background-size: cover;
+            background-position: center 22%;
             background-repeat: no-repeat;
-            filter: brightness(1.18) saturate(0.95);
-            opacity: 0.32;
+            filter: brightness(1.12) grayscale(100%);
+            opacity: 0.28;
             mix-blend-mode: screen;
             pointer-events: none;
             z-index: 0;
@@ -943,13 +943,13 @@
             /* CLOSING LOCKUP — full width, compressed on mobile */
             #closing { --closing-gap: 16px; padding: 22px 18px 26px; }
             .closing-card { width: 100%; min-width: 0; max-width: 100%; padding: 0; background: transparent; border-radius: 0; }
-            .closing-lockup { flex-direction: row; gap: 14px; margin-bottom: var(--closing-gap); }
-            .closing-handhal { width: 60px; }
-            .closing-wisewell { width: 80px; }
-            .closing-x { font-size: 14px; opacity: 0.45; }
-            .closing-body { font-size: 13px; letter-spacing: 0.02em; line-height: 1.6; max-width: 100%; padding: 0 8px; }
-            .closing-learn-badge { width: clamp(110px, 36vw, 160px); margin-top: var(--closing-gap); }
-            .closing-link { font-size: 10px; margin-top: var(--closing-gap); }
+            .closing-lockup { flex-direction: row; gap: 20px; margin-bottom: var(--closing-gap); }
+            .closing-handhal { width: 84px; }
+            .closing-wisewell { width: 112px; }
+            .closing-x { font-size: 18px; opacity: 0.45; }
+            .closing-body { font-size: 15px; letter-spacing: 0.02em; line-height: 1.65; max-width: 100%; padding: 0 8px; }
+            .closing-learn-badge { width: clamp(150px, 46vw, 220px); margin-top: var(--closing-gap); }
+            .closing-link { font-size: 12px; margin-top: var(--closing-gap); }
 
             /* FOOTER */
             #footer { padding: 44px 22px 44px; }
@@ -970,9 +970,9 @@
             .erf-hero-title { font-size: 24px; }
             .product-card-img { padding: 22px; }
             /* Keep closing logos smaller on very narrow phones (was inverted previously) */
-            .closing-handhal { width: 64px; }
-            .closing-wisewell { width: 80px; }
-            .closing-learn-badge { width: 60vw; max-width: 200px; }
+            .closing-handhal { width: 80px; }
+            .closing-wisewell { width: 104px; }
+            .closing-learn-badge { width: 66vw; max-width: 240px; }
             /* The OVERLAP-style learn-handhal badge stays narrow; the INSIDE variant scales but capped */
             .learn-handhal-badge { width: 60vw; }
             .learn-handhal-inside { max-width: 60vw; }
