@@ -1157,39 +1157,6 @@
         </style>
 </head>
 <body>
-    <!-- Access gate (client-side, code: Sheraa). Note: this is a soft gate; for stricter
-         protection use Netlify Pro password protection. -->
-    <div id="hh-gate" style="position:fixed;inset:0;background:#0a0a0a;color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:999999;font-family:'Source Code Variable','Source Code Pro',monospace;">
-        <div style="font-size:11px;letter-spacing:0.46em;text-transform:uppercase;opacity:0.6;margin-bottom:24px;">Enter access code</div>
-        <input id="hh-gate-input" type="password" autocomplete="off" autofocus
-               style="background:transparent;border:none;border-bottom:1px solid rgba(255,255,255,0.4);color:#fff;font-family:inherit;font-size:18px;letter-spacing:0.3em;text-align:center;padding:8px 16px;outline:none;width:260px;" />
-        <div id="hh-gate-err" style="font-size:10px;letter-spacing:0.3em;text-transform:uppercase;opacity:0;margin-top:18px;color:#ff8080;">Incorrect code</div>
-    </div>
-    <script>
-    (function(){
-      var gate = document.getElementById('hh-gate');
-      var input = document.getElementById('hh-gate-input');
-      var err   = document.getElementById('hh-gate-err');
-      try {
-        if (sessionStorage.getItem('hh_auth') === 'ok') { gate.remove(); return; }
-      } catch (e) {}
-      document.body.style.overflow = 'hidden';
-      input.focus();
-      input.addEventListener('keydown', function(e){
-        if (e.key === 'Enter') {
-          if (input.value.trim().toLowerCase() === 'sheraa') {
-            try { sessionStorage.setItem('hh_auth', 'ok'); } catch(e){}
-            gate.remove();
-            document.body.style.overflow = '';
-          } else {
-            err.style.opacity = '1';
-            input.value = '';
-          }
-        }
-      });
-    })();
-    </script>
-
     <!-- WISEWELL INITIATIVE STRIP (top of page) with nav -->
     <header class="ww-strip" aria-label="A Wisewell Initiative">
         <div class="ww-strip-inner">
