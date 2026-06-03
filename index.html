@@ -438,7 +438,7 @@
             position: relative;
             border-radius: var(--box-radius);
             overflow: hidden;
-            border: 1px solid var(--box-line-on-light);
+            border: none;
             isolation: isolate;
             background: var(--bg);
         }
@@ -679,12 +679,13 @@
             position: relative;
             background: var(--strip);
             background-image: linear-gradient(rgba(0,0,0,0.32), rgba(0,0,0,0.48)), url('assets/bg-mbz-quote.jpg');
-            background-size: cover;
-            background-position: center 22%;
+            /* Zoomed out so more of the portrait is visible (was: cover) */
+            background-size: contain;
+            background-position: center;
             background-repeat: no-repeat;
             color: var(--on-strip);
             padding: var(--section-pad) 24px;
-            min-height: 80vh;
+            min-height: 115vh;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -695,8 +696,8 @@
             position: absolute;
             inset: 0;
             background-image: url('assets/bg-mbz-quote.jpg');
-            background-size: cover;
-            background-position: center 22%;
+            background-size: contain;
+            background-position: center;
             background-repeat: no-repeat;
             filter: brightness(1.18) saturate(0.95);
             opacity: 0.32;
@@ -885,7 +886,7 @@
             #mbz {
                 padding: var(--section-pad-mobile) 22px;
                 background-position: center 18%;
-                min-height: 70vh;
+                min-height: 95vh;
             }
             .mbz-eyebrow { font-size: 10px; letter-spacing: 0.4em; margin-bottom: 28px; }
             .mbz-quote { font-size: 21px; line-height: 1.4; margin-bottom: var(--section-pad-mobile); }
